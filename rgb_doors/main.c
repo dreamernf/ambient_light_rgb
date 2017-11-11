@@ -188,6 +188,20 @@ while (1)
         set_color(Orange,BRIGHTNESS_5);
         delay_ms(1500); 
         set_color(Orange,BRIGHTNESS_0);
+        delay_ms(1500); 
+        set_color(Violet,BRIGHTNESS_100);
+        delay_ms(1500);
+        set_color(Violet,BRIGHTNESS_75);
+        delay_ms(1500);
+        set_color(Violet,BRIGHTNESS_50);
+        delay_ms(1500);
+        set_color(Violet,BRIGHTNESS_25);
+        delay_ms(1500);
+        set_color(Violet,BRIGHTNESS_10);
+        delay_ms(1500);
+        set_color(Violet,BRIGHTNESS_5);
+        delay_ms(1500); 
+        set_color(Violet,BRIGHTNESS_0);
         delay_ms(1500);             
 
        }

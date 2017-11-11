@@ -4,15 +4,6 @@ CodeWizardAVR V3.10 Advanced
 Automatic Program Generator
 © Copyright 1998-2014 Pavel Haiduc, HP InfoTech s.r.l.
 http://www.hpinfotech.com
-
-Project : 
-Version : 
-Date    : 11.11.2017
-Author  : 
-Company : 
-Comments: 
-
-
 Chip type               : ATmega328P
 Program type            : Application
 AVR Core Clock frequency: 16,000000 MHz
@@ -32,16 +23,15 @@ struct RGB_COLOR_TYPE
     unsigned char B;
 };
 
-
-struct RGB_COLOR_TYPE Red = {255, 0, 0};
-struct RGB_COLOR_TYPE Orange = {252, 179, 0};
-struct RGB_COLOR_TYPE Yellow = {252, 255, 0};
-struct RGB_COLOR_TYPE Green = {0, 255, 0};
-struct RGB_COLOR_TYPE Blue = {0, 226, 251};
+struct RGB_COLOR_TYPE Red =      {255, 0, 0};
+struct RGB_COLOR_TYPE Orange =   {252, 179, 0};
+struct RGB_COLOR_TYPE Yellow =   {252, 255, 0};
+struct RGB_COLOR_TYPE Green =    {0, 255, 0};
+struct RGB_COLOR_TYPE Blue =     {0, 226, 251};
 struct RGB_COLOR_TYPE NavyBlue = {0, 0, 255};
-struct RGB_COLOR_TYPE Violet = {200, 0, 255};
-struct RGB_COLOR_TYPE White = {255, 255, 255};
-struct RGB_COLOR_TYPE Black = {0, 0, 0};
+struct RGB_COLOR_TYPE Violet =   {200, 0, 255};
+struct RGB_COLOR_TYPE White =    {255, 255, 255};
+struct RGB_COLOR_TYPE Black =    {0, 0, 0};
 
 #define RED_CH              OCR0B //Определяем канал OCR1AL для Красного цвета
 #define GREEN_CH            OCR0A //Определяем канал OCR1BL для Зеленого цвета
@@ -54,6 +44,7 @@ struct RGB_COLOR_TYPE Black = {0, 0, 0};
 #define  BRIGHTNESS_10      32
 #define  BRIGHTNESS_5       16
 #define  BRIGHTNESS_0       0
+#define  LIGHT_OFF          0
 
 #define RED_DDR   DDD5 
 #define GREEN_DDR DDD6  
@@ -62,17 +53,14 @@ struct RGB_COLOR_TYPE Black = {0, 0, 0};
 void set_color(struct RGB_COLOR_TYPE color, unsigned char brightness)
 {
 /*Яркость (Brightness)
-
 — самое простое преобразование.
 При:
 Shift=0 светодиод погашен
 Shift=255 светодиод горит базовым цветом.
 Все промежуточные значения Shift – это затемнение базового цвета.
-
 R_shift = (R_base * Shift) / 256
 G_shift = (G_base * Shift) / 256
 B_shift = (B_base * Shift) / 256
-
 */
 if (brightness==BRIGHTNESS_100)
  {
@@ -89,10 +77,7 @@ if (brightness==BRIGHTNESS_100)
 
 }
 
-
-               
-
-
+ 
 //Программа инициализации ШИМ
 void init_pwm (void)
 {
@@ -116,8 +101,8 @@ TCCR0A=(1<<COM0A1) | (0<<COM0A0) | (1<<COM0B1) | (0<<COM0B0) | (0<<WGM01) | (1<<
 TCCR0B=(0<<WGM02) | (0<<CS02) | (0<<CS01) | (1<<CS00);
 TCNT0=0x00;
 
-GREEN_CH=0x00;
-RED_CH=0x00;
+GREEN_CH=LIGHT_OFF;
+RED_CH=LIGHT_OFF;
 
 // Timer/Counter 1 initialization
 // Clock source: System Clock
@@ -140,19 +125,17 @@ TCNT1H=0x00;
 TCNT1L=0x00;
 ICR1H=0x00;
 ICR1L=0x00;
-
 OCR1AH=0x00;
 
-BLUE_CH=0x00;
+BLUE_CH=LIGHT_OFF;
 
 OCR1BH=0x00;
 OCR1BL=0x00;
 
 // Timer/Counter 0 Interrupt(s) initialization
-TIMSK0=(0<<OCIE0B) | (0<<OCIE0A) | (0<<TOIE0);
-
+//TIMSK0=(0<<OCIE0B) | (0<<OCIE0A) | (0<<TOIE0);
 // Timer/Counter 1 Interrupt(s) initialization
-TIMSK1=(0<<ICIE1) | (0<<OCIE1B) | (0<<OCIE1A) | (0<<TOIE1);
+//TIMSK1=(0<<ICIE1) | (0<<OCIE1B) | (0<<OCIE1A) | (0<<TOIE1);
 }
 
 void main(void)
@@ -179,19 +162,33 @@ while (1)
         delay_ms(500);  
         
         set_color(Green,BRIGHTNESS_100);
-        delay_ms(500);
+        delay_ms(1500);
         set_color(Green,BRIGHTNESS_75);
-        delay_ms(500);
+        delay_ms(1500);
         set_color(Green,BRIGHTNESS_50);
-        delay_ms(500);
+        delay_ms(1500);
         set_color(Green,BRIGHTNESS_25);
-        delay_ms(500);
+        delay_ms(1500);
         set_color(Green,BRIGHTNESS_10);
-        delay_ms(500);
+        delay_ms(1500);
         set_color(Green,BRIGHTNESS_5);
-        delay_ms(500); 
+        delay_ms(1500); 
         set_color(Green,BRIGHTNESS_0);
-        delay_ms(500);            
+        delay_ms(1500); 
+        set_color(Orange,BRIGHTNESS_100);
+        delay_ms(1500);
+        set_color(Orange,BRIGHTNESS_75);
+        delay_ms(1500);
+        set_color(Orange,BRIGHTNESS_50);
+        delay_ms(1500);
+        set_color(Orange,BRIGHTNESS_25);
+        delay_ms(1500);
+        set_color(Orange,BRIGHTNESS_10);
+        delay_ms(1500);
+        set_color(Orange,BRIGHTNESS_5);
+        delay_ms(1500); 
+        set_color(Orange,BRIGHTNESS_0);
+        delay_ms(1500);             
 
        }
             
