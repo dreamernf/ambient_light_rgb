@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.30  E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm Sun Nov 12 14:17:30 2017
+AVRASM ver. 2.1.30  E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm Sun Nov 12 14:48:46 2017
 
                  
                  
@@ -1100,7 +1100,7 @@ AVRASM ver. 2.1.30  E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_do
                  __START_OF_CODE:
                  
                  ;INTERRUPT VECTORS
-000000 940c 004a 	JMP  __RESET
+000000 940c 0055 	JMP  __RESET
 000002 940c 0000 	JMP  0x00
 000004 940c 0000 	JMP  0x00
 000006 940c 0000 	JMP  0x00
@@ -1131,114 +1131,134 @@ AVRASM ver. 2.1.30  E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_do
 E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1127): warning: .cseg .db misalignment - padding zero byte
 000034 00ff      	.DB  0xFF
                  _0x4:
-000035 b3fc      	.DB  0xFC,0xB3
+000035 80ff      	.DB  0xFF,0x80
                  _0x5:
 000036 fffc      	.DB  0xFC,0xFF
                  _0x6:
 000037 ff00      	.DB  0x0,0xFF
                  _0x7:
-000038 e200
-E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1135): warning: .cseg .db misalignment - padding zero byte
-000039 00fb      	.DB  0x0,0xE2,0xFB
+000038 ffbf      	.DB  0xBF,0xFF
                  _0x8:
-00003a 0000
-E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1137): warning: .cseg .db misalignment - padding zero byte
-00003b 00ff      	.DB  0x0,0x0,0xFF
+000039 ff80      	.DB  0x80,0xFF
                  _0x9:
-00003c 00c8
+00003a 0000
 E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1139): warning: .cseg .db misalignment - padding zero byte
-00003d 00ff      	.DB  0xC8,0x0,0xFF
+00003b 00ff      	.DB  0x0,0x0,0xFF
                  _0xA:
-00003e ffff
+00003c 0000
 E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1141): warning: .cseg .db misalignment - padding zero byte
-00003f 00ff      	.DB  0xFF,0xFF,0xFF
+00003d 00ff      	.DB  0x0,0x0,0xFF
+                 _0xB:
+00003e 00c8
+E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1143): warning: .cseg .db misalignment - padding zero byte
+00003f 00ff      	.DB  0xC8,0x0,0xFF
+                 _0xC:
+000040 ffff
+E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1145): warning: .cseg .db misalignment - padding zero byte
+000041 00ff      	.DB  0xFF,0xFF,0xFF
+                 _0xD:
+000042 ff00
+E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1147): warning: .cseg .db misalignment - padding zero byte
+000043 00ff      	.DB  0x0,0xFF,0xFF
+                 _0xE:
+000044 8000
+E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1149): warning: .cseg .db misalignment - padding zero byte
+000045 00ff      	.DB  0x0,0x80,0xFF
+                 _0xF:
+000046 0080
+E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_door.asm(1151): warning: .cseg .db misalignment - padding zero byte
+000047 00ff      	.DB  0x80,0x0,0xFF
                  
                  __GLOBAL_INI_TBL:
-000040 0002      	.DW  0x02
-000041 0300      	.DW  _Orange
-000042 006a      	.DW  _0x4*2
+000048 0002      	.DW  0x02
+000049 0300      	.DW  _Orange
+00004a 006a      	.DW  _0x4*2
                  
-000043 0002      	.DW  0x02
-000044 0303      	.DW  _Green
-000045 006e      	.DW  _0x6*2
+00004b 0002      	.DW  0x02
+00004c 0303      	.DW  _Green
+00004d 006e      	.DW  _0x6*2
                  
-000046 0003      	.DW  0x03
-000047 0306      	.DW  _Violet
-000048 0078      	.DW  _0x9*2
+00004e 0003      	.DW  0x03
+00004f 0306      	.DW  _Violet
+000050 007c      	.DW  _0xB*2
+                 
+000051 0003      	.DW  0x03
+000052 0309      	.DW  _Cyan
+000053 0084      	.DW  _0xD*2
                  
                  _0xFFFFFFFF:
-000049 0000      	.DW  0
+000054 0000      	.DW  0
                  
                  #define __GLOBAL_INI_TBL_PRESENT 1
                  
                  __RESET:
-00004a 94f8      	CLI
-00004b 27ee      	CLR  R30
-00004c bbef      	OUT  EECR,R30
+000055 94f8      	CLI
+000056 27ee      	CLR  R30
+000057 bbef      	OUT  EECR,R30
                  
                  ;INTERRUPT VECTORS ARE PLACED
                  ;AT THE START OF FLASH
-00004d e0f1      	LDI  R31,1
-00004e bff5      	OUT  MCUCR,R31
-00004f bfe5      	OUT  MCUCR,R30
+000058 e0f1      	LDI  R31,1
+000059 bff5      	OUT  MCUCR,R31
+00005a bfe5      	OUT  MCUCR,R30
                  
                  ;CLEAR R2-R14
-000050 e08d      	LDI  R24,(14-2)+1
-000051 e0a2      	LDI  R26,2
-000052 27bb      	CLR  R27
+00005b e08d      	LDI  R24,(14-2)+1
+00005c e0a2      	LDI  R26,2
+00005d 27bb      	CLR  R27
                  __CLEAR_REG:
-000053 93ed      	ST   X+,R30
-000054 958a      	DEC  R24
-000055 f7e9      	BRNE __CLEAR_REG
+00005e 93ed      	ST   X+,R30
+00005f 958a      	DEC  R24
+000060 f7e9      	BRNE __CLEAR_REG
                  
                  ;CLEAR SRAM
-000056 e080      	LDI  R24,LOW(__CLEAR_SRAM_SIZE)
-000057 e098      	LDI  R25,HIGH(__CLEAR_SRAM_SIZE)
-000058 e0a0      	LDI  R26,LOW(__SRAM_START)
-000059 e0b1      	LDI  R27,HIGH(__SRAM_START)
+000061 e080      	LDI  R24,LOW(__CLEAR_SRAM_SIZE)
+000062 e098      	LDI  R25,HIGH(__CLEAR_SRAM_SIZE)
+000063 e0a0      	LDI  R26,LOW(__SRAM_START)
+000064 e0b1      	LDI  R27,HIGH(__SRAM_START)
                  __CLEAR_SRAM:
-00005a 93ed      	ST   X+,R30
-00005b 9701      	SBIW R24,1
-00005c f7e9      	BRNE __CLEAR_SRAM
+000065 93ed      	ST   X+,R30
+000066 9701      	SBIW R24,1
+000067 f7e9      	BRNE __CLEAR_SRAM
                  
                  ;GLOBAL VARIABLES INITIALIZATION
-00005d e8e0      	LDI  R30,LOW(__GLOBAL_INI_TBL*2)
-00005e e0f0      	LDI  R31,HIGH(__GLOBAL_INI_TBL*2)
+000068 e9e0      	LDI  R30,LOW(__GLOBAL_INI_TBL*2)
+000069 e0f0      	LDI  R31,HIGH(__GLOBAL_INI_TBL*2)
                  __GLOBAL_INI_NEXT:
-00005f 9185      	LPM  R24,Z+
-000060 9195      	LPM  R25,Z+
-000061 9700      	SBIW R24,0
-000062 f061      	BREQ __GLOBAL_INI_END
-000063 91a5      	LPM  R26,Z+
-000064 91b5      	LPM  R27,Z+
-000065 9005      	LPM  R0,Z+
-000066 9015      	LPM  R1,Z+
-000067 01bf      	MOVW R22,R30
-000068 01f0      	MOVW R30,R0
+00006a 9185      	LPM  R24,Z+
+00006b 9195      	LPM  R25,Z+
+00006c 9700      	SBIW R24,0
+00006d f061      	BREQ __GLOBAL_INI_END
+00006e 91a5      	LPM  R26,Z+
+00006f 91b5      	LPM  R27,Z+
+000070 9005      	LPM  R0,Z+
+000071 9015      	LPM  R1,Z+
+000072 01bf      	MOVW R22,R30
+000073 01f0      	MOVW R30,R0
                  __GLOBAL_INI_LOOP:
-000069 9005      	LPM  R0,Z+
-00006a 920d      	ST   X+,R0
-00006b 9701      	SBIW R24,1
-00006c f7e1      	BRNE __GLOBAL_INI_LOOP
-00006d 01fb      	MOVW R30,R22
-00006e cff0      	RJMP __GLOBAL_INI_NEXT
+000074 9005      	LPM  R0,Z+
+000075 920d      	ST   X+,R0
+000076 9701      	SBIW R24,1
+000077 f7e1      	BRNE __GLOBAL_INI_LOOP
+000078 01fb      	MOVW R30,R22
+000079 cff0      	RJMP __GLOBAL_INI_NEXT
                  __GLOBAL_INI_END:
                  
                  ;GPIOR0 INITIALIZATION
-00006f e0e0      	LDI  R30,__GPIOR0_INIT
-000070 bbee      	OUT  GPIOR0,R30
+00007a e0e0      	LDI  R30,__GPIOR0_INIT
+00007b bbee      	OUT  GPIOR0,R30
                  
                  ;HARDWARE STACK POINTER INITIALIZATION
-000071 efef      	LDI  R30,LOW(__SRAM_END-__HEAP_SIZE)
-000072 bfed      	OUT  SPL,R30
-000073 e0e8      	LDI  R30,HIGH(__SRAM_END-__HEAP_SIZE)
-000074 bfee      	OUT  SPH,R30
+00007c efef      	LDI  R30,LOW(__SRAM_END-__HEAP_SIZE)
+00007d bfed      	OUT  SPL,R30
+00007e e0e8      	LDI  R30,HIGH(__SRAM_END-__HEAP_SIZE)
+00007f bfee      	OUT  SPH,R30
                  
                  ;DATA STACK POINTER INITIALIZATION
-000075 e0c0      	LDI  R28,LOW(__SRAM_START+__DSTACK_SIZE)
-000076 e0d3      	LDI  R29,HIGH(__SRAM_START+__DSTACK_SIZE)
+000080 e0c0      	LDI  R28,LOW(__SRAM_START+__DSTACK_SIZE)
+000081 e0d3      	LDI  R29,HIGH(__SRAM_START+__DSTACK_SIZE)
                  
-000077 940c 00ba 	JMP  _main
+000082 940c 00cc 	JMP  _main
                  
                  	.ESEG
                  	.ORG 0
@@ -1281,68 +1301,70 @@ E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_d
                  	.CSEG
                  _set_color:
                  ; .FSTART _set_color
-000079 93aa      	ST   -Y,R26
+000084 93aa      	ST   -Y,R26
                  ;	color -> Y+1
                  ;	brightness -> Y+0
-00007a 81a8      	LD   R26,Y
-00007b 3faf      	CPI  R26,LOW(0xFF)
-00007c f431      	BRNE _0xB
-00007d 81e9      	LDD  R30,Y+1
-00007e bde8      	OUT  0x28,R30
-00007f 81ea      	LDD  R30,Y+2
-000080 bde7      	OUT  0x27,R30
-000081 81eb      	LDD  R30,Y+3
-000082 c008      	RJMP _0x15
-                 _0xB:
-000083 81a9      	LDD  R26,Y+1
-000084 d06b      	RCALL SUBOPT_0x0
-000085 bde8      	OUT  0x28,R30
-000086 81aa      	LDD  R26,Y+2
-000087 d068      	RCALL SUBOPT_0x0
-000088 bde7      	OUT  0x27,R30
-000089 81ab      	LDD  R26,Y+3
-00008a d065      	RCALL SUBOPT_0x0
-                 _0x15:
-00008b 93e0 0088 	STS  136,R30
-00008d 9624      	ADIW R28,4
-00008e 9508      	RET
+000085 81a8      	LD   R26,Y
+000086 3faf      	CPI  R26,LOW(0xFF)
+000087 f011      	BREQ PC+3
+000088 940c 0092 	JMP _0x10
+00008a 81e9      	LDD  R30,Y+1
+00008b bde8      	OUT  0x28,R30
+00008c 81ea      	LDD  R30,Y+2
+00008d bde7      	OUT  0x27,R30
+00008e 81eb      	LDD  R30,Y+3
+00008f 93e0 0088 	STS  136,R30
+000091 c00d      	RJMP _0x11
+                 _0x10:
+000092 81a9      	LDD  R26,Y+1
+000093 940e 0146 	CALL SUBOPT_0x0
+000095 bde8      	OUT  0x28,R30
+000096 81aa      	LDD  R26,Y+2
+000097 940e 0146 	CALL SUBOPT_0x0
+000099 bde7      	OUT  0x27,R30
+00009a 81ab      	LDD  R26,Y+3
+00009b 940e 0146 	CALL SUBOPT_0x0
+00009d 93e0 0088 	STS  136,R30
+                 _0x11:
+00009f 9624      	ADIW R28,4
+0000a0 9508      	RET
                  ; .FEND
                  _init_ports:
                  ; .FSTART _init_ports
-00008f e8e0      	LDI  R30,LOW(128)
-000090 93e0 0061 	STS  97,R30
-000092 e0e0      	LDI  R30,LOW(0)
-000093 93e0 0061 	STS  97,R30
-000095 e2e2      	LDI  R30,LOW(34)
-000096 b9e4      	OUT  0x4,R30
-000097 e6e0      	LDI  R30,LOW(96)
-000098 b9ea      	OUT  0xA,R30
-000099 9508      	RET
+0000a1 e8e0      	LDI  R30,LOW(128)
+0000a2 93e0 0061 	STS  97,R30
+0000a4 e0e0      	LDI  R30,LOW(0)
+0000a5 93e0 0061 	STS  97,R30
+0000a7 e2e2      	LDI  R30,LOW(34)
+0000a8 b9e4      	OUT  0x4,R30
+0000a9 e6e0      	LDI  R30,LOW(96)
+0000aa b9ea      	OUT  0xA,R30
+0000ab 9508      	RET
                  ; .FEND
                  _init_pwm:
                  ; .FSTART _init_pwm
-00009a eae1      	LDI  R30,LOW(161)
-00009b bde4      	OUT  0x24,R30
-00009c e0e1      	LDI  R30,LOW(1)
-00009d bde5      	OUT  0x25,R30
-00009e e0e0      	LDI  R30,LOW(0)
-00009f bde6      	OUT  0x26,R30
-0000a0 bde7      	OUT  0x27,R30
-0000a1 bde8      	OUT  0x28,R30
-0000a2 e8e1      	LDI  R30,LOW(129)
-0000a3 93e0 0080 	STS  128,R30
-0000a5 e0e1      	LDI  R30,LOW(1)
-0000a6 93e0 0081 	STS  129,R30
-0000a8 e0e0      	LDI  R30,LOW(0)
-0000a9 93e0 0085 	STS  133,R30
-0000ab 93e0 0084 	STS  132,R30
-0000ad 93e0 0087 	STS  135,R30
-0000af 93e0 0086 	STS  134,R30
-0000b1 93e0 0089 	STS  137,R30
-0000b3 93e0 0088 	STS  136,R30
-0000b5 93e0 008b 	STS  139,R30
-0000b7 93e0 008a 	STS  138,R30
-0000b9 9508      	RET
+0000ac eae1      	LDI  R30,LOW(161)
+0000ad bde4      	OUT  0x24,R30
+0000ae e0e1      	LDI  R30,LOW(1)
+0000af bde5      	OUT  0x25,R30
+0000b0 e0e0      	LDI  R30,LOW(0)
+0000b1 bde6      	OUT  0x26,R30
+0000b2 bde7      	OUT  0x27,R30
+0000b3 bde8      	OUT  0x28,R30
+0000b4 e8e1      	LDI  R30,LOW(129)
+0000b5 93e0 0080 	STS  128,R30
+0000b7 e0e1      	LDI  R30,LOW(1)
+0000b8 93e0 0081 	STS  129,R30
+0000ba e0e0      	LDI  R30,LOW(0)
+0000bb 93e0 0085 	STS  133,R30
+0000bd 93e0 0084 	STS  132,R30
+0000bf 93e0 0087 	STS  135,R30
+0000c1 93e0 0086 	STS  134,R30
+0000c3 93e0 0089 	STS  137,R30
+0000c5 93e0 0088 	STS  136,R30
+0000c7 93e0 008b 	STS  139,R30
+0000c9 93e0 008a 	STS  138,R30
+0000cb 9508      	RET
                  ; .FEND
                  ;
                  ;
@@ -1351,119 +1373,168 @@ E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_d
                  ; 0000 0016 {
                  _main:
                  ; .FSTART _main
-                 ; 0000 0017 init_ports();
-0000ba dfd4      	RCALL _init_ports
-                 ; 0000 0018 init_pwm ();
-0000bb dfde      	RCALL _init_pwm
-                 ; 0000 0019 
-                 ; 0000 001A while (1)
-                 _0xD:
-                 ; 0000 001B       {
-                 ; 0000 001C 
-                 ; 0000 001D         PORTB.5=1;
-0000bc 9a2d      	SBI  0x5,5
-                 ; 0000 001E         delay_ms(500);
-0000bd efa4      	LDI  R26,LOW(500)
-0000be e0b1      	LDI  R27,HIGH(500)
-0000bf 940e 0139 	CALL _delay_ms
-                 ; 0000 001F         PORTB.5=0;
-0000c1 982d      	CBI  0x5,5
+                 ; 0000 0017 unsigned char i;
+                 ; 0000 0018 
+                 ; 0000 0019 init_ports();
+                 ;	i -> R17
+0000cc 940e 00a1 	CALL _init_ports
+                 ; 0000 001A init_pwm ();
+0000ce 940e 00ac 	CALL _init_pwm
+                 ; 0000 001B 
+                 ; 0000 001C while (1)
+                 _0x12:
+                 ; 0000 001D       {
+                 ; 0000 001E 
+                 ; 0000 001F         PORTB.5=1;
+0000d0 9a2d      	SBI  0x5,5
                  ; 0000 0020         delay_ms(500);
-0000c2 efa4      	LDI  R26,LOW(500)
-0000c3 e0b1      	LDI  R27,HIGH(500)
-0000c4 d036      	RCALL SUBOPT_0x1
-                 ; 0000 0021 
-                 ; 0000 0022         set_color(Green,BRIGHTNESS_100);
-0000c5 d03d      	RCALL SUBOPT_0x2
-                 ; 0000 0023         delay_ms(1500);
-0000c6 d034      	RCALL SUBOPT_0x1
-                 ; 0000 0024         set_color(Green,BRIGHTNESS_75);
-0000c7 d040      	RCALL SUBOPT_0x3
-                 ; 0000 0025         delay_ms(1500);
-0000c8 d032      	RCALL SUBOPT_0x1
-                 ; 0000 0026         set_color(Green,BRIGHTNESS_50);
-0000c9 d043      	RCALL SUBOPT_0x4
-                 ; 0000 0027         delay_ms(1500);
-0000ca d030      	RCALL SUBOPT_0x1
-                 ; 0000 0028         set_color(Green,BRIGHTNESS_25);
-0000cb d046      	RCALL SUBOPT_0x5
-                 ; 0000 0029         delay_ms(1500);
-0000cc d02e      	RCALL SUBOPT_0x1
-                 ; 0000 002A         set_color(Green,BRIGHTNESS_10);
-0000cd d049      	RCALL SUBOPT_0x6
-                 ; 0000 002B         delay_ms(1500);
-0000ce d02c      	RCALL SUBOPT_0x1
-                 ; 0000 002C         set_color(Green,BRIGHTNESS_5);
-0000cf d04c      	RCALL SUBOPT_0x7
-                 ; 0000 002D         delay_ms(1500);
-0000d0 d02a      	RCALL SUBOPT_0x1
-                 ; 0000 002E         set_color(Green,BRIGHTNESS_0);
-0000d1 d04f      	RCALL SUBOPT_0x8
-                 ; 0000 002F         delay_ms(1500);
-                 ; 0000 0030         set_color(Orange,BRIGHTNESS_100);
-0000d2 d054      	RCALL SUBOPT_0x9
-0000d3 d02f      	RCALL SUBOPT_0x2
-                 ; 0000 0031         delay_ms(1500);
-0000d4 d058      	RCALL SUBOPT_0xA
-                 ; 0000 0032         set_color(Orange,BRIGHTNESS_75);
-0000d5 d032      	RCALL SUBOPT_0x3
-                 ; 0000 0033         delay_ms(1500);
-0000d6 d056      	RCALL SUBOPT_0xA
-                 ; 0000 0034         set_color(Orange,BRIGHTNESS_50);
-0000d7 d035      	RCALL SUBOPT_0x4
-                 ; 0000 0035         delay_ms(1500);
-0000d8 d054      	RCALL SUBOPT_0xA
-                 ; 0000 0036         set_color(Orange,BRIGHTNESS_25);
-0000d9 d038      	RCALL SUBOPT_0x5
-                 ; 0000 0037         delay_ms(1500);
-0000da d052      	RCALL SUBOPT_0xA
-                 ; 0000 0038         set_color(Orange,BRIGHTNESS_10);
-0000db d03b      	RCALL SUBOPT_0x6
-                 ; 0000 0039         delay_ms(1500);
-0000dc d050      	RCALL SUBOPT_0xA
-                 ; 0000 003A         set_color(Orange,BRIGHTNESS_5);
-0000dd d03e      	RCALL SUBOPT_0x7
-                 ; 0000 003B         delay_ms(1500);
-0000de d04e      	RCALL SUBOPT_0xA
-                 ; 0000 003C         set_color(Orange,BRIGHTNESS_0);
-0000df d041      	RCALL SUBOPT_0x8
-                 ; 0000 003D         delay_ms(1500);
-                 ; 0000 003E         set_color(Violet,BRIGHTNESS_100);
-0000e0 d04f      	RCALL SUBOPT_0xB
-0000e1 d021      	RCALL SUBOPT_0x2
-                 ; 0000 003F         delay_ms(1500);
-0000e2 d053      	RCALL SUBOPT_0xC
-                 ; 0000 0040         set_color(Violet,BRIGHTNESS_75);
-0000e3 d024      	RCALL SUBOPT_0x3
-                 ; 0000 0041         delay_ms(1500);
-0000e4 d051      	RCALL SUBOPT_0xC
-                 ; 0000 0042         set_color(Violet,BRIGHTNESS_50);
-0000e5 d027      	RCALL SUBOPT_0x4
-                 ; 0000 0043         delay_ms(1500);
-0000e6 d04f      	RCALL SUBOPT_0xC
-                 ; 0000 0044         set_color(Violet,BRIGHTNESS_25);
-0000e7 d02a      	RCALL SUBOPT_0x5
-                 ; 0000 0045         delay_ms(1500);
-0000e8 d04d      	RCALL SUBOPT_0xC
-                 ; 0000 0046         set_color(Violet,BRIGHTNESS_10);
-0000e9 d02d      	RCALL SUBOPT_0x6
-                 ; 0000 0047         delay_ms(1500);
-0000ea d04b      	RCALL SUBOPT_0xC
-                 ; 0000 0048         set_color(Violet,BRIGHTNESS_5);
-0000eb d030      	RCALL SUBOPT_0x7
-                 ; 0000 0049         delay_ms(1500);
-0000ec d049      	RCALL SUBOPT_0xC
-                 ; 0000 004A         set_color(Violet,BRIGHTNESS_0);
-0000ed d033      	RCALL SUBOPT_0x8
-                 ; 0000 004B         delay_ms(1500);
-                 ; 0000 004C 
-                 ; 0000 004D        }
-0000ee cfcd      	RJMP _0xD
-                 ; 0000 004E 
-                 ; 0000 004F 
-                 ; 0000 0050 }
+0000d1 efa4      	LDI  R26,LOW(500)
+0000d2 e0b1      	LDI  R27,HIGH(500)
+0000d3 940e 01a0 	CALL _delay_ms
+                 ; 0000 0021         PORTB.5=0;
+0000d5 982d      	CBI  0x5,5
+                 ; 0000 0022         delay_ms(500);
+0000d6 efa4      	LDI  R26,LOW(500)
+0000d7 e0b1      	LDI  R27,HIGH(500)
+0000d8 940e 0151 	CALL SUBOPT_0x1
+                 ; 0000 0023 
+                 ; 0000 0024 
+                 ; 0000 0025     /* for (i=0;i<=255;i++)
+                 ; 0000 0026          {
+                 ; 0000 0027           set_color(Red,i);
+                 ; 0000 0028           delay_ms(50);
+                 ; 0000 0029          }
+                 ; 0000 002A 
+                 ; 0000 002B       for (i=0;i<=255;i++)
+                 ; 0000 002C          {
+                 ; 0000 002D           set_color(Purple ,i);
+                 ; 0000 002E           delay_ms(50);
+                 ; 0000 002F          }
+                 ; 0000 0030       for (i=0;i<=255;i++)
+                 ; 0000 0031          {
+                 ; 0000 0032           set_color(Orange ,i);
+                 ; 0000 0033           delay_ms(50);
+                 ; 0000 0034          }
+                 ; 0000 0035          */
+                 ; 0000 0036 
+                 ; 0000 0037         set_color(Green,BRIGHTNESS_75);
+0000da 940e 0159 	CALL SUBOPT_0x2
+                 ; 0000 0038         delay_ms(1500);
+0000dc 940e 0151 	CALL SUBOPT_0x1
+                 ; 0000 0039         set_color(Green,BRIGHTNESS_50);
+0000de 940e 015f 	CALL SUBOPT_0x3
+                 ; 0000 003A         delay_ms(1500);
+0000e0 940e 0151 	CALL SUBOPT_0x1
+                 ; 0000 003B         set_color(Green,BRIGHTNESS_25);
+0000e2 940e 0165 	CALL SUBOPT_0x4
+                 ; 0000 003C         delay_ms(1500);
+0000e4 940e 0151 	CALL SUBOPT_0x1
+                 ; 0000 003D         set_color(Green,BRIGHTNESS_10);
+0000e6 940e 016b 	CALL SUBOPT_0x5
+                 ; 0000 003E         delay_ms(1500);
+0000e8 940e 0151 	CALL SUBOPT_0x1
+                 ; 0000 003F         set_color(Green,BRIGHTNESS_5);
+0000ea 940e 0171 	CALL SUBOPT_0x6
+                 ; 0000 0040         delay_ms(1500);
+0000ec 940e 0151 	CALL SUBOPT_0x1
+                 ; 0000 0041         set_color(Green,BRIGHTNESS_0);
+0000ee 940e 0177 	CALL SUBOPT_0x7
+                 ; 0000 0042         delay_ms(1500);
+                 ; 0000 0043         set_color(Orange,BRIGHTNESS_100);
+0000f0 940e 017e 	CALL SUBOPT_0x8
+0000f2 940e 0184 	CALL SUBOPT_0x9
+                 ; 0000 0044         delay_ms(1500);
+                 ; 0000 0045         set_color(Orange,BRIGHTNESS_75);
+0000f4 940e 017e 	CALL SUBOPT_0x8
+0000f6 940e 0159 	CALL SUBOPT_0x2
+                 ; 0000 0046         delay_ms(1500);
+0000f8 940e 018b 	CALL SUBOPT_0xA
+                 ; 0000 0047         set_color(Orange,BRIGHTNESS_50);
+0000fa 940e 015f 	CALL SUBOPT_0x3
+                 ; 0000 0048         delay_ms(1500);
+0000fc 940e 018b 	CALL SUBOPT_0xA
+                 ; 0000 0049         set_color(Orange,BRIGHTNESS_25);
+0000fe 940e 0165 	CALL SUBOPT_0x4
+                 ; 0000 004A         delay_ms(1500);
+000100 940e 018b 	CALL SUBOPT_0xA
+                 ; 0000 004B         set_color(Orange,BRIGHTNESS_10);
+000102 940e 016b 	CALL SUBOPT_0x5
+                 ; 0000 004C         delay_ms(1500);
+000104 940e 018b 	CALL SUBOPT_0xA
+                 ; 0000 004D         set_color(Orange,BRIGHTNESS_5);
+000106 940e 0171 	CALL SUBOPT_0x6
+                 ; 0000 004E         delay_ms(1500);
+000108 940e 018b 	CALL SUBOPT_0xA
+                 ; 0000 004F         set_color(Orange,BRIGHTNESS_0);
+00010a 940e 0177 	CALL SUBOPT_0x7
+                 ; 0000 0050         delay_ms(1500);
+                 ; 0000 0051         set_color(Violet,BRIGHTNESS_100);
+00010c 940e 018e 	CALL SUBOPT_0xB
+00010e 940e 0184 	CALL SUBOPT_0x9
+                 ; 0000 0052         delay_ms(1500);
+                 ; 0000 0053         set_color(Violet,BRIGHTNESS_75);
+000110 940e 018e 	CALL SUBOPT_0xB
+000112 940e 0159 	CALL SUBOPT_0x2
+                 ; 0000 0054         delay_ms(1500);
+000114 940e 0194 	CALL SUBOPT_0xC
+                 ; 0000 0055         set_color(Violet,BRIGHTNESS_50);
+000116 940e 015f 	CALL SUBOPT_0x3
+                 ; 0000 0056         delay_ms(1500);
+000118 940e 0194 	CALL SUBOPT_0xC
+                 ; 0000 0057         set_color(Violet,BRIGHTNESS_25);
+00011a 940e 0165 	CALL SUBOPT_0x4
+                 ; 0000 0058         delay_ms(1500);
+00011c 940e 0194 	CALL SUBOPT_0xC
+                 ; 0000 0059         set_color(Violet,BRIGHTNESS_10);
+00011e 940e 016b 	CALL SUBOPT_0x5
+                 ; 0000 005A         delay_ms(1500);
+000120 940e 0194 	CALL SUBOPT_0xC
+                 ; 0000 005B         set_color(Violet,BRIGHTNESS_5);
+000122 940e 0171 	CALL SUBOPT_0x6
+                 ; 0000 005C         delay_ms(1500);
+000124 940e 0194 	CALL SUBOPT_0xC
+                 ; 0000 005D         set_color(Violet,BRIGHTNESS_0);
+000126 940e 0177 	CALL SUBOPT_0x7
+                 ; 0000 005E         delay_ms(1500);
+                 ; 0000 005F 
+                 ; 0000 0060         set_color(Cyan,BRIGHTNESS_100);
+000128 940e 0197 	CALL SUBOPT_0xD
+00012a 940e 0184 	CALL SUBOPT_0x9
+                 ; 0000 0061         delay_ms(1500);
+                 ; 0000 0062         set_color(Cyan,BRIGHTNESS_75);
+00012c 940e 0197 	CALL SUBOPT_0xD
+00012e 940e 0159 	CALL SUBOPT_0x2
+                 ; 0000 0063         delay_ms(1500);
+000130 940e 019d 	CALL SUBOPT_0xE
+                 ; 0000 0064         set_color(Cyan,BRIGHTNESS_50);
+000132 940e 015f 	CALL SUBOPT_0x3
+                 ; 0000 0065         delay_ms(1500);
+000134 940e 019d 	CALL SUBOPT_0xE
+                 ; 0000 0066         set_color(Cyan,BRIGHTNESS_25);
+000136 940e 0165 	CALL SUBOPT_0x4
+                 ; 0000 0067         delay_ms(1500);
+000138 940e 019d 	CALL SUBOPT_0xE
+                 ; 0000 0068         set_color(Cyan,BRIGHTNESS_10);
+00013a 940e 016b 	CALL SUBOPT_0x5
+                 ; 0000 0069         delay_ms(1500);
+00013c 940e 019d 	CALL SUBOPT_0xE
+                 ; 0000 006A         set_color(Cyan,BRIGHTNESS_5);
+00013e 940e 0171 	CALL SUBOPT_0x6
+                 ; 0000 006B         delay_ms(1500);
+000140 940e 019d 	CALL SUBOPT_0xE
+                 ; 0000 006C         set_color(Cyan,BRIGHTNESS_0);
+000142 940e 0177 	CALL SUBOPT_0x7
+                 ; 0000 006D         delay_ms(1500);
+                 ; 0000 006E 
+                 ; 0000 006F 
+                 ; 0000 0070        }
+000144 cf8b      	RJMP _0x12
                  _0x14:
-0000ef cfff      	RJMP _0x14
+                 ; 0000 0071 
+                 ; 0000 0072 
+                 ; 0000 0073 }
+                 _0x19:
+000145 cfff      	RJMP _0x19
                  ; .FEND
                  ;
                  
@@ -1474,215 +1545,230 @@ E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\Debug\List\rgb_d
 000303           	.BYTE 0x3
                  _Violet:
 000306           	.BYTE 0x3
+                 _Cyan:
+000309           	.BYTE 0x3
                  
                  	.CSEG
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:13 WORDS
                  SUBOPT_0x0:
-0000f0 27bb      	CLR  R27
-0000f1 81e8      	LD   R30,Y
-0000f2 e0f0      	LDI  R31,0
-0000f3 940e 014f 	CALL __MULW12
-0000f5 01df      	MOVW R26,R30
-0000f6 e0e0      	LDI  R30,LOW(256)
-0000f7 e0f1      	LDI  R31,HIGH(256)
-0000f8 940e 0167 	CALL __DIVW21
-0000fa 9508      	RET
+000146 27bb      	CLR  R27
+000147 81e8      	LD   R30,Y
+000148 e0f0      	LDI  R31,0
+000149 940e 01b6 	CALL __MULW12
+00014b 01df      	MOVW R26,R30
+00014c e0e0      	LDI  R30,LOW(256)
+00014d e0f1      	LDI  R31,HIGH(256)
+00014e 940e 01ce 	CALL __DIVW21
+000150 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:21 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:17 WORDS
                  SUBOPT_0x1:
-0000fb 940e 0139 	CALL _delay_ms
-0000fd e0e3      	LDI  R30,LOW(_Green)
-0000fe e0f3      	LDI  R31,HIGH(_Green)
-0000ff e0a3      	LDI  R26,3
-000100 940e 017a 	CALL __PUTPARL
-000102 9508      	RET
+000151 940e 01a0 	CALL _delay_ms
+000153 e0e3      	LDI  R30,LOW(_Green)
+000154 e0f3      	LDI  R31,HIGH(_Green)
+000155 e0a3      	LDI  R26,3
+000156 940e 01e1 	CALL __PUTPARL
+000158 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
                  SUBOPT_0x2:
-000103 efaf      	LDI  R26,LOW(255)
-000104 df74      	RCALL _set_color
-000105 edac      	LDI  R26,LOW(1500)
-000106 e0b5      	LDI  R27,HIGH(1500)
-000107 9508      	RET
+000159 eca0      	LDI  R26,LOW(192)
+00015a 940e 0084 	CALL _set_color
+00015c edac      	LDI  R26,LOW(1500)
+00015d e0b5      	LDI  R27,HIGH(1500)
+00015e 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
                  SUBOPT_0x3:
-000108 eca0      	LDI  R26,LOW(192)
-000109 df6f      	RCALL _set_color
-00010a edac      	LDI  R26,LOW(1500)
-00010b e0b5      	LDI  R27,HIGH(1500)
-00010c 9508      	RET
+00015f e7af      	LDI  R26,LOW(127)
+000160 940e 0084 	CALL _set_color
+000162 edac      	LDI  R26,LOW(1500)
+000163 e0b5      	LDI  R27,HIGH(1500)
+000164 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
                  SUBOPT_0x4:
-00010d e7af      	LDI  R26,LOW(127)
-00010e df6a      	RCALL _set_color
-00010f edac      	LDI  R26,LOW(1500)
-000110 e0b5      	LDI  R27,HIGH(1500)
-000111 9508      	RET
+000165 e4a0      	LDI  R26,LOW(64)
+000166 940e 0084 	CALL _set_color
+000168 edac      	LDI  R26,LOW(1500)
+000169 e0b5      	LDI  R27,HIGH(1500)
+00016a 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
                  SUBOPT_0x5:
-000112 e4a0      	LDI  R26,LOW(64)
-000113 df65      	RCALL _set_color
-000114 edac      	LDI  R26,LOW(1500)
-000115 e0b5      	LDI  R27,HIGH(1500)
-000116 9508      	RET
+00016b e2a0      	LDI  R26,LOW(32)
+00016c 940e 0084 	CALL _set_color
+00016e edac      	LDI  R26,LOW(1500)
+00016f e0b5      	LDI  R27,HIGH(1500)
+000170 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
                  SUBOPT_0x6:
-000117 e2a0      	LDI  R26,LOW(32)
-000118 df60      	RCALL _set_color
-000119 edac      	LDI  R26,LOW(1500)
-00011a e0b5      	LDI  R27,HIGH(1500)
-00011b 9508      	RET
+000171 e1a0      	LDI  R26,LOW(16)
+000172 940e 0084 	CALL _set_color
+000174 edac      	LDI  R26,LOW(1500)
+000175 e0b5      	LDI  R27,HIGH(1500)
+000176 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:12 WORDS
                  SUBOPT_0x7:
-00011c e1a0      	LDI  R26,LOW(16)
-00011d df5b      	RCALL _set_color
-00011e edac      	LDI  R26,LOW(1500)
-00011f e0b5      	LDI  R27,HIGH(1500)
-000120 9508      	RET
-                 
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:7 WORDS
-                 SUBOPT_0x8:
-000121 e0a0      	LDI  R26,LOW(0)
-000122 df56      	RCALL _set_color
-000123 edac      	LDI  R26,LOW(1500)
-000124 e0b5      	LDI  R27,HIGH(1500)
-000125 940c 0139 	JMP  _delay_ms
+000177 e0a0      	LDI  R26,LOW(0)
+000178 940e 0084 	CALL _set_color
+00017a edac      	LDI  R26,LOW(1500)
+00017b e0b5      	LDI  R27,HIGH(1500)
+00017c 940c 01a0 	JMP  _delay_ms
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
-                 SUBOPT_0x9:
-000127 e0e0      	LDI  R30,LOW(_Orange)
-000128 e0f3      	LDI  R31,HIGH(_Orange)
-000129 e0a3      	LDI  R26,3
-00012a 940e 017a 	CALL __PUTPARL
-00012c 9508      	RET
+                 SUBOPT_0x8:
+00017e e0e0      	LDI  R30,LOW(_Orange)
+00017f e0f3      	LDI  R31,HIGH(_Orange)
+000180 e0a3      	LDI  R26,3
+000181 940e 01e1 	CALL __PUTPARL
+000183 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:7 WORDS
+                 SUBOPT_0x9:
+000184 efaf      	LDI  R26,LOW(255)
+000185 940e 0084 	CALL _set_color
+000187 edac      	LDI  R26,LOW(1500)
+000188 e0b5      	LDI  R27,HIGH(1500)
+000189 940c 01a0 	JMP  _delay_ms
+                 
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
                  SUBOPT_0xA:
-00012d 940e 0139 	CALL _delay_ms
-00012f cff7      	RJMP SUBOPT_0x9
+00018b 940e 01a0 	CALL _delay_ms
+00018d cff0      	RJMP SUBOPT_0x8
                  
                  ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
                  SUBOPT_0xB:
-000130 e0e6      	LDI  R30,LOW(_Violet)
-000131 e0f3      	LDI  R31,HIGH(_Violet)
-000132 e0a3      	LDI  R26,3
-000133 940e 017a 	CALL __PUTPARL
-000135 9508      	RET
+00018e e0e6      	LDI  R30,LOW(_Violet)
+00018f e0f3      	LDI  R31,HIGH(_Violet)
+000190 e0a3      	LDI  R26,3
+000191 940e 01e1 	CALL __PUTPARL
+000193 9508      	RET
                  
-                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
                  SUBOPT_0xC:
-000136 940e 0139 	CALL _delay_ms
-000138 cff7      	RJMP SUBOPT_0xB
+000194 940e 01a0 	CALL _delay_ms
+000196 cff7      	RJMP SUBOPT_0xB
+                 
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
+                 SUBOPT_0xD:
+000197 e0e9      	LDI  R30,LOW(_Cyan)
+000198 e0f3      	LDI  R31,HIGH(_Cyan)
+000199 e0a3      	LDI  R26,3
+00019a 940e 01e1 	CALL __PUTPARL
+00019c 9508      	RET
+                 
+                 ;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
+                 SUBOPT_0xE:
+00019d 940e 01a0 	CALL _delay_ms
+00019f cff7      	RJMP SUBOPT_0xD
                  
                  
                  	.CSEG
                  _delay_ms:
-000139 9610      	adiw r26,0
-00013a f039      	breq __delay_ms1
+0001a0 9610      	adiw r26,0
+0001a1 f039      	breq __delay_ms1
                  __delay_ms0:
                 +
-00013b ea80     +LDI R24 , LOW ( 0xFA0 )
-00013c e09f     +LDI R25 , HIGH ( 0xFA0 )
+0001a2 ea80     +LDI R24 , LOW ( 0xFA0 )
+0001a3 e09f     +LDI R25 , HIGH ( 0xFA0 )
                 +__DELAY_USW_LOOP :
-00013d 9701     +SBIW R24 , 1
-00013e f7f1     +BRNE __DELAY_USW_LOOP
+0001a4 9701     +SBIW R24 , 1
+0001a5 f7f1     +BRNE __DELAY_USW_LOOP
                  	__DELAY_USW 0xFA0
-00013f 95a8      	wdr
-000140 9711      	sbiw r26,1
-000141 f7c9      	brne __delay_ms0
+0001a6 95a8      	wdr
+0001a7 9711      	sbiw r26,1
+0001a8 f7c9      	brne __delay_ms0
                  __delay_ms1:
-000142 9508      	ret
+0001a9 9508      	ret
                  
                  __ANEGW1:
-000143 95f1      	NEG  R31
-000144 95e1      	NEG  R30
-000145 40f0      	SBCI R31,0
-000146 9508      	RET
+0001aa 95f1      	NEG  R31
+0001ab 95e1      	NEG  R30
+0001ac 40f0      	SBCI R31,0
+0001ad 9508      	RET
                  
                  __MULW12U:
-000147 9ffa      	MUL  R31,R26
-000148 2df0      	MOV  R31,R0
-000149 9feb      	MUL  R30,R27
-00014a 0df0      	ADD  R31,R0
-00014b 9fea      	MUL  R30,R26
-00014c 2de0      	MOV  R30,R0
-00014d 0df1      	ADD  R31,R1
-00014e 9508      	RET
+0001ae 9ffa      	MUL  R31,R26
+0001af 2df0      	MOV  R31,R0
+0001b0 9feb      	MUL  R30,R27
+0001b1 0df0      	ADD  R31,R0
+0001b2 9fea      	MUL  R30,R26
+0001b3 2de0      	MOV  R30,R0
+0001b4 0df1      	ADD  R31,R1
+0001b5 9508      	RET
                  
                  __MULW12:
-00014f d01c      	RCALL __CHKSIGNW
-000150 dff6      	RCALL __MULW12U
-000151 f40e      	BRTC __MULW121
-000152 dff0      	RCALL __ANEGW1
+0001b6 d01c      	RCALL __CHKSIGNW
+0001b7 dff6      	RCALL __MULW12U
+0001b8 f40e      	BRTC __MULW121
+0001b9 dff0      	RCALL __ANEGW1
                  __MULW121:
-000153 9508      	RET
+0001ba 9508      	RET
                  
                  __DIVW21U:
-000154 2400      	CLR  R0
-000155 2411      	CLR  R1
-000156 e190      	LDI  R25,16
+0001bb 2400      	CLR  R0
+0001bc 2411      	CLR  R1
+0001bd e190      	LDI  R25,16
                  __DIVW21U1:
-000157 0faa      	LSL  R26
-000158 1fbb      	ROL  R27
-000159 1c00      	ROL  R0
-00015a 1c11      	ROL  R1
-00015b 1a0e      	SUB  R0,R30
-00015c 0a1f      	SBC  R1,R31
-00015d f418      	BRCC __DIVW21U2
-00015e 0e0e      	ADD  R0,R30
-00015f 1e1f      	ADC  R1,R31
-000160 c001      	RJMP __DIVW21U3
+0001be 0faa      	LSL  R26
+0001bf 1fbb      	ROL  R27
+0001c0 1c00      	ROL  R0
+0001c1 1c11      	ROL  R1
+0001c2 1a0e      	SUB  R0,R30
+0001c3 0a1f      	SBC  R1,R31
+0001c4 f418      	BRCC __DIVW21U2
+0001c5 0e0e      	ADD  R0,R30
+0001c6 1e1f      	ADC  R1,R31
+0001c7 c001      	RJMP __DIVW21U3
                  __DIVW21U2:
-000161 60a1      	SBR  R26,1
+0001c8 60a1      	SBR  R26,1
                  __DIVW21U3:
-000162 959a      	DEC  R25
-000163 f799      	BRNE __DIVW21U1
-000164 01fd      	MOVW R30,R26
-000165 01d0      	MOVW R26,R0
-000166 9508      	RET
+0001c9 959a      	DEC  R25
+0001ca f799      	BRNE __DIVW21U1
+0001cb 01fd      	MOVW R30,R26
+0001cc 01d0      	MOVW R26,R0
+0001cd 9508      	RET
                  
                  __DIVW21:
-000167 d004      	RCALL __CHKSIGNW
-000168 dfeb      	RCALL __DIVW21U
-000169 f40e      	BRTC __DIVW211
-00016a dfd8      	RCALL __ANEGW1
+0001ce d004      	RCALL __CHKSIGNW
+0001cf dfeb      	RCALL __DIVW21U
+0001d0 f40e      	BRTC __DIVW211
+0001d1 dfd8      	RCALL __ANEGW1
                  __DIVW211:
-00016b 9508      	RET
+0001d2 9508      	RET
                  
                  __CHKSIGNW:
-00016c 94e8      	CLT
-00016d fff7      	SBRS R31,7
-00016e c002      	RJMP __CHKSW1
-00016f dfd3      	RCALL __ANEGW1
-000170 9468      	SET
+0001d3 94e8      	CLT
+0001d4 fff7      	SBRS R31,7
+0001d5 c002      	RJMP __CHKSW1
+0001d6 dfd3      	RCALL __ANEGW1
+0001d7 9468      	SET
                  __CHKSW1:
-000171 ffb7      	SBRS R27,7
-000172 c006      	RJMP __CHKSW2
-000173 95a0      	COM  R26
-000174 95b0      	COM  R27
-000175 9611      	ADIW R26,1
-000176 f800      	BLD  R0,0
-000177 9403      	INC  R0
-000178 fa00      	BST  R0,0
+0001d8 ffb7      	SBRS R27,7
+0001d9 c006      	RJMP __CHKSW2
+0001da 95a0      	COM  R26
+0001db 95b0      	COM  R27
+0001dc 9611      	ADIW R26,1
+0001dd f800      	BLD  R0,0
+0001de 9403      	INC  R0
+0001df fa00      	BST  R0,0
                  __CHKSW2:
-000179 9508      	RET
+0001e0 9508      	RET
                  
                  __PUTPARL:
-00017a 27bb      	CLR  R27
+0001e1 27bb      	CLR  R27
                  __PUTPAR:
-00017b 0fea      	ADD  R30,R26
-00017c 1ffb      	ADC  R31,R27
+0001e2 0fea      	ADD  R30,R26
+0001e3 1ffb      	ADC  R31,R27
                  __PUTPAR0:
-00017d 9002      	LD   R0,-Z
-00017e 920a      	ST   -Y,R0
-00017f 9711      	SBIW R26,1
-000180 f7e1      	BRNE __PUTPAR0
-000181 9508      	RET
+0001e4 9002      	LD   R0,-Z
+0001e5 920a      	ST   -Y,R0
+0001e6 9711      	SBIW R26,1
+0001e7 f7e1      	BRNE __PUTPAR0
+0001e8 9508      	RET
                  
                  ;END OF CODE MARKER
                  __END_OF_CODE:
@@ -1706,38 +1792,38 @@ ATmega328P register use summary:
 r0 :  17 r1 :   6 r2 :   0 r3 :   0 r4 :   0 r5 :   0 r6 :   0 r7 :   0 
 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 r13:   0 r14:   0 r15:   0 
 r16:   0 r17:   0 r18:   0 r19:   0 r20:   0 r21:   0 r22:   2 r23:   0 
-r24:   9 r25:   5 r26:  41 r27:  19 r28:   2 r29:   1 r30:  66 r31:  18 
+r24:   9 r25:   5 r26:  42 r27:  19 r28:   2 r29:   1 r30:  68 r31:  19 
 x  :   3 y  :  10 z  :   8 
 Registers used: 14 out of 35 (40.0%)
 
 ATmega328P instruction use summary:
 .lds  :   0 .lds.l:   0 .sts  :   0 .sts.l:   0 adc   :   2 add   :   4 
 adiw  :   3 and   :   0 andi  :   0 asr   :   0 bclr  :   0 bld   :   1 
-brbc  :   0 brbs  :   0 brcc  :   1 brcs  :   0 break :   0 breq  :   2 
+brbc  :   0 brbs  :   0 brcc  :   1 brcs  :   0 break :   0 breq  :   3 
 brge  :   0 brhc  :   0 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 
-brlt  :   0 brmi  :   0 brne  :   8 brpl  :   0 brsh  :   0 brtc  :   2 
-brts  :   0 brvc  :   0 brvs  :   0 bset  :   0 bst   :   1 call  :   9 
+brlt  :   0 brmi  :   0 brne  :   7 brpl  :   0 brsh  :   0 brtc  :   2 
+brts  :   0 brvc  :   0 brvs  :   0 bset  :   0 bst   :   1 call  :  77 
 cbi   :   1 cbr   :   0 clc   :   0 clh   :   0 cli   :   1 cln   :   0 
 clr   :   6 cls   :   0 clt   :   1 clv   :   0 clz   :   0 com   :   2 
 cp    :   0 cpc   :   0 cpi   :   1 cpse  :   0 dec   :   2 des   :   0 
 eor   :   0 fmul  :   0 fmuls :   0 fmulsu:   0 icall :   0 ijmp  :   0 
-in    :   0 inc   :   1 jmp   :  28 ld    :   3 ldd   :   6 ldi   :  64 
+in    :   0 inc   :   1 jmp   :  30 ld    :   3 ldd   :   6 ldi   :  67 
 lds   :   0 lpm   :   7 lsl   :   1 lsr   :   0 mov   :   2 movw  :   6 
 mul   :   3 muls  :   0 mulsu :   0 neg   :   2 nop   :   0 or    :   0 
-ori   :   0 out   :  17 pop   :   0 push  :   0 rcall :  61 ret   :  21 
-reti  :   0 rjmp  :   9 rol   :   3 ror   :   0 sbc   :   1 sbci  :   1 
+ori   :   0 out   :  17 pop   :   0 push  :   0 rcall :   7 ret   :  21 
+reti  :   0 rjmp  :  10 rol   :   3 ror   :   0 sbc   :   1 sbci  :   1 
 sbi   :   1 sbic  :   0 sbis  :   0 sbiw  :   6 sbr   :   1 sbrc  :   0 
 sbrs  :   2 sec   :   0 seh   :   0 sei   :   0 sen   :   0 ser   :   0 
 ses   :   0 set   :   1 sev   :   0 sez   :   0 sleep :   0 spm   :   0 
-st    :   5 std   :   0 sts   :  13 sub   :   1 subi  :   0 swap  :   0 
+st    :   5 std   :   0 sts   :  14 sub   :   1 subi  :   0 swap  :   0 
 tst   :   0 wdr   :   1 
 Instructions used: 44 out of 116 (37.9%)
 
 ATmega328P memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000304    728     44    772   32768   2.4%
-[.dseg] 0x000100 0x000309      0      9      9    2048   0.4%
+[.cseg] 0x000000 0x0003d2    912     66    978   32768   3.0%
+[.dseg] 0x000100 0x00030c      0     12     12    2048   0.6%
 [.eseg] 0x000000 0x000000      0      0      0    1024   0.0%
 
-Assembly complete, 0 errors, 5 warnings
+Assembly complete, 0 errors, 8 warnings

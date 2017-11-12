@@ -62,11 +62,9 @@ if (brightness==BRIGHTNESS_100)
 
 }
 
-//Программа инициализации ШИМ
-void init_pwm (void)
+void init_ports(void)
 {
-
-// Crystal Oscillator division factor: 1
+ // Crystal Oscillator division factor: 1
 #pragma optsize-
 CLKPR=(1<<CLKPCE);
 CLKPR=(0<<CLKPCE) | (0<<CLKPS3) | (0<<CLKPS2) | (0<<CLKPS1) | (0<<CLKPS0);
@@ -78,7 +76,11 @@ CLKPR=(0<<CLKPCE) | (0<<CLKPS3) | (0<<CLKPS2) | (0<<CLKPS1) | (0<<CLKPS0);
 // Port B initialization
 DDRB=(1<<DDB5) | (1<<BLUE_DDR);
 DDRD=(1<<GREEN_DDR) | (1<<RED_DDR);
+}
 
+//Программа инициализации ШИМ
+void init_pwm (void)
+{
 
 // Timer/Counter 0 initialization
 // Clock source: System Clock

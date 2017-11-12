@@ -1126,19 +1126,29 @@ __START_OF_CODE:
 _0x3:
 	.DB  0xFF
 _0x4:
-	.DB  0xFC,0xB3
+	.DB  0xFF,0x80
 _0x5:
 	.DB  0xFC,0xFF
 _0x6:
 	.DB  0x0,0xFF
 _0x7:
-	.DB  0x0,0xE2,0xFB
+	.DB  0xBF,0xFF
 _0x8:
-	.DB  0x0,0x0,0xFF
+	.DB  0x80,0xFF
 _0x9:
-	.DB  0xC8,0x0,0xFF
+	.DB  0x0,0x0,0xFF
 _0xA:
+	.DB  0x0,0x0,0xFF
+_0xB:
+	.DB  0xC8,0x0,0xFF
+_0xC:
 	.DB  0xFF,0xFF,0xFF
+_0xD:
+	.DB  0x0,0xFF,0xFF
+_0xE:
+	.DB  0x0,0x80,0xFF
+_0xF:
+	.DB  0x80,0x0,0xFF
 
 __GLOBAL_INI_TBL:
 	.DW  0x02
@@ -1151,7 +1161,11 @@ __GLOBAL_INI_TBL:
 
 	.DW  0x03
 	.DW  _Violet
-	.DW  _0x9*2
+	.DW  _0xB*2
+
+	.DW  0x03
+	.DW  _Cyan
+	.DW  _0xD*2
 
 _0xFFFFFFFF:
 	.DW  0
@@ -1273,24 +1287,26 @@ _set_color:
 ;	brightness -> Y+0
 	LD   R26,Y
 	CPI  R26,LOW(0xFF)
-	BRNE _0xB
+	BREQ PC+3
+	JMP _0x10
 	LDD  R30,Y+1
 	OUT  0x28,R30
 	LDD  R30,Y+2
 	OUT  0x27,R30
 	LDD  R30,Y+3
-	RJMP _0x15
-_0xB:
+	STS  136,R30
+	RJMP _0x11
+_0x10:
 	LDD  R26,Y+1
-	RCALL SUBOPT_0x0
+	CALL SUBOPT_0x0
 	OUT  0x28,R30
 	LDD  R26,Y+2
-	RCALL SUBOPT_0x0
+	CALL SUBOPT_0x0
 	OUT  0x27,R30
 	LDD  R26,Y+3
-	RCALL SUBOPT_0x0
-_0x15:
+	CALL SUBOPT_0x0
 	STS  136,R30
+_0x11:
 	ADIW R28,4
 	RET
 ; .FEND
@@ -1338,119 +1354,168 @@ _init_pwm:
 ; 0000 0016 {
 _main:
 ; .FSTART _main
-; 0000 0017 init_ports();
-	RCALL _init_ports
-; 0000 0018 init_pwm ();
-	RCALL _init_pwm
-; 0000 0019 
-; 0000 001A while (1)
-_0xD:
-; 0000 001B       {
-; 0000 001C 
-; 0000 001D         PORTB.5=1;
+; 0000 0017 unsigned char i;
+; 0000 0018 
+; 0000 0019 init_ports();
+;	i -> R17
+	CALL _init_ports
+; 0000 001A init_pwm ();
+	CALL _init_pwm
+; 0000 001B 
+; 0000 001C while (1)
+_0x12:
+; 0000 001D       {
+; 0000 001E 
+; 0000 001F         PORTB.5=1;
 	SBI  0x5,5
-; 0000 001E         delay_ms(500);
-	LDI  R26,LOW(500)
-	LDI  R27,HIGH(500)
-	CALL _delay_ms
-; 0000 001F         PORTB.5=0;
-	CBI  0x5,5
 ; 0000 0020         delay_ms(500);
 	LDI  R26,LOW(500)
 	LDI  R27,HIGH(500)
-	RCALL SUBOPT_0x1
-; 0000 0021 
-; 0000 0022         set_color(Green,BRIGHTNESS_100);
-	RCALL SUBOPT_0x2
-; 0000 0023         delay_ms(1500);
-	RCALL SUBOPT_0x1
-; 0000 0024         set_color(Green,BRIGHTNESS_75);
-	RCALL SUBOPT_0x3
-; 0000 0025         delay_ms(1500);
-	RCALL SUBOPT_0x1
-; 0000 0026         set_color(Green,BRIGHTNESS_50);
-	RCALL SUBOPT_0x4
-; 0000 0027         delay_ms(1500);
-	RCALL SUBOPT_0x1
-; 0000 0028         set_color(Green,BRIGHTNESS_25);
-	RCALL SUBOPT_0x5
-; 0000 0029         delay_ms(1500);
-	RCALL SUBOPT_0x1
-; 0000 002A         set_color(Green,BRIGHTNESS_10);
-	RCALL SUBOPT_0x6
-; 0000 002B         delay_ms(1500);
-	RCALL SUBOPT_0x1
-; 0000 002C         set_color(Green,BRIGHTNESS_5);
-	RCALL SUBOPT_0x7
-; 0000 002D         delay_ms(1500);
-	RCALL SUBOPT_0x1
-; 0000 002E         set_color(Green,BRIGHTNESS_0);
-	RCALL SUBOPT_0x8
-; 0000 002F         delay_ms(1500);
-; 0000 0030         set_color(Orange,BRIGHTNESS_100);
-	RCALL SUBOPT_0x9
-	RCALL SUBOPT_0x2
-; 0000 0031         delay_ms(1500);
-	RCALL SUBOPT_0xA
-; 0000 0032         set_color(Orange,BRIGHTNESS_75);
-	RCALL SUBOPT_0x3
-; 0000 0033         delay_ms(1500);
-	RCALL SUBOPT_0xA
-; 0000 0034         set_color(Orange,BRIGHTNESS_50);
-	RCALL SUBOPT_0x4
-; 0000 0035         delay_ms(1500);
-	RCALL SUBOPT_0xA
-; 0000 0036         set_color(Orange,BRIGHTNESS_25);
-	RCALL SUBOPT_0x5
-; 0000 0037         delay_ms(1500);
-	RCALL SUBOPT_0xA
-; 0000 0038         set_color(Orange,BRIGHTNESS_10);
-	RCALL SUBOPT_0x6
-; 0000 0039         delay_ms(1500);
-	RCALL SUBOPT_0xA
-; 0000 003A         set_color(Orange,BRIGHTNESS_5);
-	RCALL SUBOPT_0x7
-; 0000 003B         delay_ms(1500);
-	RCALL SUBOPT_0xA
-; 0000 003C         set_color(Orange,BRIGHTNESS_0);
-	RCALL SUBOPT_0x8
-; 0000 003D         delay_ms(1500);
-; 0000 003E         set_color(Violet,BRIGHTNESS_100);
-	RCALL SUBOPT_0xB
-	RCALL SUBOPT_0x2
-; 0000 003F         delay_ms(1500);
-	RCALL SUBOPT_0xC
-; 0000 0040         set_color(Violet,BRIGHTNESS_75);
-	RCALL SUBOPT_0x3
-; 0000 0041         delay_ms(1500);
-	RCALL SUBOPT_0xC
-; 0000 0042         set_color(Violet,BRIGHTNESS_50);
-	RCALL SUBOPT_0x4
-; 0000 0043         delay_ms(1500);
-	RCALL SUBOPT_0xC
-; 0000 0044         set_color(Violet,BRIGHTNESS_25);
-	RCALL SUBOPT_0x5
-; 0000 0045         delay_ms(1500);
-	RCALL SUBOPT_0xC
-; 0000 0046         set_color(Violet,BRIGHTNESS_10);
-	RCALL SUBOPT_0x6
-; 0000 0047         delay_ms(1500);
-	RCALL SUBOPT_0xC
-; 0000 0048         set_color(Violet,BRIGHTNESS_5);
-	RCALL SUBOPT_0x7
-; 0000 0049         delay_ms(1500);
-	RCALL SUBOPT_0xC
-; 0000 004A         set_color(Violet,BRIGHTNESS_0);
-	RCALL SUBOPT_0x8
-; 0000 004B         delay_ms(1500);
-; 0000 004C 
-; 0000 004D        }
-	RJMP _0xD
-; 0000 004E 
-; 0000 004F 
-; 0000 0050 }
+	CALL _delay_ms
+; 0000 0021         PORTB.5=0;
+	CBI  0x5,5
+; 0000 0022         delay_ms(500);
+	LDI  R26,LOW(500)
+	LDI  R27,HIGH(500)
+	CALL SUBOPT_0x1
+; 0000 0023 
+; 0000 0024 
+; 0000 0025     /* for (i=0;i<=255;i++)
+; 0000 0026          {
+; 0000 0027           set_color(Red,i);
+; 0000 0028           delay_ms(50);
+; 0000 0029          }
+; 0000 002A 
+; 0000 002B       for (i=0;i<=255;i++)
+; 0000 002C          {
+; 0000 002D           set_color(Purple ,i);
+; 0000 002E           delay_ms(50);
+; 0000 002F          }
+; 0000 0030       for (i=0;i<=255;i++)
+; 0000 0031          {
+; 0000 0032           set_color(Orange ,i);
+; 0000 0033           delay_ms(50);
+; 0000 0034          }
+; 0000 0035          */
+; 0000 0036 
+; 0000 0037         set_color(Green,BRIGHTNESS_75);
+	CALL SUBOPT_0x2
+; 0000 0038         delay_ms(1500);
+	CALL SUBOPT_0x1
+; 0000 0039         set_color(Green,BRIGHTNESS_50);
+	CALL SUBOPT_0x3
+; 0000 003A         delay_ms(1500);
+	CALL SUBOPT_0x1
+; 0000 003B         set_color(Green,BRIGHTNESS_25);
+	CALL SUBOPT_0x4
+; 0000 003C         delay_ms(1500);
+	CALL SUBOPT_0x1
+; 0000 003D         set_color(Green,BRIGHTNESS_10);
+	CALL SUBOPT_0x5
+; 0000 003E         delay_ms(1500);
+	CALL SUBOPT_0x1
+; 0000 003F         set_color(Green,BRIGHTNESS_5);
+	CALL SUBOPT_0x6
+; 0000 0040         delay_ms(1500);
+	CALL SUBOPT_0x1
+; 0000 0041         set_color(Green,BRIGHTNESS_0);
+	CALL SUBOPT_0x7
+; 0000 0042         delay_ms(1500);
+; 0000 0043         set_color(Orange,BRIGHTNESS_100);
+	CALL SUBOPT_0x8
+	CALL SUBOPT_0x9
+; 0000 0044         delay_ms(1500);
+; 0000 0045         set_color(Orange,BRIGHTNESS_75);
+	CALL SUBOPT_0x8
+	CALL SUBOPT_0x2
+; 0000 0046         delay_ms(1500);
+	CALL SUBOPT_0xA
+; 0000 0047         set_color(Orange,BRIGHTNESS_50);
+	CALL SUBOPT_0x3
+; 0000 0048         delay_ms(1500);
+	CALL SUBOPT_0xA
+; 0000 0049         set_color(Orange,BRIGHTNESS_25);
+	CALL SUBOPT_0x4
+; 0000 004A         delay_ms(1500);
+	CALL SUBOPT_0xA
+; 0000 004B         set_color(Orange,BRIGHTNESS_10);
+	CALL SUBOPT_0x5
+; 0000 004C         delay_ms(1500);
+	CALL SUBOPT_0xA
+; 0000 004D         set_color(Orange,BRIGHTNESS_5);
+	CALL SUBOPT_0x6
+; 0000 004E         delay_ms(1500);
+	CALL SUBOPT_0xA
+; 0000 004F         set_color(Orange,BRIGHTNESS_0);
+	CALL SUBOPT_0x7
+; 0000 0050         delay_ms(1500);
+; 0000 0051         set_color(Violet,BRIGHTNESS_100);
+	CALL SUBOPT_0xB
+	CALL SUBOPT_0x9
+; 0000 0052         delay_ms(1500);
+; 0000 0053         set_color(Violet,BRIGHTNESS_75);
+	CALL SUBOPT_0xB
+	CALL SUBOPT_0x2
+; 0000 0054         delay_ms(1500);
+	CALL SUBOPT_0xC
+; 0000 0055         set_color(Violet,BRIGHTNESS_50);
+	CALL SUBOPT_0x3
+; 0000 0056         delay_ms(1500);
+	CALL SUBOPT_0xC
+; 0000 0057         set_color(Violet,BRIGHTNESS_25);
+	CALL SUBOPT_0x4
+; 0000 0058         delay_ms(1500);
+	CALL SUBOPT_0xC
+; 0000 0059         set_color(Violet,BRIGHTNESS_10);
+	CALL SUBOPT_0x5
+; 0000 005A         delay_ms(1500);
+	CALL SUBOPT_0xC
+; 0000 005B         set_color(Violet,BRIGHTNESS_5);
+	CALL SUBOPT_0x6
+; 0000 005C         delay_ms(1500);
+	CALL SUBOPT_0xC
+; 0000 005D         set_color(Violet,BRIGHTNESS_0);
+	CALL SUBOPT_0x7
+; 0000 005E         delay_ms(1500);
+; 0000 005F 
+; 0000 0060         set_color(Cyan,BRIGHTNESS_100);
+	CALL SUBOPT_0xD
+	CALL SUBOPT_0x9
+; 0000 0061         delay_ms(1500);
+; 0000 0062         set_color(Cyan,BRIGHTNESS_75);
+	CALL SUBOPT_0xD
+	CALL SUBOPT_0x2
+; 0000 0063         delay_ms(1500);
+	CALL SUBOPT_0xE
+; 0000 0064         set_color(Cyan,BRIGHTNESS_50);
+	CALL SUBOPT_0x3
+; 0000 0065         delay_ms(1500);
+	CALL SUBOPT_0xE
+; 0000 0066         set_color(Cyan,BRIGHTNESS_25);
+	CALL SUBOPT_0x4
+; 0000 0067         delay_ms(1500);
+	CALL SUBOPT_0xE
+; 0000 0068         set_color(Cyan,BRIGHTNESS_10);
+	CALL SUBOPT_0x5
+; 0000 0069         delay_ms(1500);
+	CALL SUBOPT_0xE
+; 0000 006A         set_color(Cyan,BRIGHTNESS_5);
+	CALL SUBOPT_0x6
+; 0000 006B         delay_ms(1500);
+	CALL SUBOPT_0xE
+; 0000 006C         set_color(Cyan,BRIGHTNESS_0);
+	CALL SUBOPT_0x7
+; 0000 006D         delay_ms(1500);
+; 0000 006E 
+; 0000 006F 
+; 0000 0070        }
+	RJMP _0x12
 _0x14:
-	RJMP _0x14
+; 0000 0071 
+; 0000 0072 
+; 0000 0073 }
+_0x19:
+	RJMP _0x19
 ; .FEND
 ;
 
@@ -1460,6 +1525,8 @@ _Orange:
 _Green:
 	.BYTE 0x3
 _Violet:
+	.BYTE 0x3
+_Cyan:
 	.BYTE 0x3
 
 	.CSEG
@@ -1475,7 +1542,7 @@ SUBOPT_0x0:
 	CALL __DIVW21
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:21 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:17 WORDS
 SUBOPT_0x1:
 	CALL _delay_ms
 	LDI  R30,LOW(_Green)
@@ -1484,74 +1551,74 @@ SUBOPT_0x1:
 	CALL __PUTPARL
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
 SUBOPT_0x2:
-	LDI  R26,LOW(255)
-	RCALL _set_color
-	LDI  R26,LOW(1500)
-	LDI  R27,HIGH(1500)
-	RET
-
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x3:
 	LDI  R26,LOW(192)
-	RCALL _set_color
+	CALL _set_color
 	LDI  R26,LOW(1500)
 	LDI  R27,HIGH(1500)
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x4:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
+SUBOPT_0x3:
 	LDI  R26,LOW(127)
-	RCALL _set_color
+	CALL _set_color
 	LDI  R26,LOW(1500)
 	LDI  R27,HIGH(1500)
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x5:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
+SUBOPT_0x4:
 	LDI  R26,LOW(64)
-	RCALL _set_color
+	CALL _set_color
 	LDI  R26,LOW(1500)
 	LDI  R27,HIGH(1500)
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x6:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
+SUBOPT_0x5:
 	LDI  R26,LOW(32)
-	RCALL _set_color
+	CALL _set_color
 	LDI  R26,LOW(1500)
 	LDI  R27,HIGH(1500)
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:3 WORDS
-SUBOPT_0x7:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:6 WORDS
+SUBOPT_0x6:
 	LDI  R26,LOW(16)
-	RCALL _set_color
+	CALL _set_color
 	LDI  R26,LOW(1500)
 	LDI  R27,HIGH(1500)
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:7 WORDS
-SUBOPT_0x8:
+;OPTIMIZER ADDED SUBROUTINE, CALLED 4 TIMES, CODE SIZE REDUCTION:12 WORDS
+SUBOPT_0x7:
 	LDI  R26,LOW(0)
-	RCALL _set_color
+	CALL _set_color
 	LDI  R26,LOW(1500)
 	LDI  R27,HIGH(1500)
 	JMP  _delay_ms
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
-SUBOPT_0x9:
+SUBOPT_0x8:
 	LDI  R30,LOW(_Orange)
 	LDI  R31,HIGH(_Orange)
 	LDI  R26,3
 	CALL __PUTPARL
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 3 TIMES, CODE SIZE REDUCTION:7 WORDS
+SUBOPT_0x9:
+	LDI  R26,LOW(255)
+	CALL _set_color
+	LDI  R26,LOW(1500)
+	LDI  R27,HIGH(1500)
+	JMP  _delay_ms
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
 SUBOPT_0xA:
 	CALL _delay_ms
-	RJMP SUBOPT_0x9
+	RJMP SUBOPT_0x8
 
 ;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
 SUBOPT_0xB:
@@ -1561,10 +1628,23 @@ SUBOPT_0xB:
 	CALL __PUTPARL
 	RET
 
-;OPTIMIZER ADDED SUBROUTINE, CALLED 6 TIMES, CODE SIZE REDUCTION:7 WORDS
+;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
 SUBOPT_0xC:
 	CALL _delay_ms
 	RJMP SUBOPT_0xB
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 7 TIMES, CODE SIZE REDUCTION:9 WORDS
+SUBOPT_0xD:
+	LDI  R30,LOW(_Cyan)
+	LDI  R31,HIGH(_Cyan)
+	LDI  R26,3
+	CALL __PUTPARL
+	RET
+
+;OPTIMIZER ADDED SUBROUTINE, CALLED 5 TIMES, CODE SIZE REDUCTION:5 WORDS
+SUBOPT_0xE:
+	CALL _delay_ms
+	RJMP SUBOPT_0xD
 
 
 	.CSEG

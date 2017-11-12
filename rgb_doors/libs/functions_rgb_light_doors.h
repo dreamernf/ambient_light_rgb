@@ -7,15 +7,21 @@ struct RGB_COLOR_TYPE
     unsigned char B;
 };
 
-struct RGB_COLOR_TYPE Red =      {255, 0, 0};
-struct RGB_COLOR_TYPE Orange =   {252, 179, 0};
-struct RGB_COLOR_TYPE Yellow =   {252, 255, 0};
-struct RGB_COLOR_TYPE Green =    {0, 255, 0};
-struct RGB_COLOR_TYPE Blue =     {0, 226, 251};
-struct RGB_COLOR_TYPE NavyBlue = {0, 0, 255};
-struct RGB_COLOR_TYPE Violet =   {200, 0, 255};
-struct RGB_COLOR_TYPE White =    {255, 255, 255};
-struct RGB_COLOR_TYPE Black =    {0, 0, 0};
+struct RGB_COLOR_TYPE Red =          {255, 0, 0};
+struct RGB_COLOR_TYPE Orange =       {255, 128, 0};
+struct RGB_COLOR_TYPE Yellow =       {252, 255, 0};
+struct RGB_COLOR_TYPE Green =        {0, 255, 0};
+struct RGB_COLOR_TYPE GreenLime =    {191,255,  0};
+struct RGB_COLOR_TYPE LightGreen =   {128,255,  0};
+struct RGB_COLOR_TYPE Blue =         {0, 0, 255};
+struct RGB_COLOR_TYPE NavyBlue =     {0, 0, 255};
+struct RGB_COLOR_TYPE Violet =       {200, 0, 255};
+struct RGB_COLOR_TYPE White =        {255, 255, 255};
+struct RGB_COLOR_TYPE Cyan =         {  0,255,255};
+struct RGB_COLOR_TYPE LightBlue =    {  0,128,255};
+struct RGB_COLOR_TYPE Purple =       {128,  0,255};
+struct RGB_COLOR_TYPE Black =        {0, 0, 0};
+
 
 #define RED_CH              OCR0B //Определяем канал OCR1AL для Красного цвета
 #define GREEN_CH            OCR0A //Определяем канал OCR1BL для Зеленого цвета

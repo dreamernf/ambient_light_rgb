@@ -20,6 +20,8 @@ Data Stack size         : 512
 
 void main(void)
 {
+unsigned char i;
+
 init_ports();
 init_pwm ();
 
@@ -30,9 +32,26 @@ while (1)
         delay_ms(500);
         PORTB.5=0;
         delay_ms(500);  
-        
-        set_color(Green,BRIGHTNESS_100);
-        delay_ms(1500);
+       
+   
+    /* for (i=0;i<=255;i++)
+         {
+          set_color(Red,i);
+          delay_ms(50);
+         }   
+       
+      for (i=0;i<=255;i++)
+         {
+          set_color(Purple ,i);
+          delay_ms(50);
+         }
+      for (i=0;i<=255;i++)
+         {
+          set_color(Orange ,i);
+          delay_ms(50);
+         }       
+         */
+       
         set_color(Green,BRIGHTNESS_75);
         delay_ms(1500);
         set_color(Green,BRIGHTNESS_50);
@@ -72,7 +91,23 @@ while (1)
         set_color(Violet,BRIGHTNESS_5);
         delay_ms(1500); 
         set_color(Violet,BRIGHTNESS_0);
-        delay_ms(1500);             
+        delay_ms(1500); 
+        
+        set_color(Cyan,BRIGHTNESS_100);
+        delay_ms(1500);
+        set_color(Cyan,BRIGHTNESS_75);
+        delay_ms(1500);
+        set_color(Cyan,BRIGHTNESS_50);
+        delay_ms(1500);
+        set_color(Cyan,BRIGHTNESS_25);
+        delay_ms(1500);
+        set_color(Cyan,BRIGHTNESS_10);
+        delay_ms(1500);
+        set_color(Cyan,BRIGHTNESS_5);
+        delay_ms(1500); 
+        set_color(Cyan,BRIGHTNESS_0);
+        delay_ms(1500); 
+                    
 
        }
             
