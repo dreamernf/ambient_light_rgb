@@ -1,0 +1,4 @@
+VERSION:3 SOURCE_TIMESTAMP:4B6C7164
+NODE:I LEVEL:0 LINE:1 "E:\облако\Cloud Mail.Ru\Ёлектроника\ambient_light_rgb\rgb_doors\libs\functions_rgb_light_doors.h"
+NODE:F LEVEL:0 LINE:4 "set_color(struct RGB_COLOR_TYPE color,unsigned char brightness)"
+NODE:F LEVEL:0 LINE:32 "init_pwm(void)"

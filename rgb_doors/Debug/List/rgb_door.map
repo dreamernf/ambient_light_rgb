@@ -17,5 +17,6 @@ FLASH Allocation [words]
 Function                                                          Address   Size
 --------------------------------------------------------------------------------
 set_color                                                         0x00079     22
-init_pwm                                                          0x0008F     36
-main                                                              0x000B3     59
+init_ports                                                        0x0008F     11
+init_pwm                                                          0x0009A     32
+main                                                              0x000BA     54

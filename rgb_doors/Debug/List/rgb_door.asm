@@ -1261,320 +1261,194 @@ __GLOBAL_INI_END:
 	.SET power_ctrl_reg=smcr
 	#endif
 ;#include <delay.h>
-;
-;
-;struct RGB_COLOR_TYPE
-;{
-;    unsigned char R;
-;    unsigned char G;
-;    unsigned char B;
-;};
-;
-;struct RGB_COLOR_TYPE Red =      {255, 0, 0};
+;#include <libs/functions_rgb_light_doors.h>
 
 	.DSEG
-;struct RGB_COLOR_TYPE Orange =   {252, 179, 0};
-;struct RGB_COLOR_TYPE Yellow =   {252, 255, 0};
-;struct RGB_COLOR_TYPE Green =    {0, 255, 0};
-;struct RGB_COLOR_TYPE Blue =     {0, 226, 251};
-;struct RGB_COLOR_TYPE NavyBlue = {0, 0, 255};
-;struct RGB_COLOR_TYPE Violet =   {200, 0, 255};
-;struct RGB_COLOR_TYPE White =    {255, 255, 255};
-;struct RGB_COLOR_TYPE Black =    {0, 0, 0};
-;
-;#define RED_CH              OCR0B //Определяем канал OCR1AL для Красного цвета
-;#define GREEN_CH            OCR0A //Определяем канал OCR1BL для Зеленого цвета
-;#define BLUE_CH             OCR1AL   //Определяем канал OCR2 для Синего цвета
-;
-;#define  BRIGHTNESS_100     255
-;#define  BRIGHTNESS_75      192
-;#define  BRIGHTNESS_50      127
-;#define  BRIGHTNESS_25      64
-;#define  BRIGHTNESS_10      32
-;#define  BRIGHTNESS_5       16
-;#define  BRIGHTNESS_0       0
-;#define  LIGHT_OFF          0
-;
-;#define RED_DDR   DDD5
-;#define GREEN_DDR DDD6
-;#define BLUE_DDR  DDB1
-;
-;void set_color(struct RGB_COLOR_TYPE color, unsigned char brightness)
-; 0000 0036 {
 
 	.CSEG
 _set_color:
 ; .FSTART _set_color
-; 0000 0037 /*Яркость (Brightness)
-; 0000 0038 — самое простое преобразование.
-; 0000 0039 При:
-; 0000 003A Shift=0 светодиод погашен
-; 0000 003B Shift=255 светодиод горит базовым цветом.
-; 0000 003C Все промежуточные значения Shift – это затемнение базового цвета.
-; 0000 003D R_shift = (R_base * Shift) / 256
-; 0000 003E G_shift = (G_base * Shift) / 256
-; 0000 003F B_shift = (B_base * Shift) / 256
-; 0000 0040 */
-; 0000 0041 if (brightness==BRIGHTNESS_100)
 	ST   -Y,R26
 ;	color -> Y+1
 ;	brightness -> Y+0
 	LD   R26,Y
 	CPI  R26,LOW(0xFF)
 	BRNE _0xB
-; 0000 0042  {
-; 0000 0043    RED_CH = color.R;
 	LDD  R30,Y+1
 	OUT  0x28,R30
-; 0000 0044    GREEN_CH = color.G;
 	LDD  R30,Y+2
 	OUT  0x27,R30
-; 0000 0045    BLUE_CH = color.B;
 	LDD  R30,Y+3
 	RJMP _0x15
-; 0000 0046 }
-; 0000 0047   else
 _0xB:
-; 0000 0048     {
-; 0000 0049      RED_CH = (color.R*brightness)/256;
 	LDD  R26,Y+1
 	RCALL SUBOPT_0x0
 	OUT  0x28,R30
-; 0000 004A      GREEN_CH = (color.G*brightness)/256;
 	LDD  R26,Y+2
 	RCALL SUBOPT_0x0
 	OUT  0x27,R30
-; 0000 004B      BLUE_CH = (color.B*brightness)/256;
 	LDD  R26,Y+3
 	RCALL SUBOPT_0x0
 _0x15:
 	STS  136,R30
-; 0000 004C     }
-; 0000 004D 
-; 0000 004E }
 	ADIW R28,4
 	RET
 ; .FEND
-;
-;
-;//Программа инициализации ШИМ
-;void init_pwm (void)
-; 0000 0053 {
-_init_pwm:
-; .FSTART _init_pwm
-; 0000 0054 // Input/Output Ports initialization
-; 0000 0055 // Port B initialization
-; 0000 0056 DDRB=(1<<DDB5) | (1<<BLUE_DDR);
+_init_ports:
+; .FSTART _init_ports
+	LDI  R30,LOW(128)
+	STS  97,R30
+	LDI  R30,LOW(0)
+	STS  97,R30
 	LDI  R30,LOW(34)
 	OUT  0x4,R30
-; 0000 0057 DDRD=(1<<GREEN_DDR) | (1<<RED_DDR);
 	LDI  R30,LOW(96)
 	OUT  0xA,R30
-; 0000 0058 
-; 0000 0059 
-; 0000 005A // Timer/Counter 0 initialization
-; 0000 005B // Clock source: System Clock
-; 0000 005C // Clock value: 16000,000 kHz
-; 0000 005D // Mode: Phase correct PWM top=0xFF
-; 0000 005E // OC0A output: Non-Inverted PWM
-; 0000 005F // OC0B output: Non-Inverted PWM
-; 0000 0060 // Timer Period: 0,031875 ms
-; 0000 0061 // Output Pulse(s):
-; 0000 0062 // OC0A Period: 0,031875 ms Width: 0 us
-; 0000 0063 // OC0B Period: 0,031875 ms Width: 0 us
-; 0000 0064 TCCR0A=(1<<COM0A1) | (0<<COM0A0) | (1<<COM0B1) | (0<<COM0B0) | (0<<WGM01) | (1<<WGM00);
+	RET
+; .FEND
+_init_pwm:
+; .FSTART _init_pwm
 	LDI  R30,LOW(161)
 	OUT  0x24,R30
-; 0000 0065 TCCR0B=(0<<WGM02) | (0<<CS02) | (0<<CS01) | (1<<CS00);
 	LDI  R30,LOW(1)
 	OUT  0x25,R30
-; 0000 0066 TCNT0=0x00;
 	LDI  R30,LOW(0)
 	OUT  0x26,R30
-; 0000 0067 
-; 0000 0068 GREEN_CH=LIGHT_OFF;
 	OUT  0x27,R30
-; 0000 0069 RED_CH=LIGHT_OFF;
 	OUT  0x28,R30
-; 0000 006A 
-; 0000 006B // Timer/Counter 1 initialization
-; 0000 006C // Clock source: System Clock
-; 0000 006D // Clock value: 16000,000 kHz
-; 0000 006E // Mode: Ph. correct PWM top=0x00FF
-; 0000 006F // OC1A output: Non-Inverted PWM
-; 0000 0070 // OC1B output: Disconnected
-; 0000 0071 // Noise Canceler: Off
-; 0000 0072 // Input Capture on Falling Edge
-; 0000 0073 // Timer Period: 0,031875 ms
-; 0000 0074 // Output Pulse(s):
-; 0000 0075 // OC1A Period: 0,031875 ms Width: 0 us
-; 0000 0076 // Timer1 Overflow Interrupt: Off
-; 0000 0077 // Input Capture Interrupt: Off
-; 0000 0078 // Compare A Match Interrupt: Off
-; 0000 0079 // Compare B Match Interrupt: Off
-; 0000 007A TCCR1A=(1<<COM1A1) | (0<<COM1A0) | (0<<COM1B1) | (0<<COM1B0) | (0<<WGM11) | (1<<WGM10);
 	LDI  R30,LOW(129)
 	STS  128,R30
-; 0000 007B TCCR1B=(0<<ICNC1) | (0<<ICES1) | (0<<WGM13) | (0<<WGM12) | (0<<CS12) | (0<<CS11) | (1<<CS10);
 	LDI  R30,LOW(1)
 	STS  129,R30
-; 0000 007C TCNT1H=0x00;
 	LDI  R30,LOW(0)
 	STS  133,R30
-; 0000 007D TCNT1L=0x00;
 	STS  132,R30
-; 0000 007E ICR1H=0x00;
 	STS  135,R30
-; 0000 007F ICR1L=0x00;
 	STS  134,R30
-; 0000 0080 OCR1AH=0x00;
 	STS  137,R30
-; 0000 0081 
-; 0000 0082 BLUE_CH=LIGHT_OFF;
 	STS  136,R30
-; 0000 0083 
-; 0000 0084 OCR1BH=0x00;
 	STS  139,R30
-; 0000 0085 OCR1BL=0x00;
 	STS  138,R30
-; 0000 0086 
-; 0000 0087 // Timer/Counter 0 Interrupt(s) initialization
-; 0000 0088 //TIMSK0=(0<<OCIE0B) | (0<<OCIE0A) | (0<<TOIE0);
-; 0000 0089 // Timer/Counter 1 Interrupt(s) initialization
-; 0000 008A //TIMSK1=(0<<ICIE1) | (0<<OCIE1B) | (0<<OCIE1A) | (0<<TOIE1);
-; 0000 008B }
 	RET
 ; .FEND
 ;
+;
+;
 ;void main(void)
-; 0000 008E {
+; 0000 0016 {
 _main:
 ; .FSTART _main
-; 0000 008F // Declare your local variables here
-; 0000 0090 unsigned char shift;
-; 0000 0091 
-; 0000 0092 // Crystal Oscillator division factor: 1
-; 0000 0093 #pragma optsize-
-; 0000 0094 CLKPR=(1<<CLKPCE);
-;	shift -> R17
-	LDI  R30,LOW(128)
-	STS  97,R30
-; 0000 0095 CLKPR=(0<<CLKPCE) | (0<<CLKPS3) | (0<<CLKPS2) | (0<<CLKPS1) | (0<<CLKPS0);
-	LDI  R30,LOW(0)
-	STS  97,R30
-; 0000 0096 #ifdef _OPTIMIZE_SIZE_
-; 0000 0097 #pragma optsize+
-; 0000 0098 #endif
-; 0000 0099 
-; 0000 009A init_pwm ();
+; 0000 0017 init_ports();
+	RCALL _init_ports
+; 0000 0018 init_pwm ();
 	RCALL _init_pwm
-; 0000 009B 
-; 0000 009C while (1)
+; 0000 0019 
+; 0000 001A while (1)
 _0xD:
-; 0000 009D       {
-; 0000 009E 
-; 0000 009F         PORTB.5=1;
+; 0000 001B       {
+; 0000 001C 
+; 0000 001D         PORTB.5=1;
 	SBI  0x5,5
-; 0000 00A0         delay_ms(500);
+; 0000 001E         delay_ms(500);
 	LDI  R26,LOW(500)
 	LDI  R27,HIGH(500)
 	CALL _delay_ms
-; 0000 00A1         PORTB.5=0;
+; 0000 001F         PORTB.5=0;
 	CBI  0x5,5
-; 0000 00A2         delay_ms(500);
+; 0000 0020         delay_ms(500);
 	LDI  R26,LOW(500)
 	LDI  R27,HIGH(500)
 	RCALL SUBOPT_0x1
-; 0000 00A3 
-; 0000 00A4         set_color(Green,BRIGHTNESS_100);
+; 0000 0021 
+; 0000 0022         set_color(Green,BRIGHTNESS_100);
 	RCALL SUBOPT_0x2
-; 0000 00A5         delay_ms(1500);
+; 0000 0023         delay_ms(1500);
 	RCALL SUBOPT_0x1
-; 0000 00A6         set_color(Green,BRIGHTNESS_75);
+; 0000 0024         set_color(Green,BRIGHTNESS_75);
 	RCALL SUBOPT_0x3
-; 0000 00A7         delay_ms(1500);
+; 0000 0025         delay_ms(1500);
 	RCALL SUBOPT_0x1
-; 0000 00A8         set_color(Green,BRIGHTNESS_50);
+; 0000 0026         set_color(Green,BRIGHTNESS_50);
 	RCALL SUBOPT_0x4
-; 0000 00A9         delay_ms(1500);
+; 0000 0027         delay_ms(1500);
 	RCALL SUBOPT_0x1
-; 0000 00AA         set_color(Green,BRIGHTNESS_25);
+; 0000 0028         set_color(Green,BRIGHTNESS_25);
 	RCALL SUBOPT_0x5
-; 0000 00AB         delay_ms(1500);
+; 0000 0029         delay_ms(1500);
 	RCALL SUBOPT_0x1
-; 0000 00AC         set_color(Green,BRIGHTNESS_10);
+; 0000 002A         set_color(Green,BRIGHTNESS_10);
 	RCALL SUBOPT_0x6
-; 0000 00AD         delay_ms(1500);
+; 0000 002B         delay_ms(1500);
 	RCALL SUBOPT_0x1
-; 0000 00AE         set_color(Green,BRIGHTNESS_5);
+; 0000 002C         set_color(Green,BRIGHTNESS_5);
 	RCALL SUBOPT_0x7
-; 0000 00AF         delay_ms(1500);
+; 0000 002D         delay_ms(1500);
 	RCALL SUBOPT_0x1
-; 0000 00B0         set_color(Green,BRIGHTNESS_0);
+; 0000 002E         set_color(Green,BRIGHTNESS_0);
 	RCALL SUBOPT_0x8
-; 0000 00B1         delay_ms(1500);
-; 0000 00B2         set_color(Orange,BRIGHTNESS_100);
+; 0000 002F         delay_ms(1500);
+; 0000 0030         set_color(Orange,BRIGHTNESS_100);
 	RCALL SUBOPT_0x9
 	RCALL SUBOPT_0x2
-; 0000 00B3         delay_ms(1500);
+; 0000 0031         delay_ms(1500);
 	RCALL SUBOPT_0xA
-; 0000 00B4         set_color(Orange,BRIGHTNESS_75);
+; 0000 0032         set_color(Orange,BRIGHTNESS_75);
 	RCALL SUBOPT_0x3
-; 0000 00B5         delay_ms(1500);
+; 0000 0033         delay_ms(1500);
 	RCALL SUBOPT_0xA
-; 0000 00B6         set_color(Orange,BRIGHTNESS_50);
+; 0000 0034         set_color(Orange,BRIGHTNESS_50);
 	RCALL SUBOPT_0x4
-; 0000 00B7         delay_ms(1500);
+; 0000 0035         delay_ms(1500);
 	RCALL SUBOPT_0xA
-; 0000 00B8         set_color(Orange,BRIGHTNESS_25);
+; 0000 0036         set_color(Orange,BRIGHTNESS_25);
 	RCALL SUBOPT_0x5
-; 0000 00B9         delay_ms(1500);
+; 0000 0037         delay_ms(1500);
 	RCALL SUBOPT_0xA
-; 0000 00BA         set_color(Orange,BRIGHTNESS_10);
+; 0000 0038         set_color(Orange,BRIGHTNESS_10);
 	RCALL SUBOPT_0x6
-; 0000 00BB         delay_ms(1500);
+; 0000 0039         delay_ms(1500);
 	RCALL SUBOPT_0xA
-; 0000 00BC         set_color(Orange,BRIGHTNESS_5);
+; 0000 003A         set_color(Orange,BRIGHTNESS_5);
 	RCALL SUBOPT_0x7
-; 0000 00BD         delay_ms(1500);
+; 0000 003B         delay_ms(1500);
 	RCALL SUBOPT_0xA
-; 0000 00BE         set_color(Orange,BRIGHTNESS_0);
+; 0000 003C         set_color(Orange,BRIGHTNESS_0);
 	RCALL SUBOPT_0x8
-; 0000 00BF         delay_ms(1500);
-; 0000 00C0         set_color(Violet,BRIGHTNESS_100);
+; 0000 003D         delay_ms(1500);
+; 0000 003E         set_color(Violet,BRIGHTNESS_100);
 	RCALL SUBOPT_0xB
 	RCALL SUBOPT_0x2
-; 0000 00C1         delay_ms(1500);
+; 0000 003F         delay_ms(1500);
 	RCALL SUBOPT_0xC
-; 0000 00C2         set_color(Violet,BRIGHTNESS_75);
+; 0000 0040         set_color(Violet,BRIGHTNESS_75);
 	RCALL SUBOPT_0x3
-; 0000 00C3         delay_ms(1500);
+; 0000 0041         delay_ms(1500);
 	RCALL SUBOPT_0xC
-; 0000 00C4         set_color(Violet,BRIGHTNESS_50);
+; 0000 0042         set_color(Violet,BRIGHTNESS_50);
 	RCALL SUBOPT_0x4
-; 0000 00C5         delay_ms(1500);
+; 0000 0043         delay_ms(1500);
 	RCALL SUBOPT_0xC
-; 0000 00C6         set_color(Violet,BRIGHTNESS_25);
+; 0000 0044         set_color(Violet,BRIGHTNESS_25);
 	RCALL SUBOPT_0x5
-; 0000 00C7         delay_ms(1500);
+; 0000 0045         delay_ms(1500);
 	RCALL SUBOPT_0xC
-; 0000 00C8         set_color(Violet,BRIGHTNESS_10);
+; 0000 0046         set_color(Violet,BRIGHTNESS_10);
 	RCALL SUBOPT_0x6
-; 0000 00C9         delay_ms(1500);
+; 0000 0047         delay_ms(1500);
 	RCALL SUBOPT_0xC
-; 0000 00CA         set_color(Violet,BRIGHTNESS_5);
+; 0000 0048         set_color(Violet,BRIGHTNESS_5);
 	RCALL SUBOPT_0x7
-; 0000 00CB         delay_ms(1500);
+; 0000 0049         delay_ms(1500);
 	RCALL SUBOPT_0xC
-; 0000 00CC         set_color(Violet,BRIGHTNESS_0);
+; 0000 004A         set_color(Violet,BRIGHTNESS_0);
 	RCALL SUBOPT_0x8
-; 0000 00CD         delay_ms(1500);
-; 0000 00CE 
-; 0000 00CF        }
+; 0000 004B         delay_ms(1500);
+; 0000 004C 
+; 0000 004D        }
 	RJMP _0xD
-; 0000 00D0 
-; 0000 00D1 
-; 0000 00D2 }
+; 0000 004E 
+; 0000 004F 
+; 0000 0050 }
 _0x14:
 	RJMP _0x14
 ; .FEND
