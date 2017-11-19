@@ -209,21 +209,6 @@ int main(void)
 	        nRF24_SetPowerMode(nRF24_PWR_UP);
 
 
-	        ////////////////////
-	       //disp1color_Init();
-	      // disp1color_SetBrightness(255);
-
-	        // –амка дл€ приветстви€
-	        //disp1color_DrawRectangle(5, 5, 122, 58);
-	        // ѕриветствие (и пример форматированного вывода на дисплей)
-	        //disp1color_printf(10, 8, FONTID_10X16F, "Ёлектроника\n\rв объективе\n\r%d", 2016);
-	        //disp1color_UpdateFromBuff();
-	      //  Delay_ms(4000);
-
-	    	//////////////////////////
-
-
-
 	        // The main loop
 	        j = 0;
 	        payload_length = 5;
@@ -258,7 +243,7 @@ int main(void)
 	        	UART_SendStr("\r\n");
 
 	        	// Wait ~0.5s
-	        	Delay_ms(2000);
+	        	Delay_ms(500);
 	        }
 
 }

@@ -80,65 +80,46 @@
     <Component id="467" name="MISC" path="" type="2"/>
   </Components>
   <Files>
-    <File name="libs/spim/spim.h" path="spim/spim.h" type="1"/>
-    <File name="libs/fonts/f10x16f.h" path="display/fonts/f10x16f.h" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
-    <File name="libs/nrf24.c" path="libs/nrf24.c" type="1"/>
-    <File name="libs/fonts/font.h" path="display/fonts/font.h" type="1"/>
-    <File name="cmsis_boot" path="" type="2"/>
-    <File name="libs/ssd1306.c" path="libs/ssd1306.c" type="1"/>
-    <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
-    <File name="cmsis_boot/startup" path="" type="2"/>
-    <File name="libs/fonts/f6x8m.c" path="display/fonts/f6x8m.c" type="1"/>
-    <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
-    <File name="ub_libs/stm32_ub_led.c" path="ub_lib/stm32_ub_led.c" type="1"/>
-    <File name="stm_lib/src/misc.c" path="stm_lib/src/misc.c" type="1"/>
-    <File name="libs/gpio/gpio.c" path="gpio/gpio.c" type="1"/>
-    <File name="stm_lib/src/stm32f10x_spi.c" path="stm_lib/src/stm32f10x_spi.c" type="1"/>
-    <File name="libs/uart.c" path="libs/uart.c" type="1"/>
-    <File name="cmsis_boot/stm32f10x.h" path="cmsis_boot/stm32f10x.h" type="1"/>
-    <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
-    <File name="libs/nrf24.h" path="libs/nrf24.h" type="1"/>
-    <File name="libs/types.h" path="libs/types.h" type="1"/>
-    <File name="libs/fonts/f10x16f.c" path="display/fonts/f10x16f.c" type="1"/>
-    <File name="libs/nrf24_hal.c" path="libs/nrf24_hal.c" type="1"/>
-    <File name="libs/ssd1306.h" path="libs/ssd1306.h" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
-    <File name="ub_libs/stm32_ub_button.c" path="ub_lib/stm32_ub_button.c" type="1"/>
-    <File name="libs/gpio" path="" type="2"/>
-    <File name="libs/fonts/f6x8m.h" path="display/fonts/f6x8m.h" type="1"/>
-    <File name="libs/gpio/gpio.h" path="gpio/gpio.h" type="1"/>
-    <File name="libs/uart.h" path="libs/uart.h" type="1"/>
-    <File name="stm_lib/src/stm32f10x_usart.c" path="stm_lib/src/stm32f10x_usart.c" type="1"/>
-    <File name="libs/delay.c" path="libs/delay.c" type="1"/>
-    <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
-    <File name="stm_lib/src/stm32f10x_gpio.c" path="stm_lib/src/stm32f10x_gpio.c" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_usart.h" path="stm_lib/inc/stm32f10x_usart.h" type="1"/>
     <File name="ub_libs/stm32_ub_led.h" path="ub_lib/stm32_ub_led.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
-    <File name="libs/disp1color.c" path="display/disp1color.c" type="1"/>
+    <File name="libs/nrf24.c" path="libs/nrf24.c" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
+    <File name="cmsis_boot" path="" type="2"/>
     <File name="stm_lib/src/stm32f10x_rcc.c" path="stm_lib/src/stm32f10x_rcc.c" type="1"/>
     <File name="ub_libs/stm32_ub_button.h" path="ub_lib/stm32_ub_button.h" type="1"/>
     <File name="libs/nrf24_hal.h" path="libs/nrf24_hal.h" type="1"/>
-    <File name="libs/fonts/font.c" path="display/fonts/font.c" type="1"/>
+    <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
+    <File name="cmsis_boot/startup" path="" type="2"/>
+    <File name="ub_libs/stm32_ub_led.c" path="ub_lib/stm32_ub_led.c" type="1"/>
+    <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
+    <File name="stm_lib/src/misc.c" path="stm_lib/src/misc.c" type="1"/>
+    <File name="stm_lib/src/stm32f10x_spi.c" path="stm_lib/src/stm32f10x_spi.c" type="1"/>
+    <File name="libs/uart.c" path="libs/uart.c" type="1"/>
+    <File name="cmsis_boot/stm32f10x.h" path="cmsis_boot/stm32f10x.h" type="1"/>
     <File name="ub_libs" path="" type="2"/>
+    <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
-    <File name="libs/delay" path="" type="2"/>
+    <File name="libs/nrf24.h" path="libs/nrf24.h" type="1"/>
     <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
-    <File name="libs/disp1color.h" path="display/disp1color.h" type="1"/>
-    <File name="libs/fonts" path="" type="2"/>
+    <File name="libs/nrf24_hal.c" path="libs/nrf24_hal.c" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
     <File name="libs/delay.h" path="libs/delay.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
+    <File name="ub_libs/stm32_ub_button.c" path="ub_lib/stm32_ub_button.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
-    <File name="libs/spim/spim.c" path="spim/spim.c" type="1"/>
     <File name="libs" path="" type="2"/>
+    <File name="libs/uart.h" path="libs/uart.h" type="1"/>
+    <File name="stm_lib/src/stm32f10x_usart.c" path="stm_lib/src/stm32f10x_usart.c" type="1"/>
+    <File name="libs/delay.c" path="libs/delay.c" type="1"/>
+    <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
+    <File name="stm_lib/src/stm32f10x_gpio.c" path="stm_lib/src/stm32f10x_gpio.c" type="1"/>
     <File name="stm_lib/inc" path="" type="2"/>
+    <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
     <File name="main.c" path="main.c" type="1"/>
-    <File name="libs/spim" path="" type="2"/>
+    <File name="stm_lib/inc/stm32f10x_usart.h" path="stm_lib/inc/stm32f10x_usart.h" type="1"/>
   </Files>
 </Project>
