@@ -26,7 +26,7 @@ Active0=0
 EditorPanel0=0
 PageIndex0=0
 EditorPanel1=0
-TimeStamp1=1265399316
+TimeStamp1=1265798241
 PageIndex1=1
 F1=main.c
 OF2=libs\functions_rgb_light_doors.h
@@ -509,7 +509,7 @@ Row=0
 Column=0
 ScrollPosX=0
 ScrollPosY=0
-TimeStamp=1265399346
+TimeStamp=1265800742
 [BookmarksFoldedCode]
 Files=7
 F1=main.c
@@ -521,10 +521,10 @@ F6=C:\cvavr\inc\mega328p.h
 F7=libs\functions_rgb_light_doors.h
 [Bookmarks1]
 TimeStamp=1265399316
-Row=109
-Column=91
+Row=0
+Column=0
 ScrollPosX=0
-ScrollPosY=77
+ScrollPosY=0
 BK0=-1
 BK1=-1
 BK2=-1
@@ -634,8 +634,6 @@ F1=C:\cvavr\inc\mega328p.h
 F2=C:\cvavr\inc\mega328p_bits.h
 F3=C:\cvavr\inc\delay.h
 F4=libs\functions_rgb_light_doors.h
-[FoldedCode1]
-Blocks=0
 [Bookmarks7]
 TimeStamp=1265398999
 Row=19
@@ -652,5 +650,7 @@ BK6=-1
 BK7=-1
 BK8=-1
 BK9=-1
+[FoldedCode1]
+Blocks=0
 [FoldedCode7]
 Blocks=0
