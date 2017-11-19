@@ -39,6 +39,9 @@ void UART_Init(uint32_t baudrate) {
 	UART.USART_StopBits = USART_StopBits_1; // 1 stop bit
 	USART_Init(UART_PORT,&UART);
 	USART_Cmd(UART_PORT,ENABLE);
+
+    UART_SendStr("STM32F103RET6 is online.\r\n");
+    UART_SendStr("USART is OK.\r\n");
 }
 
 void UART_SendChar(char ch) {

@@ -80,13 +80,14 @@
     <Component id="467" name="MISC" path="" type="2"/>
   </Components>
   <Files>
-    <File name="ub_libs/stm32_ub_led.h" path="ub_lib/stm32_ub_led.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
+    <File name="ub_libs/stm32_ub_led.h" path="ub_lib/stm32_ub_led.h" type="1"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
     <File name="libs/nrf24.c" path="libs/nrf24.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
+    <File name="libs/functions.h" path="libs/functions.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="stm_lib/src/stm32f10x_rcc.c" path="stm_lib/src/stm32f10x_rcc.c" type="1"/>
     <File name="ub_libs/stm32_ub_button.h" path="ub_lib/stm32_ub_button.h" type="1"/>
@@ -107,6 +108,7 @@
     <File name="stm_lib" path="" type="2"/>
     <File name="libs/nrf24_hal.c" path="libs/nrf24_hal.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
+    <File name="libs/functions.c" path="libs/functions.c" type="1"/>
     <File name="libs/delay.h" path="libs/delay.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
     <File name="ub_libs/stm32_ub_button.c" path="ub_lib/stm32_ub_button.c" type="1"/>
