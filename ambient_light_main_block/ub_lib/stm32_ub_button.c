@@ -28,8 +28,7 @@
 //--------------------------------------------------------------
 BUTTON_t BUTTON[] = {
   // Name    ,PORT , PIN       , CLOCK              ,Opposition      , Status
-  {BTN_1,GPIOA,GPIO_Pin_8 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPU, Bit_RESET},  // PA0 = Пользовательская кнопка на плате Discovery
-  {BTN_2,GPIOA,GPIO_Pin_9 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPU, Bit_RESET},  // PA0 = Пользовательская кнопка на плате Discover
+  {BTN_MODE_RGB,GPIOA,GPIO_Pin_5 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPU, Bit_RESET},  // PA0 = Пользовательская кнопка на плате Discovery
 };
 
 

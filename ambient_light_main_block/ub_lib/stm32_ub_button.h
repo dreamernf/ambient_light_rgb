@@ -35,11 +35,10 @@
 //--------------------------------------------------------------
 typedef enum 
 {
-  BTN_1 = 0,    // BTN1 auf dem STM32F4-Discovery
-  BTN_2 = 1    // BTN1 auf dem STM32F4-Discovery
+  BTN_MODE_RGB = 0,    // BTN1 auf dem STM32F4-Discovery
 }BUTTON_NAME_t;
 
-#define  BUTTON_ANZ   2 // Anzahl von Button_NAME_t
+#define  BUTTON_ANZ   1 // Anzahl von Button_NAME_t
 
 
 //--------------------------------------------------------------

@@ -22,13 +22,14 @@
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/main.c" title="main.c" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="177" selectionTopPixel="1208"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1452" selectionTopPixel="823"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="ssd1306.h" partName="ssd1306.h" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/libs/ssd1306.h" title="ssd1306.h" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/libs/ssd1306.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/ssd1306.h"/>
@@ -42,21 +43,21 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/ssd1306.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1624" selectionTopPixel="420"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="spim.h" partName="spim.h" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/spim/spim.h" title="spim.h" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/spim/spim.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/spim/spim.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="678" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.h" partName="stm32_ub_led.h" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.h" title="stm32_ub_led.h" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_led.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1459" selectionTopPixel="328"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" partName="gpio.h" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/gpio/gpio.h" title="gpio.h" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/gpio/gpio.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/gpio/gpio.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.c" partName="stm32_ub_led.c" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.c" title="stm32_ub_led.c" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_led.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="946" selectionTopPixel="90"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.c" partName="gpio.c" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/gpio/gpio.c" title="gpio.c" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/gpio/gpio.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/gpio/gpio.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="583"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.h" partName="stm32_ub_button.h" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.h" title="stm32_ub_button.h" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_button.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="1152" selectionTopPixel="403"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="spim.c" partName="spim.c" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/spim/spim.c" title="spim.c" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/spim/spim.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/spim/spim.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="9" selectionOffset="973" selectionTopPixel="1408"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.c" partName="stm32_ub_button.c" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.c" title="stm32_ub_button.c" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="3172" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -68,13 +69,12 @@
 <element path="/ambient_light_main_block/cmsis_boot"/>
 <element path="/ambient_light_main_block/cmsis_boot/startup"/>
 <element path="/ambient_light_main_block/libs"/>
-<element path="/ambient_light_main_block/libs/gpio"/>
-<element path="/ambient_light_main_block/libs/spim"/>
 <element path="/ambient_light_main_block/stm_lib"/>
 <element path="/ambient_light_main_block/stm_lib/inc"/>
+<element path="/ambient_light_main_block/ub_libs"/>
 </expanded>
 <selection>
-<element path="/ambient_light_main_block/libs/ssd1306.c"/>
+<element path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
 </selection>
 </viewState>
 </view>
@@ -273,169 +273,163 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/delay.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/delay.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/ssd1306.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/disp1color.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/ssd1306.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/spim/spim.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/gpio/gpio.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/delay/delay.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/delay/delay.c"/>
-<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" uri="file:/E:/облако/Cloud%20Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/libs/gpio.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/gpio/gpio.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/nrf24.c"/>
-<editor factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="C:\CooCox\arm-2011.03-coocox\arm-2011.03-coocox\arm-none-eabi\include\stdio.h" project="ambient_light_main_block"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/spim/spim.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_led.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_led.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_button.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
 </editors>
-<item historyLabel="delay.c" index="9">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="delay.h" index="8">
-<position info="not_deleted" x="829" y="0"/>
-</item>
-<item historyLabel="delay.h" index="1">
-<position info="not_deleted" x="563" y="0"/>
-</item>
-<item historyLabel="delay.c" index="2">
-<position info="not_deleted" x="797" y="0"/>
-</item>
-<item historyLabel="delay.h" index="1">
-<position info="not_deleted" x="563" y="0"/>
-</item>
-<item historyLabel="delay.c" index="9">
-<position/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5888" y="0"/>
-</item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="18384" y="0"/>
-</item>
-<item historyLabel="gpio.h" index="10">
-<position info="not_deleted" x="4062" y="20"/>
-</item>
-<item historyLabel="gpio.h" index="10">
-<position info="not_deleted" x="4140" y="0"/>
-</item>
-<item historyLabel="gpio.h" index="10">
-<position info="not_deleted" x="110" y="57"/>
-</item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="18384" y="0"/>
-</item>
-<item historyLabel="gpio.c" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="gpio.h" index="7">
-<position info="not_deleted" x="678" y="0"/>
-</item>
-<item historyLabel="gpio.c" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="18384" y="0"/>
-</item>
-<item historyLabel="disp1color.c" index="4">
-<position info="not_deleted" x="3821" y="61"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5758" y="0"/>
-</item>
-<item historyLabel="nrf24.c" index="12">
-<position info="not_deleted" x="3512" y="18"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5758" y="0"/>
-</item>
-<item historyLabel="disp1color.c" index="4">
-<position info="not_deleted" x="3962" y="0"/>
-</item>
-<item historyLabel="gpio.h" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="gpio.c" index="11">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5833" y="0"/>
-</item>
-<item historyLabel="disp1color.c" index="4">
-<position info="not_deleted" x="1338" y="0"/>
-</item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="17879" y="0"/>
-</item>
-<item historyLabel="spim.c" index="6">
-<position info="not_deleted" x="973" y="9"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6153" y="0"/>
-</item>
-<item historyLabel="spim.c" index="6">
-<position info="not_deleted" x="973" y="9"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6064" y="0"/>
-</item>
-<item historyLabel="disp1color.c" index="4">
-<position info="not_deleted" x="3838" y="0"/>
-</item>
-<item historyLabel="stdio.h" index="13">
-<position info="not_deleted" x="11940" y="119"/>
-</item>
-<item historyLabel="disp1color.c" index="4">
-<position info="not_deleted" x="3838" y="0"/>
-</item>
 <item historyLabel="main.c" index="0">
 <position info="not_deleted" x="5934" y="0"/>
 </item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="17879" y="0"/>
-</item>
-<item historyLabel="ssd1306.h" index="3">
-<position info="not_deleted" x="5996" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5934" y="0"/>
-</item>
-<item historyLabel="ssd1306.h" index="3">
-<position info="not_deleted" x="5996" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5934" y="0"/>
-</item>
-<item historyLabel="spim.c" index="6">
-<position info="not_deleted" x="973" y="9"/>
-</item>
-<item historyLabel="gpio.c" index="11">
+<item historyLabel="gpio.h" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="spim.c" index="6">
-<position info="not_deleted" x="973" y="9"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="724" y="0"/>
+</item>
+<item historyLabel="gpio.c" index="2">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5934" y="0"/>
+<position info="not_deleted" x="724" y="0"/>
 </item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="1067" y="0"/>
+<item historyLabel="spim.h" index="3">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ssd1306.h" index="3">
-<position info="not_deleted" x="5027" y="18"/>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="spim.c" index="6">
-<position info="not_deleted" x="973" y="9"/>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="1139" y="0"/>
 </item>
 <item historyLabel="main.c" index="0">
-<position info="not_deleted" x="5934" y="0"/>
+<position info="not_deleted" x="724" y="0"/>
 </item>
-<item historyLabel="ssd1306.c" index="5">
-<position info="not_deleted" x="1624" y="0"/>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="2498" y="9"/>
 </item>
-<item historyLabel="ssd1306.h" index="3">
-<position info="not_deleted" x="5996" y="0"/>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="724" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="562" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="404" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="138" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="80" y="14"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="138" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1541" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="1541" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="2498" y="9"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="589" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="1541" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="589" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="1541" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="967" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="634" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="1340" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="442" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="1074" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="1541" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="715" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.h" index="6">
+<position info="not_deleted" x="80" y="17"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="352" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.h" index="6">
+<position info="not_deleted" x="1250" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.c" index="7">
+<position info="not_deleted" x="1072" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.h" index="6">
+<position info="not_deleted" x="1152" y="12"/>
+</item>
+<item historyLabel="stm32_ub_button.c" index="7">
+<position info="not_deleted" x="832" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="352" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1881" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.h" index="6">
+<position info="not_deleted" x="1152" y="12"/>
+</item>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="1308" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.h" index="4">
+<position info="not_deleted" x="1459" y="0"/>
+</item>
+<item historyLabel="stm32_ub_led.c" index="5">
+<position info="not_deleted" x="946" y="0"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1818" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.c" index="7">
+<position info="not_deleted" x="3172" y="17"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1821" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.c" index="7">
+<position info="not_deleted" x="3172" y="17"/>
+</item>
+<item historyLabel="main.c" index="0">
+<position info="not_deleted" x="1733" y="0"/>
+</item>
+<item historyLabel="stm32_ub_button.h" index="6">
+<position info="not_deleted" x="1152" y="12"/>
+</item>
+<item historyLabel="stm32_ub_button.c" index="7">
+<position info="not_deleted" x="3172" y="17"/>
 </item>
 <item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="5934" y="0"/>
+<position info="not_deleted" x="1733" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -444,51 +438,50 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stdio.h" tooltip="C:\CooCox\arm-2011.03-coocox\arm-2011.03-coocox\arm-none-eabi\include\stdio.h">
-<persistable path="C:\CooCox\arm-2011.03-coocox\arm-2011.03-coocox\arm-none-eabi\include\stdio.h" project="ambient_light_main_block"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.c" tooltip="ambient_light_main_block/ub_libs/stm32_ub_button.c">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spim.c" tooltip="ambient_light_main_block/libs/spim/spim.c">
-<persistable path="/ambient_light_main_block/libs/spim/spim.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.h" tooltip="ambient_light_main_block/ub_libs/stm32_ub_button.h">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_button.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.c" tooltip="ambient_light_main_block/libs/gpio/gpio.c">
-<persistable path="/ambient_light_main_block/libs/gpio/gpio.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.c" tooltip="ambient_light_main_block/ub_libs/stm32_ub_led.c">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_led.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" tooltip="ambient_light_main_block/libs/gpio/gpio.h">
-<persistable path="/ambient_light_main_block/libs/gpio/gpio.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.h" tooltip="ambient_light_main_block/ub_libs/stm32_ub_led.h">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_led.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.c" tooltip="ambient_light_main_block/libs/nrf24.c">
 <persistable path="/ambient_light_main_block/libs/nrf24.c"/>
 </file>
-<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="gpio.h" tooltip="E:\облако\Cloud Mail.Ru\Электроника\ambient_light_rgb\ambient_light_main_block\libs\gpio.h">
-<persistable uri="file:/E:/облако/Cloud%20Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/libs/gpio.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="ambient_light_main_block/libs/uart.h">
+<persistable path="/ambient_light_main_block/libs/uart.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.c" tooltip="ambient_light_main_block/libs/delay/delay.c">
-<persistable path="/ambient_light_main_block/libs/delay/delay.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="ambient_light_main_block/libs/uart.c">
+<persistable path="/ambient_light_main_block/libs/uart.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.h" tooltip="ambient_light_main_block/libs/delay/delay.h">
-<persistable path="/ambient_light_main_block/libs/delay/delay.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.h" tooltip="ambient_light_main_block/libs/nrf24.h">
+<persistable path="/ambient_light_main_block/libs/nrf24.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spim.h" tooltip="ambient_light_main_block/libs/spim/spim.h">
-<persistable path="/ambient_light_main_block/libs/spim/spim.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24_hal.c" tooltip="ambient_light_main_block/libs/nrf24_hal.c">
+<persistable path="/ambient_light_main_block/libs/nrf24_hal.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ssd1306.c" tooltip="ambient_light_main_block/libs/ssd1306.c">
-<persistable path="/ambient_light_main_block/libs/ssd1306.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24_hal.h" tooltip="ambient_light_main_block/libs/nrf24_hal.h">
+<persistable path="/ambient_light_main_block/libs/nrf24_hal.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="disp1color.c" tooltip="ambient_light_main_block/libs/disp1color.c">
-<persistable path="/ambient_light_main_block/libs/disp1color.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.h" tooltip="ambient_light_main_block/libs/delay.h">
+<persistable path="/ambient_light_main_block/libs/delay.h"/>
 </file>
-<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
-<persistable>&#x0A;<subPage/>
-</persistable>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" tooltip="ambient_light_main_block/libs/functions.h">
+<persistable path="/ambient_light_main_block/libs/functions.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ssd1306.h" tooltip="ambient_light_main_block/libs/ssd1306.h">
-<persistable path="/ambient_light_main_block/libs/ssd1306.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.c" tooltip="ambient_light_main_block/libs/delay.c">
+<persistable path="/ambient_light_main_block/libs/delay.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spi.h" tooltip="ambient_light_main_block/libs/spi.h">
-<persistable path="/ambient_light_main_block/libs/spi.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.c" tooltip="ambient_light_main_block/libs/functions.c">
+<persistable path="/ambient_light_main_block/libs/functions.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="spi.h" tooltip="ambient_light_main_block/libs/spi.h">
-<persistable path="/ambient_light_main_block/libs/spi.h"/>
+<file factoryID="org.eclipse.cdt.ui.ExternalEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stdio.h" tooltip="C:\CooCox\arm-2011.03-coocox\arm-2011.03-coocox\arm-none-eabi\include\stdio.h">
+<persistable path="C:\CooCox\arm-2011.03-coocox\arm-2011.03-coocox\arm-none-eabi\include\stdio.h" project="ambient_light_main_block"/>
 </file>
 </mruList>
 </workbench>
