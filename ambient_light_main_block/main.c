@@ -24,7 +24,23 @@ struct RGB_COLOR_TYPE Purple =       {128,  0,255};
 struct RGB_COLOR_TYPE Black =        {0, 0, 0};
 
 
-		uint32_t i,j,k;
+const int16_t RGB_PWM[count_pwm_steps] = {
+		0 , 0 , 0 , 0 , 0 , 1 , 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 6,
+		6 , 7 , 8 , 9 , 9 , 10 , 11 , 12 , 13 , 14 , 15 , 16 , 17 , 18 , 19 , 21,
+		22 , 23 , 24 , 25 , 27 , 28 , 30 , 31 , 32 , 34 , 35 , 37 , 38 , 40 , 42 , 43,
+		45 , 46 , 48 , 50 , 52 , 53 , 55 , 57 , 59 , 61 , 63 , 65 , 67 , 69 , 71 , 73,
+		75 , 77 , 79 , 81 , 83 , 86 , 88 , 90 , 92 , 95 , 97 , 99 , 102 , 104 , 106 , 109,
+		111 , 114 , 116 , 119 , 122 , 124 , 127 , 129 , 132 , 135 , 137 , 140 , 143 , 146 , 149 , 151,
+		154 , 157 , 160 , 163 , 166 , 169 , 172 , 175 , 178 , 181 , 184 , 187 , 190 , 194 , 197 , 200,
+		203 , 207 , 210 , 213 , 216 , 220 , 223 , 227 , 230 , 233 , 237 , 240 , 244 , 247 , 251 , 255
+		};
+
+
+
+
+		uint32_t i,j,k, avg_adc;
+
+		uint8_t m;
 
 		uint8_t  number_color = 1;
 
@@ -66,7 +82,7 @@ int main(void)
 
 			UB_Led_On(LED_DEBUG);
 
-			set_color(Green, BRIGHTNESS_100);
+			set_color(Green, RGB_PWM[count_pwm_steps-1]);
 			Delay_ms(500);
 
 
@@ -113,24 +129,31 @@ int main(void)
 	        	//UB_Led_Toggle(LED_DEBUG);
 	        	//UB_Led_Toggle(BUZZER);
 
-	        	adc_value = ADC_GetConversionValue(ADC1);
+	        	avg_adc = 0;
+	        	for (m=1;m<=200;m++)
+	        	{
+	        		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
+	        		Delay_ms(1);
+	        	}
+
+	        	adc_value = avg_adc/200;
 
 
-       	        //sprintf(buffer, "V=%d  B=%d\r\n", adc_value,set_brightness(adc_value));
+       	        //sprintf(buffer, "V = %d  STEP NUM = %d\r\n", adc_value,set_brightness(adc_value));
        	        //UART_SendStr(buffer);
 
-	        	//Delay_ms(50);
+	        	//Delay_ms(500);
 
 
         		switch (number_color) {
-        		case 1: set_color(Red,set_brightness(adc_value)); break;
-        		case 2: set_color(Green,set_brightness(adc_value)); break;
-        		case 3: set_color(Blue,set_brightness(adc_value)); break;
-        		case 4: set_color(Yellow,set_brightness(adc_value)); break;
-        		case 5: set_color(Orange,set_brightness(adc_value)); break;
-        		case 6: set_color(Purple,set_brightness(adc_value)); break;
-        		case 7: set_color(White,set_brightness(adc_value)); break;
-        		case 8: set_color(Cyan,set_brightness(adc_value)); break;
+        		case 1: set_color(Red,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 2: set_color(Green,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 3: set_color(Blue,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 4: set_color(Yellow,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 5: set_color(Orange,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 6: set_color(Purple,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 7: set_color(White,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 8: set_color(Cyan,RGB_PWM[set_brightness(adc_value)]); break;
         		}
 
 

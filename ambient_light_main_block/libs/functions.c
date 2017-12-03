@@ -1,6 +1,7 @@
 #include "functions.h"
 
 
+
 void init_spi()
 {
 
@@ -192,7 +193,7 @@ void init_pwm()
 
 	    TIM_TimeBaseStructInit(&timer);
 	    timer.TIM_Prescaler = 720;
-	    timer.TIM_Period = PERIOD;
+	    timer.TIM_Period = PERIOD_T;
 	    timer.TIM_ClockDivision = 0;
 	    timer.TIM_CounterMode = TIM_CounterMode_Up;
 	    TIM_TimeBaseInit(TIM3, &timer);
@@ -211,7 +212,7 @@ void init_pwm()
 }
 
 
-void set_color(struct RGB_COLOR_TYPE color, unsigned char brightness)
+void set_color(struct RGB_COLOR_TYPE color, int16_t brightness)
 {
 /*яркость (Brightness)
 Ч самое простое преобразование.
@@ -223,18 +224,10 @@ R_shift = (R_base * Shift) / 256
 G_shift = (G_base * Shift) / 256
 B_shift = (B_base * Shift) / 256
 */
-if (brightness==BRIGHTNESS_100)
- {
-   RED_CH = color.R;
-   GREEN_CH = color.G;
-   BLUE_CH = color.B;
-}
-  else
-    {
-     RED_CH = (color.R*brightness)/256;
-     GREEN_CH = (color.G*brightness)/256;
-     BLUE_CH = (color.B*brightness)/256;
-    }
+
+     RED_CH = (color.R*brightness)/(PERIOD-1);
+     GREEN_CH = (color.G*brightness)/(PERIOD-1);
+     BLUE_CH = (color.B*brightness)/(PERIOD-1);
 
 }
 
@@ -338,21 +331,28 @@ void SetSysClockTo72(void)
     }
 }
 
-uint8_t set_brightness(uint16_t voltage)
+int8_t set_brightness(int16_t voltage)
 {
-	uint8_t  br_tmp = 0;
-	char buffer[10];
+	int8_t  br_tmp = 0;
 
-	if (voltage>=ADC_100) {br_tmp = BRIGHTNESS_100;};
+	br_tmp = ((voltage - MIN_ADC)/((MAX_ADC-MIN_ADC)/count_pwm_steps));
+
+	if (voltage>=MAX_ADC) {br_tmp = count_pwm_steps-1;};
+
+	if (br_tmp<0 )  {br_tmp = 0;};
+
+	if (br_tmp>=count_pwm_steps)  {br_tmp = count_pwm_steps-1;};
+
+
+	//br_tmp = (voltage - 900)/47;
+
+	/*if (voltage>=ADC_100) {br_tmp = BRIGHTNESS_100;};
 	if ((voltage<ADC_100) && (voltage>=ADC_75)) {br_tmp = BRIGHTNESS_75;};
 	if ((voltage<ADC_75) && (voltage>=ADC_50)) {br_tmp = BRIGHTNESS_50;};
 	if ((voltage<ADC_50) && (voltage>=ADC_25)) {br_tmp = BRIGHTNESS_25;};
 	if ((voltage<ADC_25) && (voltage>=ADC_10)) {br_tmp = BRIGHTNESS_10;};
 	if ((voltage<ADC_10) && (voltage>=ADC_5)) {br_tmp = BRIGHTNESS_5;};
-	if (voltage<=ADC_5) {br_tmp = BRIGHTNESS_0;};
-
-    //sprintf(buffer, "B=%d\r\n", br_tmp);
-    //UART_SendStr(buffer);
+	if (voltage<=ADC_5) {br_tmp = BRIGHTNESS_0;};*/
 
 	return br_tmp;
 

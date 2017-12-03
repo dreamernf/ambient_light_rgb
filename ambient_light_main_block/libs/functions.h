@@ -24,24 +24,15 @@ struct RGB_COLOR_TYPE
 
 
 
-#define  PERIOD 255
+#define  PERIOD   256
+#define  PERIOD_T 1000
 
-#define  BRIGHTNESS_100     255
-#define  BRIGHTNESS_75      192
-#define  BRIGHTNESS_50      127
-#define  BRIGHTNESS_25      64
-#define  BRIGHTNESS_10      32
-#define  BRIGHTNESS_5       16
-#define  BRIGHTNESS_0       0
-#define  LIGHT_OFF          0
+#define  count_pwm_steps    128
 
-#define  ADC_100            2400
-#define  ADC_0			    902
-#define  ADC_5			    1116
-#define  ADC_10				1330
-#define  ADC_25				1544
-#define  ADC_50				1758
-#define  ADC_75				1972
+
+#define  MIN_ADC			900
+#define  MAX_ADC			2400
+//#define  STEP_BRIGHT		(MAX_ADC-MIN_ADC)/count_pwm_steps
 
 
 
@@ -67,9 +58,9 @@ void init_nrf24l01();
 void init_pwm();
 void init_adc();
 nRF24_TXResult nRF24_TransmitPacket(uint8_t *pBuf, uint8_t length);
-void set_color(struct RGB_COLOR_TYPE color, unsigned char brightness);
+void set_color(struct RGB_COLOR_TYPE color, int16_t brightness);
 void SetSysClockTo72();
-uint8_t set_brightness(uint16_t voltage);
+int8_t set_brightness(int16_t voltage);
 
 
 #endif // __FUNCTIONS_H
