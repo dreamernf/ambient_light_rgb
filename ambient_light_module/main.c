@@ -55,18 +55,18 @@ int main() {
     SetSysClockTo72();
     Delay_Init();
 
-    //#ifdef DEBUG
-    //UART_Init(115200);
-    //#endif
+    #ifdef DEBUG
+    UART_Init(115200);
+    #endif
 	init_spi();
 	init_nrf24l01();
     ws2812b_Init();
 
     while (!ws2812b_IsReady()); // wait
 
-    //#ifdef DEBUG
-    //UART_SendStr("WS2812B READY is OK.\r\n");
-    //#endif
+    #ifdef DEBUG
+    UART_SendStr("WS2812B READY is OK.\r\n");
+    #endif
 
 	leds[0].r=127;
 	leds[0].g=0;
@@ -83,14 +83,14 @@ int main() {
     		// Clear all pending IRQ flags
 			nRF24_ClearIRQFlags();
 
-            //#ifdef DEBUG
+            #ifdef DEBUG
 			// Print a payload contents to UART
-			//UART_SendStr("RCV PIPE#");
-			//UART_SendInt(pipe);
-			//UART_SendStr(" PAYLOAD:>");
-			//UART_SendBufHex((char *)nRF24_payload, payload_length);
-			//UART_SendStr("<\r\n");
-			//#endif
+			UART_SendStr("RCV PIPE#");
+			UART_SendInt(pipe);
+			UART_SendStr(" PAYLOAD:>");
+			UART_SendBufHex((char *)nRF24_payload, payload_length);
+			UART_SendStr("<\r\n");
+			#endif
 
 			number_color = nRF24_payload[0];
 

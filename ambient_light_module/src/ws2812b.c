@@ -25,6 +25,8 @@
 
 #include "bitmap.h"
 
+#include "functions.h"
+
 #include "ws2812b.h"
 #include "ws2812b_conf.h"
 
@@ -300,7 +302,10 @@ void ws2812b_Init(void)
 
     // Enable DMA interrupt
     DMA_ITConfig(WS2812B_DMA_CHANNEL, DMA_IT_HT | DMA_IT_TC, ENABLE);
-    //UART_SendStr("WS2812B is OK.\r\n");
+
+#ifdef DEBUG
+    UART_SendStr("WS2812B is OK.\r\n");
+#endif
 }
 
 inline int ws2812b_IsReady(void)

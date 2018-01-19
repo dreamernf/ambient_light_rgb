@@ -8,7 +8,6 @@
 #include <stm32f10x_tim.h>
 #include "nrf24.h"
 
-//#define DEBUG
 
 struct RGB_COLOR_TYPE
 {
