@@ -96,6 +96,7 @@ int main() {
 
     // The main loop
     while (1) {
+
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
     		// Get a payload from the transceiver
     		pipe = nRF24_ReadPayload(nRF24_payload, &payload_length);
@@ -129,7 +130,7 @@ int main() {
     		}
 
     		ws2812b_SendRGB(leds, NUM_LEDS);
-			Delay_ms(10);
+			Delay_ms(1);
 
 
     	}
