@@ -198,6 +198,7 @@ int main(void)
         		case 6: set_color(Purple,RGB_PWM[bright_rgb]); break;
         		case 7: set_color(White,RGB_PWM[bright_rgb]); break;
         		case 8: set_color(Cyan,RGB_PWM[bright_rgb]); break;
+        		case 9: set_color(Black,RGB_PWM[bright_rgb]); break;
         		}
 
 	        	nRF24_payload[0] = 	number_color;
@@ -241,7 +242,7 @@ int main(void)
 	        		UB_Led_On(LED_BO);
 	        		Delay_ms(500);
 	        		number_color++;
-	        		if (number_color>=9)
+	        		if (number_color>=10)
 	        		  {
 	        			number_color=1;
 	        		  };

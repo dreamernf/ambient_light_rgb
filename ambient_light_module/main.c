@@ -125,6 +125,7 @@ int main() {
     		case 6: set_color(Purple,RGB_PWM[bright_rgb]); break;
     		case 7: set_color(White,RGB_PWM[bright_rgb]); break;
     		case 8: set_color(Cyan,RGB_PWM[bright_rgb]); break;
+    		case 9: set_color(Black,RGB_PWM[bright_rgb]); break;
     		}
 
     		ws2812b_SendRGB(leds, NUM_LEDS);
