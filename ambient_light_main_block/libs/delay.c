@@ -20,7 +20,9 @@ void Delay_Init(void) {
     // Configure SysTick source and enable counter
     SysTick->CTRL = (SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk);
 
+#ifdef DEBUG
     UART_SendStr("Module Delay is OK.\r\n");
+#endif
 }
 
 #if (!DELAY_INLINE)

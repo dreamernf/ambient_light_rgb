@@ -41,7 +41,9 @@ void init_spi()
 		    SPI_NSSInternalSoftwareConfig(nRF24_SPI_PORT, SPI_NSSInternalSoft_Set);
 		    SPI_Cmd(nRF24_SPI_PORT, ENABLE);
 
+#ifdef DEBUG
 		    UART_SendStr("SPI is OK.\r\n");
+#endif
 
 }
 
@@ -83,10 +85,12 @@ nRF24_TXResult nRF24_TransmitPacket(uint8_t *pBuf, uint8_t length) {
 		return nRF24_TX_TIMEOUT;
 	}
 
+#ifdef DEBUG
 	// Check the flags in STATUS register
 	UART_SendStr("[");
 	UART_SendHex8(status);
 	UART_SendStr("] ");
+#endif
 
 	// Clear pending IRQ flags
     nRF24_ClearIRQFlags();
@@ -117,12 +121,18 @@ void init_nrf24l01()
 				nRF24_CE_L();
 
 				// Configure the nRF24L01+
+#ifdef DEBUG
 				UART_SendStr("nRF24L01+ check: ");
+#endif
 				if (!nRF24_Check()) {
+#ifdef DEBUG
 					UART_SendStr("FAIL\r\n");
+#endif
 					while (1);
 				}
+#ifdef DEBUG
 				UART_SendStr("OK\r\n");
+#endif
 
 				// Initialize the nRF24L01 to its default state
 				nRF24_Init();
@@ -212,7 +222,7 @@ void init_pwm()
 }
 
 
-void set_color(struct RGB_COLOR_TYPE color, int16_t brightness)
+void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 {
 /*яркость (Brightness)
 Ч самое простое преобразование.
@@ -331,15 +341,22 @@ void SetSysClockTo72(void)
     }
 }
 
-int8_t set_brightness(int16_t voltage)
+uint8_t set_brightness(int16_t voltage)
 {
-	int8_t  br_tmp = 0;
 
-	br_tmp = ((voltage - MIN_ADC)/((MAX_ADC-MIN_ADC)/count_pwm_steps));
+//#define  count_pwm_steps    128
+//#define  MIN_ADC			900
+//#define  MAX_ADC			2500
+
+	uint8_t  br_tmp = 0;
+
+	br_tmp = (uint8_t)((voltage - MIN_ADC)/((MAX_ADC-MIN_ADC)/count_pwm_steps));
 
 	if (voltage>=MAX_ADC) {br_tmp = count_pwm_steps-1;};
 
-	if (br_tmp<0 )  {br_tmp = 0;};
+	if (br_tmp<=0 )  {br_tmp = 0;};
+
+	if (voltage <= MIN_ADC)  {br_tmp = 0;};
 
 	if (br_tmp>=count_pwm_steps)  {br_tmp = count_pwm_steps-1;};
 

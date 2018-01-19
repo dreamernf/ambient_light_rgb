@@ -29,9 +29,8 @@ struct RGB_COLOR_TYPE
 
 #define  count_pwm_steps    128
 
-
-#define  MIN_ADC			900
-#define  MAX_ADC			2400
+#define  MIN_ADC			400
+#define  MAX_ADC			2500
 //#define  STEP_BRIGHT		(MAX_ADC-MIN_ADC)/count_pwm_steps
 
 
@@ -58,9 +57,9 @@ void init_nrf24l01();
 void init_pwm();
 void init_adc();
 nRF24_TXResult nRF24_TransmitPacket(uint8_t *pBuf, uint8_t length);
-void set_color(struct RGB_COLOR_TYPE color, int16_t brightness);
+void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness);
 void SetSysClockTo72();
-int8_t set_brightness(int16_t voltage);
+uint8_t set_brightness(int16_t voltage);
 
 
 #endif // __FUNCTIONS_H

@@ -41,7 +41,9 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 
 		uint32_t i,j,k, avg_adc;
 
-		uint8_t m;
+		uint8_t bright_rgb = 0;
+
+		uint8_t m = 0;
 
 		uint8_t  number_color = 1;
 
@@ -126,7 +128,9 @@ int main(void)
 
 	        FLASH_Init();
 
+#ifdef DEBUG
 	        UART_Init(115200);
+#endif
 
 			init_spi();
 
@@ -162,59 +166,58 @@ int main(void)
 	        // The main loop
 	        j = 0;
 	        while (1) {
-	        	// Prepare data packet
-	        	//for (i = 0; i < payload_length; i++) {
-	        	//	nRF24_payload[i] = j++;
-	        	//	if (j > 0x000000FF) j = 0;
-	        	//}
-
 
 	        	// Wait ~0.5s
 	        	//UB_Led_Toggle(LED_DEBUG);
 	        	//UB_Led_Toggle(BUZZER);
 
 	        	avg_adc = 0;
-	        	for (m=1;m<=200;m++)
+	        	for (m=1;m<=50;m++)
 	        	{
 	        		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
 	        		Delay_ms(1);
 	        	}
 
-	        	adc_value = avg_adc/200;
+	        	adc_value = avg_adc/50;
 
+	        	bright_rgb = set_brightness(adc_value);
 
-       	        //sprintf(buffer, "V = %d  STEP NUM = %d\r\n", adc_value,set_brightness(adc_value));
-       	        //UART_SendStr(buffer);
-
-	        	//Delay_ms(500);
+#ifdef DEBUG
+       	        sprintf(buffer, "V = %d  STEP NUM = %d\r\n", adc_value,bright_rgb);
+       	        UART_SendStr(buffer);
+	        	Delay_ms(500);
+#endif
 
 
         		switch (number_color) {
-        		case 1: set_color(Red,RGB_PWM[set_brightness(adc_value)]);break;
-        		case 2: set_color(Green,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 3: set_color(Blue,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 4: set_color(Yellow,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 5: set_color(Orange,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 6: set_color(Purple,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 7: set_color(White,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 8: set_color(Cyan,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
+        		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
+        		case 3: set_color(Blue,RGB_PWM[bright_rgb]); break;
+        		case 4: set_color(Yellow,RGB_PWM[bright_rgb]); break;
+        		case 5: set_color(Orange,RGB_PWM[bright_rgb]); break;
+        		case 6: set_color(Purple,RGB_PWM[bright_rgb]); break;
+        		case 7: set_color(White,RGB_PWM[bright_rgb]); break;
+        		case 8: set_color(Cyan,RGB_PWM[bright_rgb]); break;
         		}
 
 	        	nRF24_payload[0] = 	number_color;
-	        	nRF24_payload[1] = 	1;
+	        	nRF24_payload[1] =  bright_rgb;
 	        	nRF24_payload[2] = 	2;
 	        	nRF24_payload[3] = 	3;
 	        	nRF24_payload[4] = 	4;
 	        	nRF24_payload[5] = 	5;
 
 
+#ifdef DEBUG
 	        	// Print a payload
 	        	UART_SendStr("PAYLOAD:>");
 	        	UART_SendBufHex((char *)nRF24_payload, payload_length);
 	        	UART_SendStr("< ... TX: ");
+#endif
 
 	        	// Transmit a packet
 	        	tx_res = nRF24_TransmitPacket(nRF24_payload, payload_length);
+#ifdef DEBUG
 	        	switch (tx_res) {
 	    			case nRF24_TX_SUCCESS:
 	    				UART_SendStr("OK");
@@ -230,6 +233,7 @@ int main(void)
 	    				break;
 	    		}
 	        	UART_SendStr("\r\n");
+#endif
 
 
 	        	if (UB_Button_OnClick(BTN_MODE_RGB))
