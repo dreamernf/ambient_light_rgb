@@ -30,6 +30,7 @@
 #include <stm32f10x_dma.h>
 #include <misc.h>
 
+//
 //#define WS2812B_USE_GAMMA_CORRECTION
 //#define WS2812B_USE_PRECALCULATED_GAMMA_TABLE
 
