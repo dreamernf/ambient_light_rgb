@@ -122,8 +122,8 @@
     <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
-    <File name="inc/ws2812b.h" path="inc/ws2812b.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
+    <File name="inc/ws2812b.h" path="inc/ws2812b.h" type="1"/>
     <File name="nrf24/nrf24_hal.c" path="nrf24/nrf24_hal.c" type="1"/>
     <File name="stm_lib/inc" path="" type="2"/>
     <File name="main.c" path="main.c" type="1"/>
