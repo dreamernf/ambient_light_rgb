@@ -41,7 +41,9 @@ void init_spi()
 		    SPI_NSSInternalSoftwareConfig(nRF24_SPI_PORT, SPI_NSSInternalSoft_Set);
 		    SPI_Cmd(nRF24_SPI_PORT, ENABLE);
 
-		    UART_SendStr("SPI is OK.\r\n");
+            //#ifdef DEBUG
+		    //UART_SendStr("SPI is OK.\r\n");
+            //#endif
 
 }
 
@@ -56,12 +58,17 @@ void init_nrf24l01()
 				nRF24_CE_L();
 
 				// Configure the nRF24L01+
-				UART_SendStr("nRF24L01+ check: ");
+				//UART_SendStr("nRF24L01+ check: ");
 				if (!nRF24_Check()) {
-					UART_SendStr("FAIL\r\n");
+                    //#ifdef DEBUG
+					//UART_SendStr("FAIL\r\n");
+					//#endif
 					while (1);
 				}
-				UART_SendStr("OK\r\n");
+
+				//#ifdef DEBUG
+				//UART_SendStr("OK\r\n");
+				//#endif
 
 				// Initialize the nRF24L01 to its default state
 				nRF24_Init();

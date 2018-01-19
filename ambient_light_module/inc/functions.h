@@ -8,6 +8,7 @@
 #include <stm32f10x_tim.h>
 #include "nrf24.h"
 
+//#define DEBUG
 
 struct RGB_COLOR_TYPE
 {
@@ -17,14 +18,6 @@ struct RGB_COLOR_TYPE
 };
 
 
-
-
-
-//#define  STEP_BRIGHT		(MAX_ADC-MIN_ADC)/count_pwm_steps
-
-
-
-// Helpers for transmit mode demo
 
 // Timeout counter (depends on the CPU speed)
 // Used for not stuck waiting for IRQ

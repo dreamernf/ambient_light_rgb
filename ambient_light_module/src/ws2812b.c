@@ -300,7 +300,7 @@ void ws2812b_Init(void)
 
     // Enable DMA interrupt
     DMA_ITConfig(WS2812B_DMA_CHANNEL, DMA_IT_HT | DMA_IT_TC, ENABLE);
-    UART_SendStr("WS2812B is OK.\r\n");
+    //UART_SendStr("WS2812B is OK.\r\n");
 }
 
 inline int ws2812b_IsReady(void)
