@@ -4,6 +4,7 @@
 #include "functions.h"
 #include "stm32_ub_led.h"
 #include "stm32_ub_button.h"
+#include "stm32f10x_flash.h"
 #include <stdio.h>
 
 
@@ -44,6 +45,7 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 
 		uint8_t  number_color = 1;
 
+
 		uint16_t adc_value = 0;
 
         char buffer[30];
@@ -55,7 +57,65 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		nRF24_RXResult pipe;
 
 		// Length of received payload
-		uint8_t payload_length;
+		uint8_t payload_length = 5;
+
+		// ====================================================
+		// FLASH Settings struct
+		// ====================================================
+		#define MY_FLASH_PAGE_ADDR 0x800FC00
+
+		typedef struct
+		  {
+			uint8_t  NumberColorF;    // 1 byte
+		    unsigned char F1;  // 1 byte
+		    unsigned char F2;    // 1 byte
+		    unsigned char F3;    // 1 byte
+
+		                            // 8 byte = 2  32-bits words.  It's - OK
+		                            // !!! Full size (bytes) must be a multiple of 4 !!!
+		  } tpSettings;
+
+		tpSettings settings;
+
+		#define SETTINGS_WORDS sizeof(settings)/4
+
+		void FLASH_Init(void) {
+		    /* Next commands may be used in SysClock initialization function
+		       In this case using of FLASH_Init is not obligatorily */
+		    /* Enable Prefetch Buffer */
+		    FLASH_PrefetchBufferCmd( FLASH_PrefetchBuffer_Enable);
+		    /* Flash 2 wait state */
+		    FLASH_SetLatency( FLASH_Latency_2);
+		}
+
+		void FLASH_ReadSettings(void) {
+		    //Read settings
+		    uint32_t *source_addr = (uint32_t *)MY_FLASH_PAGE_ADDR;
+		    uint32_t *dest_addr = (void *)&settings;
+		    for (uint16_t i=0; i<SETTINGS_WORDS; i++) {
+		        *dest_addr = *(__IO uint32_t*)source_addr;
+		        source_addr++;
+		        dest_addr++;
+		    }
+		}
+
+		void FLASH_WriteSettings(void) {
+		    FLASH_Unlock();
+		    FLASH_ErasePage(MY_FLASH_PAGE_ADDR);
+
+		    // Write settings
+		    uint32_t *source_addr = (void *)&settings;
+		    uint32_t *dest_addr = (uint32_t *) MY_FLASH_PAGE_ADDR;
+		    for (uint16_t i=0; i<SETTINGS_WORDS; i++) {
+		        FLASH_ProgramWord((uint32_t)dest_addr, *source_addr);
+		        source_addr++;
+		        dest_addr++;
+		    }
+
+		    FLASH_Lock();
+		}
+		// ====================================================
+
 
 
 
@@ -63,6 +123,8 @@ int main(void)
 {
 
 	        SetSysClockTo72();
+
+	        FLASH_Init();
 
 	        UART_Init(115200);
 
@@ -92,15 +154,59 @@ int main(void)
         	Delay_ms(100);
         	UB_Led_Off(BUZZER);
 
+        	FLASH_ReadSettings();
+
+        	number_color = settings.NumberColorF;
+
+
 	        // The main loop
 	        j = 0;
-	        payload_length = 5;
 	        while (1) {
 	        	// Prepare data packet
-	        	for (i = 0; i < payload_length; i++) {
-	        		nRF24_payload[i] = j++;
-	        		if (j > 0x000000FF) j = 0;
+	        	//for (i = 0; i < payload_length; i++) {
+	        	//	nRF24_payload[i] = j++;
+	        	//	if (j > 0x000000FF) j = 0;
+	        	//}
+
+
+	        	// Wait ~0.5s
+	        	//UB_Led_Toggle(LED_DEBUG);
+	        	//UB_Led_Toggle(BUZZER);
+
+	        	avg_adc = 0;
+	        	for (m=1;m<=200;m++)
+	        	{
+	        		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
+	        		Delay_ms(1);
 	        	}
+
+	        	adc_value = avg_adc/200;
+
+
+       	        //sprintf(buffer, "V = %d  STEP NUM = %d\r\n", adc_value,set_brightness(adc_value));
+       	        //UART_SendStr(buffer);
+
+	        	//Delay_ms(500);
+
+
+        		switch (number_color) {
+        		case 1: set_color(Red,RGB_PWM[set_brightness(adc_value)]);break;
+        		case 2: set_color(Green,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 3: set_color(Blue,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 4: set_color(Yellow,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 5: set_color(Orange,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 6: set_color(Purple,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 7: set_color(White,RGB_PWM[set_brightness(adc_value)]); break;
+        		case 8: set_color(Cyan,RGB_PWM[set_brightness(adc_value)]); break;
+        		}
+
+	        	nRF24_payload[0] = 	number_color;
+	        	nRF24_payload[1] = 	1;
+	        	nRF24_payload[2] = 	2;
+	        	nRF24_payload[3] = 	3;
+	        	nRF24_payload[4] = 	4;
+	        	nRF24_payload[5] = 	5;
+
 
 	        	// Print a payload
 	        	UART_SendStr("PAYLOAD:>");
@@ -125,44 +231,22 @@ int main(void)
 	    		}
 	        	UART_SendStr("\r\n");
 
-	        	// Wait ~0.5s
-	        	//UB_Led_Toggle(LED_DEBUG);
-	        	//UB_Led_Toggle(BUZZER);
-
-	        	avg_adc = 0;
-	        	for (m=1;m<=200;m++)
-	        	{
-	        		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
-	        		Delay_ms(1);
-	        	}
-
-	        	adc_value = avg_adc/200;
-
-
-       	        //sprintf(buffer, "V = %d  STEP NUM = %d\r\n", adc_value,set_brightness(adc_value));
-       	        //UART_SendStr(buffer);
-
-	        	//Delay_ms(500);
-
-
-        		switch (number_color) {
-        		case 1: set_color(Red,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 2: set_color(Green,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 3: set_color(Blue,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 4: set_color(Yellow,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 5: set_color(Orange,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 6: set_color(Purple,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 7: set_color(White,RGB_PWM[set_brightness(adc_value)]); break;
-        		case 8: set_color(Cyan,RGB_PWM[set_brightness(adc_value)]); break;
-        		}
-
 
 	        	if (UB_Button_OnClick(BTN_MODE_RGB))
 	        	{
 	        		UB_Led_On(LED_BO);
-	        		Delay_ms(100);
+	        		Delay_ms(500);
 	        		number_color++;
-	        		if (number_color==9) {number_color=1;};
+	        		if (number_color>=9)
+	        		  {
+	        			number_color=1;
+	        		  };
+	                settings.NumberColorF=number_color;
+	                settings.F1=0;
+	                settings.F2=0;
+	                settings.F3=0;
+	                FLASH_WriteSettings();
+
 	        	}
 	        	UB_Led_Off(LED_BO);
 

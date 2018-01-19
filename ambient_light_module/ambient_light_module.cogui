@@ -22,58 +22,63 @@
 <part id="5"/>
 <part id="6"/>
 <part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/main.c" title="main.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1056" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/main.c" title="main.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/main.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/main.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="318" selectionTopPixel="223"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.h" partName="stm32_ub_led.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.h" title="stm32_ub_led.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_led.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1459" selectionTopPixel="328"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b_conf.h" partName="ws2812b_conf.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/ws2812b_conf.h" title="ws2812b_conf.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/ws2812b_conf.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/inc/ws2812b_conf.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1372" selectionTopPixel="493"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.c" partName="stm32_ub_led.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.c" title="stm32_ub_led.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_led.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="946" selectionTopPixel="90"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b.c" partName="ws2812b.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/src/ws2812b.c" title="ws2812b.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/src/ws2812b.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/src/ws2812b.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="9289" selectionTopPixel="4213"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.h" partName="stm32_ub_button.h" path="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.h" title="stm32_ub_button.h" tooltip="E:/облако/Cloud Mail.Ru/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_button.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="12" selectionOffset="1152" selectionTopPixel="403"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.h" partName="nrf24.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/nrf24/nrf24.h" title="nrf24.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/nrf24/nrf24.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/nrf24/nrf24.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="2938"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.c" partName="stm32_ub_button.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.c" title="stm32_ub_button.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_button.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="17" selectionOffset="3172" selectionTopPixel="180"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.c" partName="nrf24.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/nrf24/nrf24.c" title="nrf24.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/nrf24/nrf24.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/nrf24/nrf24.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" partName="functions.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/libs/functions.h" title="functions.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/libs/functions.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/functions.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1364" selectionTopPixel="433"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" partName="functions.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/functions.h" title="functions.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/functions.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/functions/functions.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="403" selectionTopPixel="373"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="functions.c" partName="functions.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/libs/functions.c" title="functions.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/libs/functions.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/functions.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1822" selectionTopPixel="735"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="functions.c" partName="functions.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/functions.c" title="functions.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/functions.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/functions/functions.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3450" selectionTopPixel="1890"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.c" partName="nrf24.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/libs/nrf24.c" title="nrf24.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/libs/nrf24.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/libs/nrf24.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="18" selectionOffset="12398" selectionTopPixel="6210"/>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24_hal.h" partName="nrf24_hal.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/nrf24/nrf24_hal.h" title="nrf24_hal.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/nrf24/nrf24_hal.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/nrf24/nrf24_hal.h"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1170" selectionTopPixel="28"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" partName="uart.c" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/uart.c" title="uart.c" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_module/inc/uart.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/functions/uart.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="33" selectionOffset="1627" selectionTopPixel="240"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="10">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="2">
 <expanded>
-<element path="/ambient_light_main_block"/>
-<element path="/ambient_light_main_block/cmsis"/>
-<element path="/ambient_light_main_block/cmsis_boot"/>
-<element path="/ambient_light_main_block/cmsis_boot/startup"/>
-<element path="/ambient_light_main_block/libs"/>
-<element path="/ambient_light_main_block/stm_lib"/>
-<element path="/ambient_light_main_block/stm_lib/inc"/>
-<element path="/ambient_light_main_block/ub_libs"/>
+<element path="/ambient_light_module"/>
+<element path="/ambient_light_module/delay"/>
+<element path="/ambient_light_module/functions"/>
+<element path="/ambient_light_module/inc"/>
+<element path="/ambient_light_module/nrf24"/>
+<element path="/ambient_light_module/src"/>
+<element path="/ambient_light_module/stm_lib"/>
+<element path="/ambient_light_module/stm_lib/inc"/>
 </expanded>
 <selection>
-<element path="/ambient_light_main_block/libs/functions.h"/>
+<element path="/ambient_light_module/nrf24/nrf24_hal.h"/>
 </selection>
 </viewState>
 </view>
@@ -129,7 +134,7 @@
 <fastViewBars/>
 <layout>
 <mainWindow>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@17e8956">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1da7d56">
 <folder activePageID="org.coocox.component.ui.ComponentView" appearance="2" expanded="2">
 <page content="org.coocox.component.ui.ComponentView" label="Components"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -137,13 +142,13 @@
 </presentation>
 </folder>
 </info>
-<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@17e8956">
+<info folder="true" part="stickyFolderRight" ratio="0.75" ratioLeft="954" ratioRight="318" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1da7d56">
 <folder appearance="2" expanded="2">
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@13928db" ratio="0.69977427" ratioLeft="620" ratioRight="266" relationship="4" relative="org.eclipse.ui.internal.ViewStack@17e8956">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15da68c" ratio="0.69977427" ratioLeft="620" ratioRight="266" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1da7d56">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -151,8 +156,8 @@
 </presentation>
 </folder>
 </info>
-<info part="org.coocox.builder.ui.exampleView" ratio="0.21933962" ratioLeft="279" ratioRight="993" relationship="2" relative="org.eclipse.ui.internal.ViewStack@17e8956"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@1cb3205" ratio="0.71903324" ratioLeft="714" ratioRight="279" relationship="2" relative="org.coocox.builder.ui.exampleView">
+<info part="org.coocox.builder.ui.exampleView" ratio="0.21933962" ratioLeft="279" ratioRight="993" relationship="2" relative="org.eclipse.ui.internal.ViewStack@1da7d56"/>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@151de22" ratio="0.71903324" ratioLeft="714" ratioRight="279" relationship="2" relative="org.coocox.builder.ui.exampleView">
 <folder appearance="2" expanded="2">
 <page content="org.coocox.component.ui.Help" label="LabelNotFound"/>
 <page content="org.eclipse.debug.ui.BreakpointView" label="LabelNotFound"/>
@@ -163,7 +168,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.44920993" ratioLeft="398" ratioRight="488" relationship="4" relative="org.coocox.builder.ui.exampleView"/>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@6aa649" ratio="0.3690745" ratioLeft="327" ratioRight="559" relationship="4" relative="org.eclipse.ui.internal.ViewStack@17e8956">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15ac93d" ratio="0.3690745" ratioLeft="327" ratioRight="559" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1da7d56">
 <folder activePageID="org.coocox.builder.ui.views.ProjectView" appearance="2" expanded="2">
 <page content="org.coocox.builder.ui.views.ProjectView" label="Project"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -271,172 +276,170 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_button.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_led.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/inc/ws2812b_conf.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/src/ws2812b.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/nrf24/nrf24.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/nrf24/nrf24.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/functions/functions.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/functions/functions.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/functions/uart.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/functions/uart.h"/>
 <editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
 <subPage/>
 </editor>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/disp1color.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/ssd1306.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/ssd1306.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/ub_libs/stm32_ub_led.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/functions.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/functions.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/functions.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/functions.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/functions.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_main_block/libs/nrf24.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/nrf24/nrf24_hal.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/nrf24/nrf24_hal.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/functions/uart.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/src/ws2812b.c"/>
 </editors>
-<item historyLabel="stm32_ub_button.h" index="1">
-<position info="not_deleted" x="1152" y="12"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="39" y="0"/>
 </item>
-<item historyLabel="stm32_ub_button.c" index="2">
-<position info="not_deleted" x="3172" y="17"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1733" y="0"/>
-</item>
-<item historyLabel="stm32_ub_button.c" index="3">
-<position info="not_deleted" x="3172" y="17"/>
-</item>
-<item historyLabel="stm32_ub_led.c" index="4">
-<position info="not_deleted" x="946" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="168" y="0"/>
-</item>
-<item historyLabel="Repository" index="5"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="168" y="0"/>
-</item>
-<item historyLabel="disp1color.c" index="6">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2237" y="0"/>
-</item>
-<item historyLabel="ssd1306.h" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2237" y="0"/>
-</item>
-<item historyLabel="ssd1306.c" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2237" y="0"/>
-</item>
-<item historyLabel="stm32_ub_led.h" index="9">
-<position info="not_deleted" x="1459" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2237" y="0"/>
-</item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2237" y="0"/>
-</item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
+<item historyLabel="uart.c" index="7">
 <position/>
 </item>
-<item historyLabel="functions.h" index="10">
+<item historyLabel="uart.h" index="8">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="functions.c" index="11">
+<item historyLabel="Repository" index="9"/>
+<item historyLabel="uart.h" index="8">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
+<item historyLabel="uart.c" index="7">
 <position/>
 </item>
-<item historyLabel="functions.c" index="11">
+<item historyLabel="uart.h" index="8">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="334" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="39" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position/>
-</item>
-<item historyLabel="functions.c" index="11">
+<item historyLabel="functions.c" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="functions.h" index="10">
-<position/>
+<item historyLabel="functions.h" index="5">
+<position info="not_deleted" x="276" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="2213" y="112"/>
-</item>
-<item historyLabel="functions.c" index="11">
+<item historyLabel="nrf24.c" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="373" y="0"/>
+<item historyLabel="functions.c" index="6">
+<position info="not_deleted" x="6951" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="3892" y="0"/>
+<item historyLabel="functions.h" index="5">
+<position info="not_deleted" x="403" y="0"/>
 </item>
-<item historyLabel="functions.c" index="11">
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="528" y="0"/>
+</item>
+<item historyLabel="functions.c" index="6">
+<position info="not_deleted" x="3062" y="13"/>
+</item>
+<item historyLabel="nrf24.h" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="334" y="0"/>
+<item historyLabel="ws2812b.c" index="2">
+<position info="not_deleted" x="3201" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4096" y="0"/>
+<item historyLabel="ws2812b_conf.h" index="0">
+<position info="not_deleted" x="1372" y="0"/>
 </item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="334" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="528" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1754" y="0"/>
-</item>
-<item historyLabel="functions.h" index="10">
-<position info="not_deleted" x="334" y="0"/>
-</item>
-<item historyLabel="functions.c" index="11">
+<item historyLabel="nrf24.h" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1754" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="6807" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4093" y="50"/>
-</item>
-<item historyLabel="functions.h" index="12">
-<position info="not_deleted" x="334" y="0"/>
-</item>
-<item historyLabel="functions.c" index="13">
+<item historyLabel="nrf24.c" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="functions.c" index="13">
-<position info="not_deleted" x="6110" y="9"/>
+<item historyLabel="nrf24_hal.h" index="10">
+<position info="not_deleted" x="1170" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4614" y="0"/>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="520" y="0"/>
 </item>
-<item historyLabel="functions.c" index="14">
-<position info="not_deleted" x="6110" y="9"/>
+<item historyLabel="nrf24_hal.h" index="10">
+<position info="not_deleted" x="1170" y="0"/>
 </item>
-<item historyLabel="functions.c" index="14">
-<position info="not_deleted" x="1822" y="0"/>
+<item historyLabel="functions.h" index="5">
+<position info="not_deleted" x="403" y="0"/>
 </item>
-<item historyLabel="nrf24.c" index="15">
-<position info="not_deleted" x="12398" y="18"/>
+<item historyLabel="functions.c" index="6">
+<position info="not_deleted" x="501" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="0">
-<position info="not_deleted" x="6172" y="0"/>
+<item historyLabel="nrf24_hal.h" index="10">
+<position info="not_deleted" x="1170" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="525" y="0"/>
+</item>
+<item historyLabel="functions.c" index="6">
+<position info="not_deleted" x="3134" y="0"/>
+</item>
+<item historyLabel="nrf24_hal.c" index="11">
+<position info="not_deleted" x="138" y="15"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="527" y="0"/>
+</item>
+<item historyLabel="functions.c" index="6">
+<position info="not_deleted" x="3062" y="13"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="488" y="0"/>
+</item>
+<item historyLabel="uart.c" index="7">
+<position info="not_deleted" x="28" y="9"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="490" y="0"/>
+</item>
+<item historyLabel="uart.c" index="7">
+<position info="not_deleted" x="28" y="9"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="525" y="0"/>
+</item>
+<item historyLabel="functions.c" index="6">
+<position info="not_deleted" x="3450" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="708" y="0"/>
+</item>
+<item historyLabel="uart.c" index="7">
+<position info="not_deleted" x="28" y="9"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="708" y="0"/>
+</item>
+<item historyLabel="nrf24_hal.c" index="11">
+<position info="not_deleted" x="138" y="15"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="708" y="0"/>
+</item>
+<item historyLabel="ws2812b_conf.h" index="0">
+<position info="not_deleted" x="1372" y="0"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="708" y="0"/>
+</item>
+<item historyLabel="uart.c" index="12">
+<position info="not_deleted" x="1627" y="33"/>
+</item>
+<item historyLabel="main.c" index="1">
+<position info="not_deleted" x="491" y="0"/>
+</item>
+<item historyLabel="ws2812b.c" index="13">
+<position info="not_deleted" x="3201" y="0"/>
+</item>
+<item historyLabel="ws2812b.c" index="13">
+<position info="not_deleted" x="9289" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="1">
+<position info="not_deleted" x="551" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -487,8 +490,8 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b.c" tooltip="ambient_light_module/src/ws2812b.c">
 <persistable path="/ambient_light_module/src/ws2812b.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b.c" tooltip="ambient_light_module/src/ws2812b.c">
-<persistable path="/ambient_light_module/src/ws2812b.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b.h" tooltip="ambient_light_module/inc/ws2812b.h">
+<persistable path="/ambient_light_module/inc/ws2812b.h"/>
 </file>
 </mruList>
 </workbench>
