@@ -34,7 +34,7 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define NUM_LEDS    1
+#define NUM_LEDS   4
 #define  PERIOD   256
 
 uint8_t number_color = 0;
@@ -61,6 +61,70 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 	leds[0].r=(color.R*brightness)/(PERIOD-1);
 	leds[0].g=(color.G*brightness)/(PERIOD-1);
 	leds[0].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[1].r=(color.R*brightness)/(PERIOD-1);
+	leds[1].g=(color.G*brightness)/(PERIOD-1);
+	leds[1].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[2].r=(color.R*brightness)/(PERIOD-1);
+	leds[2].g=(color.G*brightness)/(PERIOD-1);
+	leds[2].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[3].r=(color.R*brightness)/(PERIOD-1);
+	leds[3].g=(color.G*brightness)/(PERIOD-1);
+	leds[3].b=(color.B*brightness)/(PERIOD-1);
+/*
+	leds[4].r=(color.R*brightness)/(PERIOD-1);
+	leds[4].g=(color.G*brightness)/(PERIOD-1);
+	leds[4].b=(color.B*brightness)/(PERIOD-1);
+
+
+
+	leds[5].r=(color.R*brightness)/(PERIOD-1);
+	leds[5].g=(color.G*brightness)/(PERIOD-1);
+	leds[5].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[6].r=(color.R*brightness)/(PERIOD-1);
+	leds[6].g=(color.G*brightness)/(PERIOD-1);
+	leds[6].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[7].r=(color.R*brightness)/(PERIOD-1);
+	leds[7].g=(color.G*brightness)/(PERIOD-1);
+	leds[7].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[8].r=(color.R*brightness)/(PERIOD-1);
+	leds[8].g=(color.G*brightness)/(PERIOD-1);
+	leds[8].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[9].r=(color.R*brightness)/(PERIOD-1);
+	leds[9].g=(color.G*brightness)/(PERIOD-1);
+	leds[9].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[10].r=(color.R*brightness)/(PERIOD-1);
+	leds[10].g=(color.G*brightness)/(PERIOD-1);
+	leds[10].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[11].r=(color.R*brightness)/(PERIOD-1);
+	leds[11].g=(color.G*brightness)/(PERIOD-1);
+	leds[11].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[12].r=(color.R*brightness)/(PERIOD-1);
+	leds[12].g=(color.G*brightness)/(PERIOD-1);
+	leds[12].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[13].r=(color.R*brightness)/(PERIOD-1);
+	leds[13].g=(color.G*brightness)/(PERIOD-1);
+	leds[13].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[14].r=(color.R*brightness)/(PERIOD-1);
+	leds[14].g=(color.G*brightness)/(PERIOD-1);
+	leds[14].b=(color.B*brightness)/(PERIOD-1);
+
+	leds[15].r=(color.R*brightness)/(PERIOD-1);
+	leds[15].g=(color.G*brightness)/(PERIOD-1);
+	leds[15].b=(color.B*brightness)/(PERIOD-1);
+
+	*/
 
 
 
@@ -121,12 +185,17 @@ int main() {
     		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
     		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
     		case 3: set_color(Blue,RGB_PWM[bright_rgb]); break;
-    		case 4: set_color(Yellow,RGB_PWM[bright_rgb]); break;
-    		case 5: set_color(Orange,RGB_PWM[bright_rgb]); break;
-    		case 6: set_color(Purple,RGB_PWM[bright_rgb]); break;
-    		case 7: set_color(White,RGB_PWM[bright_rgb]); break;
-    		case 8: set_color(Cyan,RGB_PWM[bright_rgb]); break;
-    		case 9: set_color(Black,RGB_PWM[bright_rgb]); break;
+    		case 4: set_color(Orange,RGB_PWM[bright_rgb]); break;
+    		case 5: set_color(Yellow,RGB_PWM[bright_rgb]); break;
+    		case 6: set_color(GreenLime,RGB_PWM[bright_rgb]); break;
+    		case 7: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
+    		case 8: set_color(NavyBlue,RGB_PWM[bright_rgb]); break;
+    		case 9: set_color(Violet,RGB_PWM[bright_rgb]); break;
+    		case 10: set_color(White,RGB_PWM[bright_rgb]); break;
+    		case 11: set_color(Cyan,RGB_PWM[bright_rgb]); break;
+    		case 12: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
+    		case 13: set_color(Purple,RGB_PWM[bright_rgb]); break;
+    		case 14: set_color(Black,RGB_PWM[bright_rgb]); break;
     		}
 
     		ws2812b_SendRGB(leds, NUM_LEDS);

@@ -193,12 +193,17 @@ int main(void)
         		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
         		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
         		case 3: set_color(Blue,RGB_PWM[bright_rgb]); break;
-        		case 4: set_color(Yellow,RGB_PWM[bright_rgb]); break;
-        		case 5: set_color(Orange,RGB_PWM[bright_rgb]); break;
-        		case 6: set_color(Purple,RGB_PWM[bright_rgb]); break;
-        		case 7: set_color(White,RGB_PWM[bright_rgb]); break;
-        		case 8: set_color(Cyan,RGB_PWM[bright_rgb]); break;
-        		case 9: set_color(Black,RGB_PWM[bright_rgb]); break;
+        		case 4: set_color(Orange,RGB_PWM[bright_rgb]); break;
+        		case 5: set_color(Yellow,RGB_PWM[bright_rgb]); break;
+        		case 6: set_color(GreenLime,RGB_PWM[bright_rgb]); break;
+        		case 7: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
+        		case 8: set_color(NavyBlue,RGB_PWM[bright_rgb]); break;
+        		case 9: set_color(Violet,RGB_PWM[bright_rgb]); break;
+        		case 10: set_color(White,RGB_PWM[bright_rgb]); break;
+        		case 11: set_color(Cyan,RGB_PWM[bright_rgb]); break;
+        		case 12: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
+        		case 13: set_color(Purple,RGB_PWM[bright_rgb]); break;
+        		case 14: set_color(Black,RGB_PWM[bright_rgb]); break;
         		}
 
 	        	nRF24_payload[0] = 	number_color;
@@ -242,7 +247,7 @@ int main(void)
 	        		UB_Led_On(LED_BO);
 	        		Delay_ms(500);
 	        		number_color++;
-	        		if (number_color>=10)
+	        		if (number_color>=15)
 	        		  {
 	        			number_color=1;
 	        		  };
