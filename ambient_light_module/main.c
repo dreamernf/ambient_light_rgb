@@ -40,10 +40,15 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 uint8_t number_color = 0;
 uint8_t bright_rgb = 0;
 
+uint8_t number_color_tmp = 0;
+uint8_t bright_rgb_tmp = 0;
+
+
+
 
 RGB_t leds[NUM_LEDS];
 
-uint32_t i,j,k;
+uint8_t i,j,k;
 
 // Buffer to store a payload of maximum width
 uint8_t nRF24_payload[32];
@@ -143,11 +148,9 @@ int main() {
 	init_spi();
 	ws2812b_Init();
 
-	leds[0].r=0;
-	leds[0].g=0;
-	leds[0].b=0;
+	set_color(Black,RGB_PWM[0]);
 	ws2812b_SendRGB(leds, NUM_LEDS);
-	Delay_ms(500);
+	Delay_ms(200);
 
 	init_nrf24l01();
 
@@ -162,6 +165,7 @@ int main() {
     while (1) {
 
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
+
     		// Get a payload from the transceiver
     		pipe = nRF24_ReadPayload(nRF24_payload, &payload_length);
 
@@ -199,10 +203,25 @@ int main() {
     		}
 
     		ws2812b_SendRGB(leds, NUM_LEDS);
-			Delay_ms(1);
 
+    		Delay_ms(60);
 
     	}
+    	  else {
+
+    		  Delay_ms(600);
+    		     //  for (i=127;i>=0;i--)
+    		     //    {
+    		       	 set_color(Black,RGB_PWM[0]);
+    		        	 ws2812b_SendRGB(leds, NUM_LEDS);
+    		        //	 Delay_ms(50);
+
+    		       //  }
+
+
+
+		}
+
 
     }
 

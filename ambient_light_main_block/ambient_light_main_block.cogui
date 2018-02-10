@@ -30,7 +30,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_main_block/main.c" title="main.c" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_main_block/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="7122" selectionTopPixel="2641"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5209" selectionTopPixel="2641"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.h" partName="stm32_ub_led.h" path="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.h" title="stm32_ub_led.h" tooltip="F:/облако/YandexDisk/Электроника/ambient_light_rgb/ambient_light_main_block/ub_lib/stm32_ub_led.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_main_block/ub_libs/stm32_ub_led.h"/>
