@@ -212,7 +212,7 @@ int main() {
     	  else {
     		  k++;
 
-    		  if (k>=10000)
+    		  if (k>=60000)
     		  {
     			 set_color(Black,RGB_PWM[0]);
     			 ws2812b_SendRGB(leds, NUM_LEDS);
