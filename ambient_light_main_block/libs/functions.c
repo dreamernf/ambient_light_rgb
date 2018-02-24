@@ -179,67 +179,8 @@ void init_nrf24l01()
 		        nRF24_SetPowerMode(nRF24_PWR_UP);
 }
 
-void init_pwm()
-{
-	    GPIO_InitTypeDef port;
-	    TIM_TimeBaseInitTypeDef timer;
-	    TIM_OCInitTypeDef timerPWM;
-
-	    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
-	    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
-	    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
-
-	    GPIO_StructInit(&port);
-	    port.GPIO_Mode = GPIO_Mode_AF_PP;
-	    port.GPIO_Pin = GPIO_Pin_6 | GPIO_Pin_7;
-	    port.GPIO_Speed = GPIO_Speed_2MHz;
-	    GPIO_Init(GPIOA, &port);
-
-	    GPIO_StructInit(&port);
-	    port.GPIO_Mode = GPIO_Mode_AF_PP;
-	    port.GPIO_Pin = GPIO_Pin_0;
-	    port.GPIO_Speed = GPIO_Speed_2MHz;
-	    GPIO_Init(GPIOB, &port);
-
-	    TIM_TimeBaseStructInit(&timer);
-	    timer.TIM_Prescaler = 720;
-	    timer.TIM_Period = PERIOD_T;
-	    timer.TIM_ClockDivision = 0;
-	    timer.TIM_CounterMode = TIM_CounterMode_Up;
-	    TIM_TimeBaseInit(TIM3, &timer);
-
-	    TIM_OCStructInit(&timerPWM);
-	    timerPWM.TIM_Pulse = 0;
-	    timerPWM.TIM_OCMode = TIM_OCMode_PWM1;
-	    timerPWM.TIM_OutputState = TIM_OutputState_Enable;
-	    timerPWM.TIM_OCPolarity = TIM_OCPolarity_High;
-	    TIM_OC1Init(TIM3, &timerPWM);
-	    TIM_OC2Init(TIM3, &timerPWM);
-	    TIM_OC3Init(TIM3, &timerPWM);
-
-	    TIM_Cmd(TIM3, ENABLE);
-
-}
 
 
-void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
-{
-/*яркость (Brightness)
-Ч самое простое преобразование.
-ѕри:
-Shift=0 светодиод погашен
-Shift=255 светодиод горит базовым цветом.
-¬се промежуточные значени€ Shift Ц это затемнение базового цвета.
-R_shift = (R_base * Shift) / 256
-G_shift = (G_base * Shift) / 256
-B_shift = (B_base * Shift) / 256
-*/
-
-     RED_CH = (color.R*brightness)/(PERIOD-1);
-     GREEN_CH = (color.G*brightness)/(PERIOD-1);
-     BLUE_CH = (color.B*brightness)/(PERIOD-1);
-
-}
 
 void init_adc(){
 

@@ -2,9 +2,11 @@
 #include "delay.h"
 #include "nrf24.h"
 #include "functions.h"
+#include "ws2812b.h"
 #include "stm32_ub_led.h"
 #include "stm32_ub_button.h"
 #include "stm32f10x_flash.h"
+#include "stm32f10x_dma.h"
 #include <stdio.h>
 
 
@@ -24,6 +26,7 @@ struct RGB_COLOR_TYPE LightBlue =    {  0,128,255};
 struct RGB_COLOR_TYPE Purple =       {128,  0,255};
 struct RGB_COLOR_TYPE Black =        {0, 0, 0};
 
+#define  count_pwm_steps    128
 
 const int16_t RGB_PWM[count_pwm_steps] = {
 		0 , 0 , 0 , 0 , 0 , 1 , 1 , 1 , 2 , 2 , 3 , 3 , 4 , 4 , 5 , 6,
@@ -37,6 +40,11 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
+#define NUM_LEDS   1
+#define  PERIOD   256
+
+
+RGB_t leds[NUM_LEDS];
 
 
 		uint32_t i,j,k, avg_adc;
@@ -61,64 +69,146 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		// Length of received payload
 		uint8_t payload_length = 5;
 
-		// ====================================================
-		// FLASH Settings struct
-		// ====================================================
-		#define MY_FLASH_PAGE_ADDR 0x800FC00
 
-		typedef struct
-		  {
-			uint8_t  NumberColorF;    // 1 byte
-		    unsigned char F1;  // 1 byte
-		    unsigned char F2;    // 1 byte
-		    unsigned char F3;    // 1 byte
 
-		                            // 8 byte = 2  32-bits words.  It's - OK
-		                            // !!! Full size (bytes) must be a multiple of 4 !!!
-		  } tpSettings;
+void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
+		{
 
-		tpSettings settings;
+			leds[0].r=(color.R*brightness)/(PERIOD-1);
+			leds[0].g=(color.G*brightness)/(PERIOD-1);
+			leds[0].b=(color.B*brightness)/(PERIOD-1);
 
-		#define SETTINGS_WORDS sizeof(settings)/4
+/*
+			leds[1].r=(color.R*brightness)/(PERIOD-1);
+			leds[1].g=(color.G*brightness)/(PERIOD-1);
+			leds[1].b=(color.B*brightness)/(PERIOD-1);
 
-		void FLASH_Init(void) {
-		    /* Next commands may be used in SysClock initialization function
-		       In this case using of FLASH_Init is not obligatorily */
-		    /* Enable Prefetch Buffer */
-		    FLASH_PrefetchBufferCmd( FLASH_PrefetchBuffer_Enable);
-		    /* Flash 2 wait state */
-		    FLASH_SetLatency( FLASH_Latency_2);
+			leds[2].r=(color.R*brightness)/(PERIOD-1);
+			leds[2].g=(color.G*brightness)/(PERIOD-1);
+			leds[2].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[3].r=(color.R*brightness)/(PERIOD-1);
+			leds[3].g=(color.G*brightness)/(PERIOD-1);
+			leds[3].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[4].r=(color.R*brightness)/(PERIOD-1);
+			leds[4].g=(color.G*brightness)/(PERIOD-1);
+			leds[4].b=(color.B*brightness)/(PERIOD-1);
+
+
+
+			leds[5].r=(color.R*brightness)/(PERIOD-1);
+			leds[5].g=(color.G*brightness)/(PERIOD-1);
+			leds[5].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[6].r=(color.R*brightness)/(PERIOD-1);
+			leds[6].g=(color.G*brightness)/(PERIOD-1);
+			leds[6].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[7].r=(color.R*brightness)/(PERIOD-1);
+			leds[7].g=(color.G*brightness)/(PERIOD-1);
+			leds[7].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[8].r=(color.R*brightness)/(PERIOD-1);
+			leds[8].g=(color.G*brightness)/(PERIOD-1);
+			leds[8].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[9].r=(color.R*brightness)/(PERIOD-1);
+			leds[9].g=(color.G*brightness)/(PERIOD-1);
+			leds[9].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[10].r=(color.R*brightness)/(PERIOD-1);
+			leds[10].g=(color.G*brightness)/(PERIOD-1);
+			leds[10].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[11].r=(color.R*brightness)/(PERIOD-1);
+			leds[11].g=(color.G*brightness)/(PERIOD-1);
+			leds[11].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[12].r=(color.R*brightness)/(PERIOD-1);
+			leds[12].g=(color.G*brightness)/(PERIOD-1);
+			leds[12].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[13].r=(color.R*brightness)/(PERIOD-1);
+			leds[13].g=(color.G*brightness)/(PERIOD-1);
+			leds[13].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[14].r=(color.R*brightness)/(PERIOD-1);
+			leds[14].g=(color.G*brightness)/(PERIOD-1);
+			leds[14].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[15].r=(color.R*brightness)/(PERIOD-1);
+			leds[15].g=(color.G*brightness)/(PERIOD-1);
+			leds[15].b=(color.B*brightness)/(PERIOD-1);
+
+			*/
+
+
+
 		}
 
-		void FLASH_ReadSettings(void) {
-		    //Read settings
-		    uint32_t *source_addr = (uint32_t *)MY_FLASH_PAGE_ADDR;
-		    uint32_t *dest_addr = (void *)&settings;
-		    for (uint16_t i=0; i<SETTINGS_WORDS; i++) {
-		        *dest_addr = *(__IO uint32_t*)source_addr;
-		        source_addr++;
-		        dest_addr++;
-		    }
-		}
 
-		void FLASH_WriteSettings(void) {
-		    FLASH_Unlock();
-		    FLASH_ErasePage(MY_FLASH_PAGE_ADDR);
+// ====================================================
+	// FLASH Settings struct
+	// ====================================================
 
-		    // Write settings
-		    uint32_t *source_addr = (void *)&settings;
-		    uint32_t *dest_addr = (uint32_t *) MY_FLASH_PAGE_ADDR;
-		    for (uint16_t i=0; i<SETTINGS_WORDS; i++) {
-		        FLASH_ProgramWord((uint32_t)dest_addr, *source_addr);
-		        source_addr++;
-		        dest_addr++;
-		    }
+#define MY_FLASH_PAGE_ADDR 0x800FC00
 
-		    FLASH_Lock();
-		}
-		// ====================================================
+	typedef struct
+	  {
+		uint8_t  NumberColorF;    // 1 byte
+	    unsigned char F1;  // 1 byte
+	    unsigned char F2;    // 1 byte
+	    unsigned char F3;    // 1 byte
+
+	                            // 8 byte = 2  32-bits words.  It's - OK
+	                            // !!! Full size (bytes) must be a multiple of 4 !!!
+	  } tpSettings;
+
+	tpSettings settings;
+
+	#define SETTINGS_WORDS sizeof(settings)/4
+
+	void FLASH_Init(void) {
+	    /* Next commands may be used in SysClock initialization function
+	       In this case using of FLASH_Init is not obligatorily */
+	    /* Enable Prefetch Buffer */
+	    FLASH_PrefetchBufferCmd( FLASH_PrefetchBuffer_Enable);
+	    /* Flash 2 wait state */
+	    FLASH_SetLatency( FLASH_Latency_2);
+	}
+
+	void FLASH_ReadSettings(void) {
+	    //Read settings
+	    uint32_t *source_addr = (uint32_t *)MY_FLASH_PAGE_ADDR;
+	    uint16_t i = 0;
+	    uint32_t *dest_addr = (void *)&settings;
+	    for (i=0; i<SETTINGS_WORDS; i++) {
+	        *dest_addr = *(__IO uint32_t*)source_addr;
+	        source_addr++;
+	        dest_addr++;
+	    }
+	}
+
+	void FLASH_WriteSettings(void) {
+		uint16_t i = 0;
+	    FLASH_Unlock();
+	    FLASH_ErasePage(MY_FLASH_PAGE_ADDR);
+
+	    // Write settings
+	    uint32_t *source_addr = (void *)&settings;
+	    uint32_t *dest_addr = (uint32_t *) MY_FLASH_PAGE_ADDR;
+	    for (i=0; i<SETTINGS_WORDS; i++) {
+	        FLASH_ProgramWord((uint32_t)dest_addr, *source_addr);
+	        source_addr++;
+	        dest_addr++;
+	    }
+
+	    FLASH_Lock();
+	}
 
 
+	// ====================================================
 
 
 int main(void)
@@ -126,31 +216,33 @@ int main(void)
 
 	        SetSysClockTo72();
 
+	        Delay_Init();
+
 	        FLASH_Init();
 
 #ifdef DEBUG
-	        UART_Init(115200);
+	       UART_Init(115200);
 #endif
 
 			init_spi();
 
-			Delay_Init();
+			ws2812b_Init();
 
 			init_nrf24l01();
+
+			while (!ws2812b_IsReady()); // wait
+
+			set_color(Black,RGB_PWM[127]);
+			ws2812b_SendRGB(leds, NUM_LEDS);
+			Delay_ms(100);
 
 			UB_Led_Init();
 
 			UB_Button_Init();
 
-			init_pwm();
-
 			init_adc();
 
 			UB_Led_On(LED_DEBUG);
-
-			set_color(Green, RGB_PWM[count_pwm_steps-1]);
-			Delay_ms(500);
-
 
 			UB_Led_On(LED_BO);
 
@@ -162,14 +254,7 @@ int main(void)
 
         	number_color = settings.NumberColorF;
 
-
-	        // The main loop
-	        j = 0;
 	        while (1) {
-
-	        	// Wait ~0.5s
-	        	//UB_Led_Toggle(LED_DEBUG);
-	        	//UB_Led_Toggle(BUZZER);
 
 	        	avg_adc = 0;
 	        	for (m=1;m<=50;m++)
@@ -188,7 +273,6 @@ int main(void)
 	        	Delay_ms(500);
 #endif
 
-
         		switch (number_color) {
         		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
         		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
@@ -206,7 +290,10 @@ int main(void)
         		case 14: set_color(Black,RGB_PWM[bright_rgb]); break;
         		}
 
-	        	nRF24_payload[0] = 	number_color;
+        		ws2812b_SendRGB(leds, NUM_LEDS);
+        		Delay_ms(60);
+
+        		nRF24_payload[0] = 	number_color;
 	        	nRF24_payload[1] =  bright_rgb;
 	        	nRF24_payload[2] = 	2;
 	        	nRF24_payload[3] = 	3;
@@ -259,7 +346,6 @@ int main(void)
 
 	        	}
 	        	UB_Led_Off(LED_BO);
-
 	        }
 
 }

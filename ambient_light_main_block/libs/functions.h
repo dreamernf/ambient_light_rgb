@@ -9,19 +9,12 @@
 #include <stm32f10x_adc.h>
 #include "nrf24.h"
 
-
 struct RGB_COLOR_TYPE
 {
     unsigned char R;
     unsigned char G;
     unsigned char B;
 };
-
-
-#define  RED_CH    TIM3->CCR1
-#define  GREEN_CH  TIM3->CCR3
-#define  BLUE_CH   TIM3->CCR2
-
 
 
 #define  PERIOD   256
@@ -54,10 +47,8 @@ nRF24_TXResult tx_res;
 
 void init_spi();
 void init_nrf24l01();
-void init_pwm();
 void init_adc();
 nRF24_TXResult nRF24_TransmitPacket(uint8_t *pBuf, uint8_t length);
-void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness);
 void SetSysClockTo72();
 uint8_t set_brightness(int16_t voltage);
 

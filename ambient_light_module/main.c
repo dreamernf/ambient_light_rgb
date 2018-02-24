@@ -34,7 +34,7 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define NUM_LEDS   4
+#define NUM_LEDS   5
 #define  PERIOD   256
 
 uint8_t number_color = 0;
@@ -48,7 +48,7 @@ uint8_t bright_rgb_tmp = 0;
 
 RGB_t leds[NUM_LEDS];
 
-uint8_t i,j,k;
+uint16_t i,j,k;
 
 // Buffer to store a payload of maximum width
 uint8_t nRF24_payload[32];
@@ -78,13 +78,13 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 	leds[3].r=(color.R*brightness)/(PERIOD-1);
 	leds[3].g=(color.G*brightness)/(PERIOD-1);
 	leds[3].b=(color.B*brightness)/(PERIOD-1);
-/*
+
 	leds[4].r=(color.R*brightness)/(PERIOD-1);
 	leds[4].g=(color.G*brightness)/(PERIOD-1);
 	leds[4].b=(color.B*brightness)/(PERIOD-1);
 
 
-
+	/*
 	leds[5].r=(color.R*brightness)/(PERIOD-1);
 	leds[5].g=(color.G*brightness)/(PERIOD-1);
 	leds[5].b=(color.B*brightness)/(PERIOD-1);
@@ -148,14 +148,14 @@ int main() {
 	init_spi();
 	ws2812b_Init();
 
-	set_color(Black,RGB_PWM[0]);
-	ws2812b_SendRGB(leds, NUM_LEDS);
-	Delay_ms(200);
-
 	init_nrf24l01();
 
 
     while (!ws2812b_IsReady()); // wait
+
+	set_color(Black,RGB_PWM[0]);
+	ws2812b_SendRGB(leds, NUM_LEDS);
+	Delay_ms(200);
 
     #ifdef DEBUG
     UART_SendStr("WS2812B READY is OK.\r\n");
@@ -184,6 +184,8 @@ int main() {
 			number_color = nRF24_payload[0];
 			bright_rgb = nRF24_payload[1];
 
+			k = 0;
+
 
     		switch (number_color) {
     		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
@@ -208,17 +210,15 @@ int main() {
 
     	}
     	  else {
+    		  k++;
 
-    		  Delay_ms(600);
-    		     //  for (i=127;i>=0;i--)
-    		     //    {
-    		       	 set_color(Black,RGB_PWM[0]);
-    		        	 ws2812b_SendRGB(leds, NUM_LEDS);
-    		        //	 Delay_ms(50);
-
-    		       //  }
-
-
+    		  if (k>=10000)
+    		  {
+    			 set_color(Black,RGB_PWM[0]);
+    			 ws2812b_SendRGB(leds, NUM_LEDS);
+    			 Delay_ms(60);
+    			 k = 0;
+    		  }
 
 		}
 
