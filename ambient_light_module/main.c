@@ -218,6 +218,12 @@ int main() {
     			 ws2812b_SendRGB(leds, NUM_LEDS);
     			 Delay_ms(60);
     			 k = 0;
+    			 RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
+    			 SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
+    			 PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
+    			 PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
+    			 PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
+    			 __WFE();  //уснули
     		  }
 
 		}
