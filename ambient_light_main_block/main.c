@@ -218,7 +218,7 @@ int main(void)
 
 	        Delay_Init();
 
-	        FLASH_Init();
+   	        FLASH_Init();
 
 #ifdef DEBUG
 	       UART_Init(115200);
@@ -227,6 +227,9 @@ int main(void)
 			init_spi();
 
 			ws2812b_Init();
+
+
+
 
 			init_nrf24l01();
 
