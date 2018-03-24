@@ -35,14 +35,14 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define  NUM_LEDS   3
+#define  NUM_LEDS   5
 #define  PERIOD   256
 
 
 uint8_t number_color = 0;
 uint8_t bright_rgb = 0;
-uint8_t bright_rgb_delta = 0;
-uint8_t bright_rgb_abs = 0;
+uint8_t bright_rgb_nrfl = 0;
+uint8_t bright_rgb_step = 0;
 
 
 uint8_t number_color_tmp = 0;
@@ -188,8 +188,6 @@ int main() {
 
     	adc_value = avg_adc/80;
 
-    	bright_rgb_delta = count_pwm_steps-set_brightness(adc_value)-1;
-
 
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
 
@@ -211,19 +209,19 @@ int main() {
 			number_color = nRF24_payload[0];
 			bright_rgb = nRF24_payload[1];
 
-			bright_rgb_abs = bright_rgb;
+			bright_rgb_nrfl =  bright_rgb;
+
+
+			bright_rgb_step = set_brightness_slave_step(adc_value);
+
+			bright_rgb = set_brightness_slave(bright_rgb_step, bright_rgb);
 
 
 			k = 0;
 
 
-        	if (bright_rgb>bright_rgb_delta)
-        	{
-        		bright_rgb = bright_rgb - bright_rgb_delta;
-        	}
-
 #ifdef DEBUG_UART_ONLY
-   	        sprintf(buffer, "V = %d  STEP NUM_DELTA = %d STEP NUM_NRFL = %d NUM_ACT = %d\r\n", adc_value,bright_rgb_delta,bright_rgb_abs,bright_rgb);
+   	        sprintf(buffer, "V = %d  STEP_DELTA = %d STEP_NRFL = %d NUM_ACT = %d\r\n", adc_value,bright_rgb_step,bright_rgb_nrfl,bright_rgb);
    	        UART_SendStr(buffer);
         	Delay_ms(500);
 #endif

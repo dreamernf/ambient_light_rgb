@@ -9,7 +9,7 @@
 #include <stm32f10x_adc.h>
 #include "nrf24.h"
 
-#define  count_pwm_steps    128
+#define  COUNT_STEPS_BRIGHT    10
 
 #define  MIN_ADC  0
 #define  MAX_ADC  4053
@@ -34,7 +34,8 @@ void init_spi();
 void init_adc();
 void init_nrf24l01();
 void SetSysClockTo72();
-uint8_t set_brightness(int16_t voltage);
+uint8_t set_brightness_slave_step(int16_t voltage);
+uint8_t set_brightness_slave(int8_t bright_step, int8_t bright_nrfl);
 
 
 #endif // __FUNCTIONS_H

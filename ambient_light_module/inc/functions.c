@@ -206,21 +206,32 @@ void SetSysClockTo72(void)
     }
 }
 
-uint8_t set_brightness(int16_t voltage)
+uint8_t set_brightness_slave_step(int16_t voltage)
 {
 
 	uint8_t  br_tmp = 0;
 
-	br_tmp = (uint8_t)((voltage - MIN_ADC)/((MAX_ADC-MIN_ADC)/count_pwm_steps));
+	br_tmp = (uint8_t)((voltage - MIN_ADC)/((MAX_ADC-MIN_ADC)/COUNT_STEPS_BRIGHT));
 
-	if (voltage>=MAX_ADC) {br_tmp =count_pwm_steps-1;};
+	if (voltage>=MAX_ADC) {br_tmp = COUNT_STEPS_BRIGHT;};
 
 	if (br_tmp<=0 )  {br_tmp = 0;};
 
 	if (voltage <= MIN_ADC)  {br_tmp = 0;};
 
-	if (br_tmp>=count_pwm_steps)  {br_tmp = count_pwm_steps-1;};
+	if (br_tmp>=COUNT_STEPS_BRIGHT)  {br_tmp = COUNT_STEPS_BRIGHT;};
 
+
+	return br_tmp;
+
+}
+
+uint8_t set_brightness_slave(int8_t bright_step, int8_t bright_nrfl)
+{
+
+	uint8_t  br_tmp = 0;
+
+	br_tmp = bright_step * (bright_nrfl/COUNT_STEPS_BRIGHT);
 
 	return br_tmp;
 
