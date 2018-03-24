@@ -21,13 +21,13 @@
 
 // CE (chip enable) pin (PB11)
 #define nRF24_CE_PORT              GPIOA
-#define nRF24_CE_PIN               GPIO_Pin_9
+#define nRF24_CE_PIN               GPIO_Pin_8
 #define nRF24_CE_L()               GPIO_ResetBits(nRF24_CE_PORT, nRF24_CE_PIN)
 #define nRF24_CE_H()               GPIO_SetBits(nRF24_CE_PORT, nRF24_CE_PIN)
 
 // CSN (chip select negative) pin (PB1)
 #define nRF24_CSN_PORT             GPIOA
-#define nRF24_CSN_PIN              GPIO_Pin_8
+#define nRF24_CSN_PIN              GPIO_Pin_9
 #define nRF24_CSN_L()              GPIO_ResetBits(nRF24_CSN_PORT, nRF24_CSN_PIN)
 #define nRF24_CSN_H()              GPIO_SetBits(nRF24_CSN_PORT, nRF24_CSN_PIN)
 

@@ -6,7 +6,13 @@
 #include "stm32f10x.h"
 #include <stm32f10x_spi.h>
 #include <stm32f10x_tim.h>
+#include <stm32f10x_adc.h>
 #include "nrf24.h"
+
+#define  count_pwm_steps    128
+
+#define  MIN_ADC  0
+#define  MAX_ADC  4053
 
 
 struct RGB_COLOR_TYPE
@@ -25,8 +31,10 @@ struct RGB_COLOR_TYPE
 
 
 void init_spi();
+void init_adc();
 void init_nrf24l01();
 void SetSysClockTo72();
+uint8_t set_brightness(int16_t voltage);
 
 
 #endif // __FUNCTIONS_H

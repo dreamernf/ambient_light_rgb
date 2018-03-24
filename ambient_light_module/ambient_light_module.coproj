@@ -16,6 +16,7 @@
           <Define name="STM32F10X_MD"/>
           <Define name="USE_STDPERIPH_DRIVER"/>
           <Define name="__ASSEMBLY__"/>
+          <Define name="DEBUG_UART_ONLY"/>
         </DefinedSymbols>
       </Compile>
       <Link useDefault="0">
@@ -69,6 +70,7 @@
     <ExcludeFile/>
   </Target>
   <Components path="./">
+    <Component id="31" name="Retarget printf" path="" type="2"/>
     <Component id="50" name="CMSIS core" path="" type="2"/>
     <Component id="439" name="CMSIS_Boot" path="" type="2"/>
     <Component id="440" name="RCC" path="" type="2"/>
@@ -76,6 +78,7 @@
     <Component id="446" name="DMA" path="" type="2"/>
     <Component id="452" name="SPI" path="" type="2"/>
     <Component id="456" name="TIM" path="" type="2"/>
+    <Component id="457" name="ADC" path="" type="2"/>
     <Component id="458" name="USART" path="" type="2"/>
     <Component id="492" name="Misc" path="" type="2"/>
   </Components>
@@ -98,11 +101,13 @@
     <File name="nrf24" path="" type="2"/>
     <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_dma.h" path="stm_lib/inc/stm32f10x_dma.h" type="1"/>
+    <File name="stm_lib/src/stm32f10x_adc.c" path="stm_lib/src/stm32f10x_adc.c" type="1"/>
     <File name="functions" path="" type="2"/>
     <File name="stm_lib/src/stm32f10x_usart.c" path="stm_lib/src/stm32f10x_usart.c" type="1"/>
     <File name="nrf24/nrf24.h" path="nrf24/nrf24.h" type="1"/>
     <File name="delay/delay.c" path="delay/delay.c" type="1"/>
     <File name="functions/functions.h" path="inc/functions.h" type="1"/>
+    <File name="stdio/printf.c" path="stdio/printf.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
     <File name="stm_lib/src/stm32f10x_gpio.c" path="stm_lib/src/stm32f10x_gpio.c" type="1"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
@@ -110,6 +115,7 @@
     <File name="src/ws2812b.c" path="src/ws2812b.c" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
+    <File name="stdio" path="" type="2"/>
     <File name="functions/uart.c" path="inc/uart.c" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="cmsis/core_cm3.h" path="cmsis/core_cm3.h" type="1"/>
@@ -122,9 +128,10 @@
     <File name="stm_lib/src" path="" type="2"/>
     <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
+    <File name="stm_lib/inc/stm32f10x_adc.h" path="stm_lib/inc/stm32f10x_adc.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
-    <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="inc/ws2812b.h" path="inc/ws2812b.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
     <File name="nrf24/nrf24_hal.c" path="nrf24/nrf24_hal.c" type="1"/>
     <File name="stm_lib/inc" path="" type="2"/>
     <File name="main.c" path="main.c" type="1"/>

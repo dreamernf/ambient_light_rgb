@@ -3,6 +3,7 @@
 #include "uart.h"
 #include "delay.h"
 #include "nrf24.h"
+#include <stdio.h>
 
 
 struct RGB_COLOR_TYPE Red =          {255, 0, 0};
@@ -34,17 +35,26 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define NUM_LEDS   5
+#define  NUM_LEDS   3
 #define  PERIOD   256
+
 
 uint8_t number_color = 0;
 uint8_t bright_rgb = 0;
+uint8_t bright_rgb_delta = 0;
+uint8_t bright_rgb_abs = 0;
+
 
 uint8_t number_color_tmp = 0;
 uint8_t bright_rgb_tmp = 0;
 
+char buffer[30];
 
+uint32_t avg_adc;
 
+uint8_t m = 0;
+
+uint16_t adc_value = 0;
 
 RGB_t leds[NUM_LEDS];
 
@@ -58,6 +68,8 @@ nRF24_RXResult pipe;
 
 // Length of received payload
 uint8_t payload_length = 5;
+
+
 
 
 void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
@@ -142,10 +154,13 @@ int main() {
     SetSysClockTo72();
     Delay_Init();
 
-    #ifdef DEBUG
+    #ifdef DEBUG_UART_ONLY
     UART_Init(115200);
     #endif
 	init_spi();
+
+	init_adc();
+
 	ws2812b_Init();
 
 	init_nrf24l01();
@@ -157,12 +172,24 @@ int main() {
 	ws2812b_SendRGB(leds, NUM_LEDS);
 	Delay_ms(200);
 
-    #ifdef DEBUG
+    #ifdef DEBUG_UART_ONLY
     UART_SendStr("WS2812B READY is OK.\r\n");
     #endif
 
     // The main loop
     while (1) {
+
+    	avg_adc = 0;
+    	for (m=1;m<=80;m++)
+    	{
+    		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
+    		Delay_ms(1);
+    	}
+
+    	adc_value = avg_adc/80;
+
+    	bright_rgb_delta = count_pwm_steps-set_brightness(adc_value)-1;
+
 
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
 
@@ -184,7 +211,22 @@ int main() {
 			number_color = nRF24_payload[0];
 			bright_rgb = nRF24_payload[1];
 
+			bright_rgb_abs = bright_rgb;
+
+
 			k = 0;
+
+
+        	if (bright_rgb>bright_rgb_delta)
+        	{
+        		bright_rgb = bright_rgb - bright_rgb_delta;
+        	}
+
+#ifdef DEBUG_UART_ONLY
+   	        sprintf(buffer, "V = %d  STEP NUM_DELTA = %d STEP NUM_NRFL = %d NUM_ACT = %d\r\n", adc_value,bright_rgb_delta,bright_rgb_abs,bright_rgb);
+   	        UART_SendStr(buffer);
+        	Delay_ms(500);
+#endif
 
 
     		switch (number_color) {
