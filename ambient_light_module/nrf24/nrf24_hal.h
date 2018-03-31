@@ -31,10 +31,6 @@
 #define nRF24_CSN_L()              GPIO_ResetBits(nRF24_CSN_PORT, nRF24_CSN_PIN)
 #define nRF24_CSN_H()              GPIO_SetBits(nRF24_CSN_PORT, nRF24_CSN_PIN)
 
-// IRQ pin (PB10)
-#define nRF24_IRQ_PORT             GPIOB
-#define nRF24_IRQ_PIN              GPIO_Pin_10
-
 
 // Function prototypes
 void nRF24_GPIO_Init(void);

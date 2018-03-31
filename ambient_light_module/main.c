@@ -3,6 +3,7 @@
 #include "uart.h"
 #include "delay.h"
 #include "nrf24.h"
+
 #include <stdio.h>
 
 
@@ -50,11 +51,6 @@ uint8_t bright_rgb_tmp = 0;
 
 char buffer[30];
 
-uint32_t avg_adc;
-
-uint8_t m = 0;
-
-uint16_t adc_value = 0;
 
 RGB_t leds[NUM_LEDS];
 
@@ -69,7 +65,11 @@ nRF24_RXResult pipe;
 // Length of received payload
 uint8_t payload_length = 5;
 
-
+BitAction bit1 = 0;
+BitAction bit2 = 0;
+BitAction bit4 = 0;
+BitAction bit8 = 0;
+BitAction inp1 = 0;
 
 
 void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
@@ -154,12 +154,12 @@ int main() {
     SetSysClockTo72();
     Delay_Init();
 
+    UB_DigIn_Init();  // Инициализация цифровых входов
+
     #ifdef DEBUG_UART_ONLY
     UART_Init(115200);
     #endif
 	init_spi();
-
-	init_adc();
 
 	ws2812b_Init();
 
@@ -179,15 +179,23 @@ int main() {
     // The main loop
     while (1) {
 
-    	avg_adc = 0;
-    	for (m=1;m<=80;m++)
+    	inp1 = 1-UB_DigIn_Read(DINPUT_1);
+    	Delay_ms(2);
+
+    	if (inp1)
     	{
-    		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
-    		Delay_ms(1);
-    	}
 
-    	adc_value = avg_adc/80;
+        	bit1 = 1-UB_DigIn_Read(DIN_1);
+        	Delay_ms(2);
+        	bit2 = 1-UB_DigIn_Read(DIN_2);
+        	Delay_ms(2);
+        	bit4 = 1-UB_DigIn_Read(DIN_4);
+        	Delay_ms(2);
+        	bit8 = 1-UB_DigIn_Read(DIN_8);
+        	Delay_ms(2);
 
+
+    	bright_rgb_step = bit1+2*bit2+4*bit4+8*bit8;
 
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
 
@@ -211,17 +219,14 @@ int main() {
 
 			bright_rgb_nrfl =  bright_rgb;
 
-
-			bright_rgb_step = set_brightness_slave_step(adc_value);
-
-			bright_rgb = set_brightness_slave(bright_rgb_step, bright_rgb);
+			bright_rgb = set_brightness_slave(bright_rgb_step,bright_rgb);
 
 
 			k = 0;
 
 
 #ifdef DEBUG_UART_ONLY
-   	        sprintf(buffer, "V = %d  STEP_DELTA = %d STEP_NRFL = %d NUM_ACT = %d\r\n", adc_value,bright_rgb_step,bright_rgb_nrfl,bright_rgb);
+   	        sprintf(buffer, "NRFL = %d ACT = %d\r\n", bright_rgb_nrfl,bright_rgb);
    	        UART_SendStr(buffer);
         	Delay_ms(500);
 #endif
@@ -246,13 +251,13 @@ int main() {
 
     		ws2812b_SendRGB(leds, NUM_LEDS);
 
-    		Delay_ms(60);
+    		Delay_ms(15);
 
     	}
     	  else {
     		  k++;
 
-    		  if (k>=60000)
+    		  if (k>=400)
     		  {
     			 set_color(Black,RGB_PWM[0]);
     			 ws2812b_SendRGB(leds, NUM_LEDS);
@@ -264,12 +269,20 @@ int main() {
     			 PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
     			 PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
     			 __WFE();  //уснули
-    		  }
+    		  }//
 
 		}
 
+    	}
 
+    	else
+    	{
+			 set_color(Red,RGB_PWM[127]);
+			 ws2812b_SendRGB(leds, NUM_LEDS);
+			 Delay_ms(500);
+    	}
     }
+
 
 
 }
