@@ -298,10 +298,10 @@ int main(void)
 
         		nRF24_payload[0] = 	number_color;
 	        	nRF24_payload[1] =  bright_rgb;
-	        	nRF24_payload[2] = 	2;
-	        	nRF24_payload[3] = 	3;
-	        	nRF24_payload[4] = 	4;
-	        	nRF24_payload[5] = 	5;
+	        	nRF24_payload[2] = 	0;
+	        	nRF24_payload[3] = 	0;
+	        	nRF24_payload[4] = 	0;
+	        	nRF24_payload[5] = 	0;
 
 
 #ifdef DEBUG

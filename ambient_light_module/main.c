@@ -3,6 +3,7 @@
 #include "uart.h"
 #include "delay.h"
 #include "nrf24.h"
+#include "stm32_ub_led.h"
 
 #include <stdio.h>
 
@@ -152,7 +153,10 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 int main() {
 
     SetSysClockTo72();
+
     Delay_Init();
+
+    UB_Led_Init();
 
     UB_DigIn_Init();  // Инициализация цифровых входов
 
@@ -168,11 +172,10 @@ int main() {
 
     while (!ws2812b_IsReady()); // wait
 
-	set_color(Black,RGB_PWM[0]);
-	ws2812b_SendRGB(leds, NUM_LEDS);
-	Delay_ms(200);
-
     #ifdef DEBUG_UART_ONLY
+    set_color(Red,RGB_PWM[0]);
+	ws2812b_SendRGB(leds, NUM_LEDS);
+	Delay_ms(500);
     UART_SendStr("WS2812B READY is OK.\r\n");
     #endif
 
@@ -180,32 +183,27 @@ int main() {
     while (1) {
 
     	inp1 = 1-UB_DigIn_Read(DINPUT_1);
-    	Delay_ms(2);
 
     	if (inp1)
     	{
 
         	bit1 = 1-UB_DigIn_Read(DIN_1);
-        	Delay_ms(2);
         	bit2 = 1-UB_DigIn_Read(DIN_2);
-        	Delay_ms(2);
         	bit4 = 1-UB_DigIn_Read(DIN_4);
-        	Delay_ms(2);
         	bit8 = 1-UB_DigIn_Read(DIN_8);
-        	Delay_ms(2);
-
 
     	bright_rgb_step = bit1+2*bit2+4*bit4+8*bit8;
 
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
 
+    		UB_Led_On(LED_DEBUG);
     		// Get a payload from the transceiver
     		pipe = nRF24_ReadPayload(nRF24_payload, &payload_length);
 
     		// Clear all pending IRQ flags
 			nRF24_ClearIRQFlags();
 
-            #ifdef DEBUG
+            #ifdef DEBUG_UART_ONLY
 			// Print a payload contents to UART
 			UART_SendStr("RCV PIPE#");
 			UART_SendInt(pipe);
@@ -217,7 +215,9 @@ int main() {
 			number_color = nRF24_payload[0];
 			bright_rgb = nRF24_payload[1];
 
+#ifdef DEBUG_UART_ONLY
 			bright_rgb_nrfl =  bright_rgb;
+#endif
 
 			bright_rgb = set_brightness_slave(bright_rgb_step,bright_rgb);
 
@@ -253,22 +253,24 @@ int main() {
 
     		Delay_ms(15);
 
+    		UB_Led_Off(LED_DEBUG);
+
     	}
     	  else {
     		  k++;
 
-    		  if (k>=400)
+    		  if (k>=60000)
     		  {
     			 set_color(Black,RGB_PWM[0]);
     			 ws2812b_SendRGB(leds, NUM_LEDS);
     			 Delay_ms(60);
     			 k = 0;
-    			 RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
-    			 SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
-    			 PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
-    			 PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
-    			 PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
-    			 __WFE();  //уснули
+    			 //RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
+    			 //SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
+    			 //PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
+    			 //PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
+    			 //PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
+    			 //__WFE();  //уснули
     		  }//
 
 		}
@@ -280,8 +282,16 @@ int main() {
 			 set_color(Red,RGB_PWM[127]);
 			 ws2812b_SendRGB(leds, NUM_LEDS);
 			 Delay_ms(500);
+
+				#ifdef DEBUG_UART_ONLY
+				UART_SendStr("INPUT1 = 0\r\n");
+				#endif
     	}
+
+
     }
+
+
 
 
 
