@@ -42,6 +42,7 @@ DIN_PIN_t DIN_PIN[] = {
   {DIN_4  ,GPIOA,GPIO_Pin_12 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPD,Bit_RESET},
   {DIN_1  ,GPIOA,GPIO_Pin_10 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPD,Bit_RESET},
   {DIN_2  ,GPIOA,GPIO_Pin_15 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPD,Bit_RESET},
+  {DINPUT_1  ,GPIOA,GPIO_Pin_4 ,RCC_APB2Periph_GPIOA,GPIO_Mode_IPD,Bit_RESET},
 };
 
 //--------------------------------------------------------------

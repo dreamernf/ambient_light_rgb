@@ -182,6 +182,11 @@ int main() {
     // The main loop
     while (1) {
 
+    	inp1 = 1-UB_DigIn_Read(DINPUT_1);
+
+    	if (inp1)
+    	{
+
         	bit1 = 1-UB_DigIn_Read(DIN_1);
         	bit2 = 1-UB_DigIn_Read(DIN_2);
         	bit4 = 1-UB_DigIn_Read(DIN_4);
@@ -269,6 +274,19 @@ int main() {
     		  }//
 
 		}
+
+    	}
+
+    	else
+    	{
+			 set_color(Red,RGB_PWM[127]);
+			 ws2812b_SendRGB(leds, NUM_LEDS);
+			 Delay_ms(500);
+
+				#ifdef DEBUG_UART_ONLY
+				UART_SendStr("INPUT1 = 0\r\n");
+				#endif
+    	}
 
 
     }
