@@ -9,6 +9,7 @@ void init_spi()
 		    SPI_InitTypeDef SPI;
 
 
+
 		    // Enable SPI2 peripheral
 		    RCC_APB1PeriphClockCmd(RCC_APB1Periph_SPI2,ENABLE);
 
