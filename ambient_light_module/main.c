@@ -95,57 +95,6 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 	leds[4].r=(color.R*brightness)/(PERIOD-1);
 	leds[4].g=(color.G*brightness)/(PERIOD-1);
 	leds[4].b=(color.B*brightness)/(PERIOD-1);
-
-
-	/*
-	leds[5].r=(color.R*brightness)/(PERIOD-1);
-	leds[5].g=(color.G*brightness)/(PERIOD-1);
-	leds[5].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[6].r=(color.R*brightness)/(PERIOD-1);
-	leds[6].g=(color.G*brightness)/(PERIOD-1);
-	leds[6].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[7].r=(color.R*brightness)/(PERIOD-1);
-	leds[7].g=(color.G*brightness)/(PERIOD-1);
-	leds[7].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[8].r=(color.R*brightness)/(PERIOD-1);
-	leds[8].g=(color.G*brightness)/(PERIOD-1);
-	leds[8].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[9].r=(color.R*brightness)/(PERIOD-1);
-	leds[9].g=(color.G*brightness)/(PERIOD-1);
-	leds[9].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[10].r=(color.R*brightness)/(PERIOD-1);
-	leds[10].g=(color.G*brightness)/(PERIOD-1);
-	leds[10].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[11].r=(color.R*brightness)/(PERIOD-1);
-	leds[11].g=(color.G*brightness)/(PERIOD-1);
-	leds[11].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[12].r=(color.R*brightness)/(PERIOD-1);
-	leds[12].g=(color.G*brightness)/(PERIOD-1);
-	leds[12].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[13].r=(color.R*brightness)/(PERIOD-1);
-	leds[13].g=(color.G*brightness)/(PERIOD-1);
-	leds[13].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[14].r=(color.R*brightness)/(PERIOD-1);
-	leds[14].g=(color.G*brightness)/(PERIOD-1);
-	leds[14].b=(color.B*brightness)/(PERIOD-1);
-
-	leds[15].r=(color.R*brightness)/(PERIOD-1);
-	leds[15].g=(color.G*brightness)/(PERIOD-1);
-	leds[15].b=(color.B*brightness)/(PERIOD-1);
-
-	*/
-
-
-
 }
 
 
@@ -187,88 +136,89 @@ int main() {
         	bit4 = 1-UB_DigIn_Read(DIN_4);
         	bit8 = 1-UB_DigIn_Read(DIN_8);
 
-    	bright_rgb_step = bit1+2*bit2+4*bit4+8*bit8;
+        	bright_rgb_step = bit1+2*bit2+4*bit4+8*bit8;
 
-    	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
+        	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY)
+        	 {
 
-    		UB_Led_On(LED_DEBUG);
-    		// Get a payload from the transceiver
-    		pipe = nRF24_ReadPayload(nRF24_payload, &payload_length);
+						UB_Led_On(LED_DEBUG);
+						// Get a payload from the transceiver
+						pipe = nRF24_ReadPayload(nRF24_payload, &payload_length);
 
-    		// Clear all pending IRQ flags
-			nRF24_ClearIRQFlags();
+						// Clear all pending IRQ flags
+						nRF24_ClearIRQFlags();
 
-            #ifdef DEBUG_UART_ONLY
-			// Print a payload contents to UART
-			UART_SendStr("RCV PIPE#");
-			UART_SendInt(pipe);
-			UART_SendStr(" PAYLOAD:>");
-			UART_SendBufHex((char *)nRF24_payload, payload_length);
-			UART_SendStr("<\r\n");
-			#endif
+						#ifdef DEBUG_UART_ONLY
+						// Print a payload contents to UART
+						UART_SendStr("RCV PIPE#");
+						UART_SendInt(pipe);
+						UART_SendStr(" PAYLOAD:>");
+						UART_SendBufHex((char *)nRF24_payload, payload_length);
+						UART_SendStr("<\r\n");
+						#endif
 
-			number_color = nRF24_payload[0];
-			bright_rgb = nRF24_payload[1];
+						number_color = nRF24_payload[0];
+						bright_rgb = nRF24_payload[1];
 
-#ifdef DEBUG_UART_ONLY
-			bright_rgb_nrfl =  bright_rgb;
-#endif
+						#ifdef DEBUG_UART_ONLY
+						bright_rgb_nrfl =  bright_rgb;
+						#endif
 
-			bright_rgb = set_brightness_slave(bright_rgb_step,bright_rgb);
-
-
-			k = 0;
+						bright_rgb = set_brightness_slave(bright_rgb_step,bright_rgb);
 
 
-#ifdef DEBUG_UART_ONLY
-   	        sprintf(buffer, "NRFL = %d ACT = %d\r\n", bright_rgb_nrfl,bright_rgb);
-   	        UART_SendStr(buffer);
-        	Delay_ms(500);
-#endif
+						k = 0;
 
 
-    		switch (number_color) {
-    		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
-    		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
-    		case 3: set_color(Blue,RGB_PWM[bright_rgb]); break;
-    		case 4: set_color(Orange,RGB_PWM[bright_rgb]); break;
-    		case 5: set_color(Yellow,RGB_PWM[bright_rgb]); break;
-    		case 6: set_color(GreenLime,RGB_PWM[bright_rgb]); break;
-    		case 7: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
-    		case 8: set_color(NavyBlue,RGB_PWM[bright_rgb]); break;
-    		case 9: set_color(Violet,RGB_PWM[bright_rgb]); break;
-    		case 10: set_color(White,RGB_PWM[bright_rgb]); break;
-    		case 11: set_color(Cyan,RGB_PWM[bright_rgb]); break;
-    		case 12: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
-    		case 13: set_color(Purple,RGB_PWM[bright_rgb]); break;
-    		case 14: set_color(Black,RGB_PWM[bright_rgb]); break;
-    		}
+						#ifdef DEBUG_UART_ONLY
+						sprintf(buffer, "NRFL = %d ACT = %d\r\n", bright_rgb_nrfl,bright_rgb);
+						UART_SendStr(buffer);
+						Delay_ms(500);
+						#endif
 
-    		ws2812b_SendRGB(leds, NUM_LEDS);
 
-    		Delay_ms(15);
+						switch (number_color) {
+						case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
+						case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
+						case 3: set_color(Blue,RGB_PWM[bright_rgb]); break;
+						case 4: set_color(Orange,RGB_PWM[bright_rgb]); break;
+						case 5: set_color(Yellow,RGB_PWM[bright_rgb]); break;
+						case 6: set_color(GreenLime,RGB_PWM[bright_rgb]); break;
+						case 7: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
+						case 8: set_color(NavyBlue,RGB_PWM[bright_rgb]); break;
+						case 9: set_color(Violet,RGB_PWM[bright_rgb]); break;
+						case 10: set_color(White,RGB_PWM[bright_rgb]); break;
+						case 11: set_color(Cyan,RGB_PWM[bright_rgb]); break;
+						case 12: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
+						case 13: set_color(Purple,RGB_PWM[bright_rgb]); break;
+						case 14: set_color(Black,RGB_PWM[bright_rgb]); break;
+						}
 
-    		UB_Led_Off(LED_DEBUG);
+						ws2812b_SendRGB(leds, NUM_LEDS);
 
-    	}
-    	  else {
-    		  k++;
+						Delay_ms(15);
 
-    		  if (k>=60000)
-    		  {
-    			 set_color(Black,RGB_PWM[0]);
-    			 ws2812b_SendRGB(leds, NUM_LEDS);
-    			 Delay_ms(60);
-    			 k = 0;
-    			 //RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
-    			 //SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
-    			 //PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
-    			 //PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
-    			 //PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
-    			 //__WFE();  //уснули
-    		  }//
+						UB_Led_Off(LED_DEBUG);
 
-		}
+        	  }
+        			else {
+        					k++;
+
+        						if (k>=60000)
+										  {
+											 set_color(Black,RGB_PWM[0]);
+											 ws2812b_SendRGB(leds, NUM_LEDS);
+											 Delay_ms(60);
+											 k = 0;
+											 RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
+											 SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
+											 PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
+											 PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
+											 PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
+											 __WFE();  //уснули
+										  }
+
+        			      }
 
 
     }

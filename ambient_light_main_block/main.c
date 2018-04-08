@@ -47,18 +47,11 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 RGB_t leds[NUM_LEDS];
 
 
-		uint32_t i,j,k, avg_adc;
-
 		uint8_t bright_rgb = 0;
-
-		uint8_t m = 0;
 
 		uint8_t  number_color = 1;
 
-
 		uint16_t adc_value = 0;
-
-        char buffer[30];
 
 		// Buffer to store a payload of maximum width
 		uint8_t nRF24_payload[32];
@@ -78,79 +71,12 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 			leds[0].g=(color.G*brightness)/(PERIOD-1);
 			leds[0].b=(color.B*brightness)/(PERIOD-1);
 
-/*
-			leds[1].r=(color.R*brightness)/(PERIOD-1);
-			leds[1].g=(color.G*brightness)/(PERIOD-1);
-			leds[1].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[2].r=(color.R*brightness)/(PERIOD-1);
-			leds[2].g=(color.G*brightness)/(PERIOD-1);
-			leds[2].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[3].r=(color.R*brightness)/(PERIOD-1);
-			leds[3].g=(color.G*brightness)/(PERIOD-1);
-			leds[3].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[4].r=(color.R*brightness)/(PERIOD-1);
-			leds[4].g=(color.G*brightness)/(PERIOD-1);
-			leds[4].b=(color.B*brightness)/(PERIOD-1);
-
-
-
-			leds[5].r=(color.R*brightness)/(PERIOD-1);
-			leds[5].g=(color.G*brightness)/(PERIOD-1);
-			leds[5].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[6].r=(color.R*brightness)/(PERIOD-1);
-			leds[6].g=(color.G*brightness)/(PERIOD-1);
-			leds[6].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[7].r=(color.R*brightness)/(PERIOD-1);
-			leds[7].g=(color.G*brightness)/(PERIOD-1);
-			leds[7].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[8].r=(color.R*brightness)/(PERIOD-1);
-			leds[8].g=(color.G*brightness)/(PERIOD-1);
-			leds[8].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[9].r=(color.R*brightness)/(PERIOD-1);
-			leds[9].g=(color.G*brightness)/(PERIOD-1);
-			leds[9].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[10].r=(color.R*brightness)/(PERIOD-1);
-			leds[10].g=(color.G*brightness)/(PERIOD-1);
-			leds[10].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[11].r=(color.R*brightness)/(PERIOD-1);
-			leds[11].g=(color.G*brightness)/(PERIOD-1);
-			leds[11].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[12].r=(color.R*brightness)/(PERIOD-1);
-			leds[12].g=(color.G*brightness)/(PERIOD-1);
-			leds[12].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[13].r=(color.R*brightness)/(PERIOD-1);
-			leds[13].g=(color.G*brightness)/(PERIOD-1);
-			leds[13].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[14].r=(color.R*brightness)/(PERIOD-1);
-			leds[14].g=(color.G*brightness)/(PERIOD-1);
-			leds[14].b=(color.B*brightness)/(PERIOD-1);
-
-			leds[15].r=(color.R*brightness)/(PERIOD-1);
-			leds[15].g=(color.G*brightness)/(PERIOD-1);
-			leds[15].b=(color.B*brightness)/(PERIOD-1);
-
-			*/
-
-
-
 		}
 
 
 // ====================================================
-	// FLASH Settings struct
-	// ====================================================
+// FLASH Settings struct
+// ====================================================
 
 #define MY_FLASH_PAGE_ADDR 0x800FC00
 
@@ -206,76 +132,35 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 
 	    FLASH_Lock();
 	}
-
-
-	// ====================================================
-
+// ====================================================
 
 int main(void)
 {
 
 	        SetSysClockTo72();
-
 	        Delay_Init();
-
    	        FLASH_Init();
-
-#ifdef DEBUG
-	       UART_Init(115200);
-#endif
-
 			init_spi();
-
 			ws2812b_Init();
-
-
-
-
 			init_nrf24l01();
-
 			while (!ws2812b_IsReady()); // wait
-
 			set_color(Black,RGB_PWM[127]);
 			ws2812b_SendRGB(leds, NUM_LEDS);
 			Delay_ms(100);
-
 			UB_Led_Init();
-
 			UB_Button_Init();
-
 			init_adc();
-
 			UB_Led_On(LED_DEBUG);
-
 			UB_Led_On(LED_BO);
-
         	UB_Led_On(BUZZER);
         	Delay_ms(100);
         	UB_Led_Off(BUZZER);
-
         	FLASH_ReadSettings();
-
         	number_color = settings.NumberColorF;
 
 	        while (1) {
 
-	        	avg_adc = 0;
-	        	for (m=1;m<=50;m++)
-	        	{
-	        		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
-	        		Delay_ms(1);
-	        	}
-
-	        	adc_value = avg_adc/50;
-
-	        	bright_rgb = set_brightness(adc_value);
-
-#ifdef DEBUG
-       	        sprintf(buffer, "V = %d  STEP NUM = %d\r\n", adc_value,bright_rgb);
-       	        UART_SendStr(buffer);
-	        	Delay_ms(500);
-#endif
-
+	        	bright_rgb = set_brightness(ADC_GetConversionValue(ADC1));
         		switch (number_color) {
         		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
         		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
@@ -294,7 +179,7 @@ int main(void)
         		}
 
         		ws2812b_SendRGB(leds, NUM_LEDS);
-        		Delay_ms(60);
+        		Delay_ms(5);
 
         		nRF24_payload[0] = 	number_color;
 	        	nRF24_payload[1] =  bright_rgb;
@@ -303,39 +188,13 @@ int main(void)
 	        	nRF24_payload[4] = 	0;
 	        	nRF24_payload[5] = 	0;
 
-
-#ifdef DEBUG
-	        	// Print a payload
-	        	UART_SendStr("PAYLOAD:>");
-	        	UART_SendBufHex((char *)nRF24_payload, payload_length);
-	        	UART_SendStr("< ... TX: ");
-#endif
-
 	        	// Transmit a packet
 	        	tx_res = nRF24_TransmitPacket(nRF24_payload, payload_length);
-#ifdef DEBUG
-	        	switch (tx_res) {
-	    			case nRF24_TX_SUCCESS:
-	    				UART_SendStr("OK");
-	    				break;
-	    			case nRF24_TX_TIMEOUT:
-	    				UART_SendStr("TIMEOUT");
-	    				break;
-	    			case nRF24_TX_MAXRT:
-	    				UART_SendStr("MAX RETRANSMIT");
-	    				break;
-	    			default:
-	    				UART_SendStr("ERROR");
-	    				break;
-	    		}
-	        	UART_SendStr("\r\n");
-#endif
-
 
 	        	if (UB_Button_OnClick(BTN_MODE_RGB))
 	        	{
 	        		UB_Led_On(LED_BO);
-	        		Delay_ms(500);
+	        		Delay_ms(50);
 	        		number_color++;
 	        		if (number_color>=15)
 	        		  {

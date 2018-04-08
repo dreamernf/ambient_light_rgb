@@ -35,9 +35,6 @@ void init_spi()
 		    SPI_NSSInternalSoftwareConfig(nRF24_SPI_PORT, SPI_NSSInternalSoft_Set);
 		    SPI_Cmd(nRF24_SPI_PORT, ENABLE);
 
-#ifdef DEBUG
-		    UART_SendStr("SPI is OK.\r\n");
-#endif
 
 }
 
@@ -79,13 +76,6 @@ nRF24_TXResult nRF24_TransmitPacket(uint8_t *pBuf, uint8_t length) {
 		return nRF24_TX_TIMEOUT;
 	}
 
-#ifdef DEBUG
-	// Check the flags in STATUS register
-	UART_SendStr("[");
-	UART_SendHex8(status);
-	UART_SendStr("] ");
-#endif
-
 	// Clear pending IRQ flags
     nRF24_ClearIRQFlags();
 
@@ -115,18 +105,12 @@ void init_nrf24l01()
 				nRF24_CE_L();
 
 				// Configure the nRF24L01+
-#ifdef DEBUG
-				UART_SendStr("nRF24L01+ check: ");
-#endif
+
 				if (!nRF24_Check()) {
-#ifdef DEBUG
-					UART_SendStr("FAIL\r\n");
-#endif
+
 					while (1);
 				}
-#ifdef DEBUG
-				UART_SendStr("OK\r\n");
-#endif
+
 
 				// Initialize the nRF24L01 to its default state
 				nRF24_Init();
@@ -278,11 +262,6 @@ void SetSysClockTo72(void)
 
 uint8_t set_brightness(int16_t voltage)
 {
-
-//#define  count_pwm_steps    128
-//#define  MIN_ADC			900
-//#define  MAX_ADC			2500
-
 	uint8_t  br_tmp = 0;
 
 	br_tmp = (uint8_t)((voltage - MIN_ADC)/((MAX_ADC-MIN_ADC)/count_pwm_steps));
@@ -294,17 +273,6 @@ uint8_t set_brightness(int16_t voltage)
 	if (voltage <= MIN_ADC)  {br_tmp = 0;};
 
 	if (br_tmp>=count_pwm_steps)  {br_tmp = count_pwm_steps-1;};
-
-
-	//br_tmp = (voltage - 900)/47;
-
-	/*if (voltage>=ADC_100) {br_tmp = BRIGHTNESS_100;};
-	if ((voltage<ADC_100) && (voltage>=ADC_75)) {br_tmp = BRIGHTNESS_75;};
-	if ((voltage<ADC_75) && (voltage>=ADC_50)) {br_tmp = BRIGHTNESS_50;};
-	if ((voltage<ADC_50) && (voltage>=ADC_25)) {br_tmp = BRIGHTNESS_25;};
-	if ((voltage<ADC_25) && (voltage>=ADC_10)) {br_tmp = BRIGHTNESS_10;};
-	if ((voltage<ADC_10) && (voltage>=ADC_5)) {br_tmp = BRIGHTNESS_5;};
-	if (voltage<=ADC_5) {br_tmp = BRIGHTNESS_0;};*/
 
 	return br_tmp;
 

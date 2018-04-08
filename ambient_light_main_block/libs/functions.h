@@ -24,7 +24,6 @@ struct RGB_COLOR_TYPE
 
 #define  MIN_ADC			400
 #define  MAX_ADC			2500
-//#define  STEP_BRIGHT		(MAX_ADC-MIN_ADC)/count_pwm_steps
 
 
 

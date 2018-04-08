@@ -33,7 +33,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/main.c" title="main.c" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2135" selectionTopPixel="3331"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="6423" selectionTopPixel="2893"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="misc.h" partName="misc.h" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/stm_lib/inc/misc.h" title="misc.h" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/stm_lib/inc/misc.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/stm_lib/inc/misc.h"/>
@@ -53,11 +53,11 @@
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_dig_in.c" partName="stm32_ub_dig_in.c" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/inc/stm32_ub_dig_in.c" title="stm32_ub_dig_in.c" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/inc/stm32_ub_dig_in.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/digin/stm32_ub_dig_in.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1661" selectionTopPixel="720"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1579" selectionTopPixel="489"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_dig_in.h" partName="stm32_ub_dig_in.h" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/inc/stm32_ub_dig_in.h" title="stm32_ub_dig_in.h" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/inc/stm32_ub_dig_in.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/digin/stm32_ub_dig_in.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="1221" selectionTopPixel="200"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1255" selectionTopPixel="200"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" partName="functions.h" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/inc/functions.h" title="functions.h" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/inc/functions.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/functions/functions.h"/>
@@ -80,7 +80,8 @@
 <editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="7870" selectionTopPixel="3675"/>
 </editor>
 <editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">&#x0A;<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
 </input>
 </editor>
 </editors>
@@ -101,7 +102,7 @@
 <element path="/ambient_light_module/stm_lib/src"/>
 </expanded>
 <selection>
-<element path="/ambient_light_module/inc/ws2812b_conf.h"/>
+<element path="/ambient_light_module/digin/stm32_ub_dig_in.h"/>
 </selection>
 </viewState>
 </view>
@@ -316,22 +317,12 @@
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
 </editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/main.c"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="1" verticalPosition="0"/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/digin/stm32_ub_dig_in.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/ambient_light_module/digin/stm32_ub_dig_in.h"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4633" y="0"/>
-</item>
-<item historyLabel="stm32_ub_led.c" index="2">
-<position info="not_deleted" x="1956" y="30"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4645" y="0"/>
-</item>
-<item historyLabel="stm32_ub_led.h" index="1">
-<position info="not_deleted" x="1619" y="9"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="4645" y="0"/>
-</item>
 <item historyLabel="stm32_ub_led.h" index="1">
 <position info="not_deleted" x="4813" y="35"/>
 </item>
@@ -458,8 +449,21 @@
 <item historyLabel="main.c" index="12">
 <position info="not_deleted" x="5559" y="0"/>
 </item>
-<item active="true" historyLabel="main.c" index="12">
+<item historyLabel="main.c" index="12">
 <position info="not_deleted" x="2117" y="14"/>
+</item>
+<item historyLabel="Configuration" index="13"/>
+<item historyLabel="main.c" index="12">
+<position info="not_deleted" x="2135" y="0"/>
+</item>
+<item historyLabel="stm32_ub_dig_in.c" index="14">
+<position info="not_deleted" x="1581" y="0"/>
+</item>
+<item historyLabel="stm32_ub_dig_in.h" index="15">
+<position info="not_deleted" x="1255" y="0"/>
+</item>
+<item active="true" historyLabel="main.c" index="12">
+<position info="not_deleted" x="3534" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -468,49 +472,53 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.c" tooltip="ambient_light_main_block/libs/nrf24.c">
-<persistable path="/ambient_light_main_block/libs/nrf24.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.c" tooltip="ambient_light_main_block/ub_libs/stm32_ub_button.c">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_button.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24_hal.h" tooltip="ambient_light_main_block/libs/nrf24_hal.h">
-<persistable path="/ambient_light_main_block/libs/nrf24_hal.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.c" tooltip="ambient_light_main_block/ub_libs/stm32_ub_led.c">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_led.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24_hal.c" tooltip="ambient_light_main_block/libs/nrf24_hal.c">
-<persistable path="/ambient_light_main_block/libs/nrf24_hal.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_button.h" tooltip="ambient_light_main_block/ub_libs/stm32_ub_button.h">
+<persistable path="/ambient_light_main_block/ub_libs/stm32_ub_button.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="nrf24.h" tooltip="ambient_light_main_block/libs/nrf24.h">
-<persistable path="/ambient_light_main_block/libs/nrf24.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" tooltip="ambient_light_main_block/libs/functions.h">
+<persistable path="/ambient_light_main_block/libs/functions.h"/>
 </file>
-<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor" name="" tooltip="">
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b_conf.h" tooltip="ambient_light_main_block/libs/ws2812b_conf.h">
+<persistable path="/ambient_light_main_block/libs/ws2812b_conf.h"/>
+</file>
+<file factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage" name="" tooltip="">
 <persistable>
-<org.coocox.builder.ui.editors.ConfigEditor/>
+<org.coocox.welcome.ui.WelcomePage/>
 </persistable>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system_stm32f10x.c" tooltip="ambient_light_module/cmsis_boot/system_stm32f10x.c">
-<persistable path="/ambient_light_module/cmsis_boot/system_stm32f10x.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_adc.h" tooltip="ambient_light_main_block/stm_lib/inc/stm32f10x_adc.h">
+<persistable path="/ambient_light_main_block/stm_lib/inc/stm32f10x_adc.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="ambient_light_module/functions/uart.c">
-<persistable path="/ambient_light_module/functions/uart.c"/>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>
+<subPage/>
+</persistable>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.c" tooltip="ambient_light_module/digout/stm32_ub_led.c">
-<persistable path="/ambient_light_module/digout/stm32_ub_led.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b_conf.h" tooltip="ambient_light_main_block_freeRTOS/ws2812b_lib/ws2812b_conf.h">
+<persistable path="/ambient_light_main_block_freeRTOS/ws2812b_lib/ws2812b_conf.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_led.h" tooltip="ambient_light_module/digout/stm32_ub_led.h">
-<persistable path="/ambient_light_module/digout/stm32_ub_led.h"/>
+<file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
+<persistable>
+<subPage/>
+</persistable>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" tooltip="ambient_light_module/functions/functions.h">
-<persistable path="/ambient_light_module/functions/functions.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.c" tooltip="ambient_light_main_block_freeRTOS/functions_lib/functions.c">
+<persistable path="/ambient_light_main_block_freeRTOS/functions_lib/functions.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x_rcc.h" tooltip="ambient_light_module/stm_lib/inc/stm32f10x_rcc.h">
-<persistable path="/ambient_light_module/stm_lib/inc/stm32f10x_rcc.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" tooltip="ambient_light_main_block_freeRTOS/functions_lib/functions.h">
+<persistable path="/ambient_light_main_block_freeRTOS/functions_lib/functions.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32_ub_dig_in.h" tooltip="ambient_light_module/digin/stm32_ub_dig_in.h">
-<persistable path="/ambient_light_module/digin/stm32_ub_dig_in.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="ws2812b.c" tooltip="ambient_light_main_block_freeRTOS/ws2812b_lib/ws2812b.c">
+<persistable path="/ambient_light_main_block_freeRTOS/ws2812b_lib/ws2812b.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="stm32f10x.h" tooltip="ambient_light_module/cmsis_boot/stm32f10x.h">
-<persistable path="/ambient_light_module/cmsis_boot/stm32f10x.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="test_stm32f103/main.c">
-<persistable path="/test_stm32f103/main.c"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="delay.h" tooltip="ambient_light_main_block_freeRTOS/delay_lib/delay.h">
+<persistable path="/ambient_light_main_block_freeRTOS/delay_lib/delay.h"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="functions.h" tooltip="ambient_light_module/functions/functions.h">
 <persistable path="/ambient_light_module/functions/functions.h"/>
