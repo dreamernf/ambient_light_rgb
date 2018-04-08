@@ -39,10 +39,9 @@ typedef enum
   DIN_2 = 1,
   DIN_4 = 2,
   DIN_8 = 3,
-  DINPUT_1 = 4,
 }DIN_NAME_t;
 
-#define  DIN_ANZ   5 // Количество портов в DIN_NAME_t
+#define  DIN_ANZ   4 // Количество портов в DIN_NAME_t
 
 
 

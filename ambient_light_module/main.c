@@ -45,6 +45,7 @@ uint8_t number_color = 0;
 uint8_t bright_rgb = 0;
 uint8_t bright_rgb_nrfl = 0;
 uint8_t bright_rgb_step = 0;
+uint8_t flag_sleep = 0;
 
 
 uint8_t number_color_tmp = 0;
@@ -64,7 +65,7 @@ uint8_t nRF24_payload[32];
 nRF24_RXResult pipe;
 
 // Length of received payload
-uint8_t payload_length = 5;
+uint8_t payload_length = 2;
 
 BitAction bit1 = 0;
 BitAction bit2 = 0;
@@ -156,7 +157,7 @@ int main() {
 
     Delay_Init();
 
-    UB_Led_Init();
+    //UB_Led_Init();
 
     UB_DigIn_Init();  // Инициализация цифровых входов
 
@@ -182,21 +183,17 @@ int main() {
     // The main loop
     while (1) {
 
-    	inp1 = 1-UB_DigIn_Read(DINPUT_1);
-
-    	if (inp1)
-    	{
-
         	bit1 = 1-UB_DigIn_Read(DIN_1);
         	bit2 = 1-UB_DigIn_Read(DIN_2);
         	bit4 = 1-UB_DigIn_Read(DIN_4);
         	bit8 = 1-UB_DigIn_Read(DIN_8);
 
-    	bright_rgb_step = bit1+2*bit2+4*bit4+8*bit8;
+    	    bright_rgb_step = bit1+2*bit2+4*bit4+8*bit8;
+
 
     	if (nRF24_GetStatus_RXFIFO() != nRF24_STATUS_RXFIFO_EMPTY) {
 
-    		UB_Led_On(LED_DEBUG);
+    		//UB_Led_On(LED_DEBUG);
     		// Get a payload from the transceiver
     		pipe = nRF24_ReadPayload(nRF24_payload, &payload_length);
 
@@ -246,14 +243,14 @@ int main() {
     		case 11: set_color(Cyan,RGB_PWM[bright_rgb]); break;
     		case 12: set_color(LightGreen,RGB_PWM[bright_rgb]); break;
     		case 13: set_color(Purple,RGB_PWM[bright_rgb]); break;
-    		case 14: set_color(Black,RGB_PWM[bright_rgb]); break;
+    		case 14: set_color(Black,RGB_PWM[bright_rgb]);  break;
     		}
 
     		ws2812b_SendRGB(leds, NUM_LEDS);
 
-    		Delay_ms(15);
+    		Delay_ms(200);
 
-    		UB_Led_Off(LED_DEBUG);
+    		//UB_Led_Off(LED_DEBUG);
 
     	}
     	  else {
@@ -265,29 +262,15 @@ int main() {
     			 ws2812b_SendRGB(leds, NUM_LEDS);
     			 Delay_ms(60);
     			 k = 0;
-    			 //RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
-    			 //SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
-    			 //PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
-    			 //PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
-    			 //PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
-    			 //__WFE();  //уснули
-    		  }//
+   			  RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
+   			  SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
+   			  PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
+   			  PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
+   			  PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
+   			  __WFE();  //уснули
+    		  }
 
 		}
-
-    	}
-
-    	else
-    	{
-			 set_color(Red,RGB_PWM[127]);
-			 ws2812b_SendRGB(leds, NUM_LEDS);
-			 Delay_ms(500);
-
-				#ifdef DEBUG_UART_ONLY
-				UART_SendStr("INPUT1 = 0\r\n");
-				#endif
-    	}
-
 
     }
 

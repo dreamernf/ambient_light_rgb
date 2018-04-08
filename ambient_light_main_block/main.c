@@ -263,7 +263,6 @@ int main(void)
 	        	for (m=1;m<=50;m++)
 	        	{
 	        		avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
-	        		Delay_ms(1);
 	        	}
 
 	        	adc_value = avg_adc/50;
@@ -335,7 +334,7 @@ int main(void)
 	        	if (UB_Button_OnClick(BTN_MODE_RGB))
 	        	{
 	        		UB_Led_On(LED_BO);
-	        		Delay_ms(500);
+	        		Delay_ms(150);
 	        		number_color++;
 	        		if (number_color>=15)
 	        		  {
