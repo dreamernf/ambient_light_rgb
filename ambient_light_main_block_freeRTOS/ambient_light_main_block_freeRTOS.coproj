@@ -73,34 +73,54 @@
     <Component id="439" name="CMSIS_Boot" path="" type="2"/>
     <Component id="440" name="RCC" path="" type="2"/>
     <Component id="444" name="GPIO" path="" type="2"/>
+    <Component id="446" name="DMA" path="" type="2"/>
+    <Component id="452" name="SPI" path="" type="2"/>
+    <Component id="456" name="TIM" path="" type="2"/>
+    <Component id="467" name="MISC" path="" type="2"/>
   </Components>
   <Files>
+    <File name="ws2812b_lib" path="" type="2"/>
     <File name="freertos/source/timers.c" path="timers.c" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_tim.h" path="stm_lib/inc/stm32f10x_tim.h" type="1"/>
     <File name="cmsis_boot" path="" type="2"/>
     <File name="freertos/source/include/event_groups.h" path="include/event_groups.h" type="1"/>
     <File name="freertos/source/portable/ARM_CM3/portmacro.h" path="portable/ARM_CM3/portmacro.h" type="1"/>
     <File name="freertos/source/include/list.h" path="include/list.h" type="1"/>
+    <File name="ws2812b_lib/bitmap.h" path="ws2812b_lib/bitmap.h" type="1"/>
     <File name="freertos/source/event_groups.c" path="event_groups.c" type="1"/>
+    <File name="stm_lib/src/stm32f10x_tim.c" path="stm_lib/src/stm32f10x_tim.c" type="1"/>
     <File name="cmsis_boot/startup" path="" type="2"/>
     <File name="cmsis/core_cmFunc.h" path="cmsis/core_cmFunc.h" type="1"/>
+    <File name="ub_libs/stm32_ub_led.c" path="ub_lib/stm32_ub_led.c" type="1"/>
+    <File name="ws2812b_lib/ws2812b.h" path="ws2812b_lib/ws2812b.h" type="1"/>
+    <File name="stm_lib/src/misc.c" path="stm_lib/src/misc.c" type="1"/>
+    <File name="ws2812b_lib/ws2812b_conf.h" path="ws2812b_lib/ws2812b_conf.h" type="1"/>
+    <File name="stm_lib/src/stm32f10x_spi.c" path="stm_lib/src/stm32f10x_spi.c" type="1"/>
     <File name="cmsis_boot/stm32f10x.h" path="cmsis_boot/stm32f10x.h" type="1"/>
     <File name="freertos/FreeRTOSConfig.h" path="FreeRTOSConfig.h" type="1"/>
-    <File name="freertos/source/include/task.h" path="include/task.h" type="1"/>
     <File name="cmsis_boot/stm32f10x_conf.h" path="cmsis_boot/stm32f10x_conf.h" type="1"/>
+    <File name="freertos/source/include/task.h" path="include/task.h" type="1"/>
+    <File name="delay_lib/delay.c" path="delay/delay.c" type="1"/>
     <File name="freertos/source/include/mpu_wrappers.h" path="include/mpu_wrappers.h" type="1"/>
-    <File name="freertos/source/include/mpu_prototypes.h" path="include/mpu_prototypes.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_spi.h" path="stm_lib/inc/stm32f10x_spi.h" type="1"/>
+    <File name="stm_lib/inc/stm32f10x_dma.h" path="stm_lib/inc/stm32f10x_dma.h" type="1"/>
     <File name="freertos/source/include/FreeRTOS.h" path="include/FreeRTOS.h" type="1"/>
+    <File name="freertos/source/include/mpu_prototypes.h" path="include/mpu_prototypes.h" type="1"/>
+    <File name="ub_libs/stm32_ub_button.c" path="ub_lib/stm32_ub_button.c" type="1"/>
+    <File name="functions_lib/functions.c" path="functions/functions.c" type="1"/>
     <File name="freertos/source/stream_buffer.c" path="stream_buffer.c" type="1"/>
     <File name="freertos/source/memmang" path="" type="2"/>
     <File name="freertos/source/tasks.c" path="tasks.c" type="1"/>
     <File name="cmsis_boot/startup/startup_stm32f10x_md.c" path="cmsis_boot/startup/startup_stm32f10x_md.c" type="1"/>
-    <File name="freertos/source/include/portable.h" path="include/portable.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_gpio.c" path="stm_lib/src/stm32f10x_gpio.c" type="1"/>
-    <File name="freertos/source/include/stream_buffer.h" path="include/stream_buffer.h" type="1"/>
+    <File name="freertos/source/include/portable.h" path="include/portable.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_gpio.h" path="stm_lib/inc/stm32f10x_gpio.h" type="1"/>
+    <File name="freertos/source/include/stream_buffer.h" path="include/stream_buffer.h" type="1"/>
     <File name="freertos/source/portable/ARM_CM3/port.c" path="portable/ARM_CM3/port.c" type="1"/>
+    <File name="ub_libs/stm32_ub_led.h" path="ub_lib/stm32_ub_led.h" type="1"/>
     <File name="cmsis_boot/system_stm32f10x.c" path="cmsis_boot/system_stm32f10x.c" type="1"/>
     <File name="freertos/source/include/queue.h" path="include/queue.h" type="1"/>
+    <File name="stm_lib/inc/misc.h" path="stm_lib/inc/misc.h" type="1"/>
     <File name="freertos/source/include/StackMacros.h" path="include/StackMacros.h" type="1"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="freertos/source/include/semphr.h" path="include/semphr.h" type="1"/>
@@ -109,22 +129,30 @@
     <File name="freertos/source/portable/ARM_CM3" path="" type="2"/>
     <File name="freertos/source/include/deprecated_definitions.h" path="include/deprecated_definitions.h" type="1"/>
     <File name="stm_lib/src/stm32f10x_rcc.c" path="stm_lib/src/stm32f10x_rcc.c" type="1"/>
+    <File name="ub_libs/stm32_ub_button.h" path="ub_lib/stm32_ub_button.h" type="1"/>
     <File name="freertos/source/include/timers.h" path="include/timers.h" type="1"/>
-    <File name="freertos/source/include/projdefs.h" path="include/projdefs.h" type="1"/>
+    <File name="ub_libs" path="" type="2"/>
+    <File name="stm_lib/src/stm32f10x_dma.c" path="stm_lib/src/stm32f10x_dma.c" type="1"/>
     <File name="stm_lib/src" path="" type="2"/>
+    <File name="freertos/source/include/projdefs.h" path="include/projdefs.h" type="1"/>
     <File name="freertos/source/include" path="" type="2"/>
-    <File name="cmsis" path="" type="2"/>
     <File name="freertos/source/portable" path="" type="2"/>
+    <File name="cmsis" path="" type="2"/>
     <File name="stm_lib" path="" type="2"/>
     <File name="freertos/source/croutine.c" path="croutine.c" type="1"/>
-    <File name="freertos/source/include/message_buffer.h" path="include/message_buffer.h" type="1"/>
-    <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
-    <File name="freertos" path="" type="2"/>
     <File name="freertos/source/list.c" path="list.c" type="1"/>
+    <File name="freertos" path="" type="2"/>
+    <File name="cmsis_boot/system_stm32f10x.h" path="cmsis_boot/system_stm32f10x.h" type="1"/>
+    <File name="freertos/source/include/message_buffer.h" path="include/message_buffer.h" type="1"/>
     <File name="stm_lib/inc/stm32f10x_rcc.h" path="stm_lib/inc/stm32f10x_rcc.h" type="1"/>
+    <File name="delay_lib" path="" type="2"/>
     <File name="freertos/source/include/stack_macros.h" path="include/stack_macros.h" type="1"/>
+    <File name="functions_lib" path="" type="2"/>
+    <File name="ws2812b_lib/ws2812b.c" path="ws2812b_lib/ws2812b.c" type="1"/>
     <File name="freertos/source/memmang/heap_2.c" path="portable/MemMang/heap_2.c" type="1"/>
+    <File name="delay_lib/delay.h" path="delay/delay.h" type="1"/>
     <File name="stm_lib/inc" path="" type="2"/>
+    <File name="functions_lib/functions.h" path="functions/functions.h" type="1"/>
     <File name="freertos/source" path="" type="2"/>
     <File name="main.c" path="main.c" type="1"/>
     <File name="freertos/source/queue.c" path="queue.c" type="1"/>

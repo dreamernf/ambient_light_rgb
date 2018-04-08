@@ -303,6 +303,24 @@ int main(void)
 	        	nRF24_payload[5] = 	0;
 
 
+
+	        	if (UB_Button_OnClick(BTN_MODE_RGB))
+	        	{
+	        		UB_Led_On(LED_BO);
+	        		Delay_ms(100);
+	        		number_color++;
+	        		if (number_color>=15)
+	        		  {
+	        			number_color=1;
+	        		  };
+	                settings.NumberColorF=number_color;
+	                settings.F1=0;
+	                settings.F2=0;
+	                settings.F3=0;
+	                FLASH_WriteSettings();
+
+	        	}
+
 #ifdef DEBUG
 	        	// Print a payload
 	        	UART_SendStr("PAYLOAD:>");
@@ -331,22 +349,6 @@ int main(void)
 #endif
 
 
-	        	if (UB_Button_OnClick(BTN_MODE_RGB))
-	        	{
-	        		UB_Led_On(LED_BO);
-	        		Delay_ms(150);
-	        		number_color++;
-	        		if (number_color>=15)
-	        		  {
-	        			number_color=1;
-	        		  };
-	                settings.NumberColorF=number_color;
-	                settings.F1=0;
-	                settings.F2=0;
-	                settings.F3=0;
-	                FLASH_WriteSettings();
-
-	        	}
 	        	UB_Led_Off(LED_BO);
 	        }
 

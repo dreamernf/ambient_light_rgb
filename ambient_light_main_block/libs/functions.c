@@ -189,7 +189,7 @@ void init_adc(){
 	    GPIO_InitTypeDef  GPIO_InitStructure;
 	    // input of ADC (it doesn't seem to be needed, as default GPIO state is floating input)
 	    GPIO_InitStructure.GPIO_Mode  = GPIO_Mode_AIN;
-	    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_1 ;        // that's ADC1 (PA1 on STM32)
+	    GPIO_InitStructure.GPIO_Pin   = GPIO_Pin_2 ;        // that's ADC1 (PA1 on STM32)
 	    GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 	    //clock for ADC (max 14MHz --> 72/6=12MHz)
@@ -205,7 +205,7 @@ void init_adc(){
 	    ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
 	    ADC_InitStructure.ADC_NbrOfChannel = 1;
 
-	    ADC_RegularChannelConfig(ADC1,ADC_Channel_1, 1,ADC_SampleTime_28Cycles5); // define regular conversion config
+	    ADC_RegularChannelConfig(ADC1,ADC_Channel_2, 1,ADC_SampleTime_28Cycles5); // define regular conversion config
 	    ADC_Init ( ADC1, &ADC_InitStructure);   //set config of ADC1
 
 	    // enable ADC
