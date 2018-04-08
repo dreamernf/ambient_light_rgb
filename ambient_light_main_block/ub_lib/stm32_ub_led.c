@@ -13,8 +13,8 @@
 LED_t LED[] = {
   // Name    ,PORT , PIN       , CLOCK              , Init
   {LED_DEBUG ,GPIOC,GPIO_Pin_13,RCC_APB2Periph_GPIOC,LED_OFF},   // PD12=Зеленый светодиод на плате Discovery
-  {LED_BO ,GPIOA,GPIO_Pin_6,RCC_APB2Periph_GPIOA,LED_OFF},   // PD12=Зеленый светодиод на плате Discovery
-  {BUZZER ,GPIOB,GPIO_Pin_5,RCC_APB2Periph_GPIOB,LED_OFF},   // PD12=Зеленый светодиод на плате Discovery
+  {LED_BO ,GPIOC,GPIO_Pin_14,RCC_APB2Periph_GPIOC,LED_OFF},   // PD12=Зеленый светодиод на плате Discovery
+  {BUZZER ,GPIOB,GPIO_Pin_10,RCC_APB2Periph_GPIOB,LED_OFF},   // PD12=Зеленый светодиод на плате Discovery
 };
 
 
