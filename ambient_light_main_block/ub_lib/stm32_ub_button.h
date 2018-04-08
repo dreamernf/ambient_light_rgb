@@ -9,6 +9,7 @@
 //--------------------------------------------------------------
 // Includes
 //--------------------------------------------------------------
+
 #include "stm32f10x.h"
 #include "stm32f10x_gpio.h"
 #include "stm32f10x_rcc.h"
@@ -58,12 +59,12 @@ typedef enum {
 // TIM_Frq = 20Hz => 50ms (устанавливается не менее 1мс)
 //--------------------------------------------------------------
 #if BUTTON_USE_TIMER==1
-  #define   UB_BUTTON_TIM              TIM3
-  #define   UB_BUTTON_TIM_CLK          RCC_APB1Periph_TIM3
+  #define   UB_BUTTON_TIM              TIM4
+  #define   UB_BUTTON_TIM_CLK          RCC_APB1Periph_TIM4
   #define   UB_BUTTON_TIM_PERIODE      4999
   #define   UB_BUTTON_TIM_PRESCALE     839
-  #define   UB_BUTTON_TIM_IRQ          TIM3_IRQn
-  #define   UB_BUTTON_TIM_ISR_HANDLER  TIM3_IRQHandler
+  #define   UB_BUTTON_TIM_IRQ          TIM4_IRQn
+  #define   UB_BUTTON_TIM_ISR_HANDLER  TIM4_IRQHandler
 #endif
 
 
