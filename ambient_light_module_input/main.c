@@ -153,29 +153,24 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 int main() {
 
     SetSysClockTo72();
-
     Delay_Init();
-
     UB_Led_Init();
-
     UB_DigIn_Init();  // Инициализация цифровых входов
 
     #ifdef DEBUG_UART_ONLY
     UART_Init(115200);
     #endif
-	init_spi();
 
 	ws2812b_Init();
-
-	init_nrf24l01();
-
-
     while (!ws2812b_IsReady()); // wait
-
-    #ifdef DEBUG_UART_ONLY
-    set_color(Red,RGB_PWM[0]);
+    set_color(Black,RGB_PWM[0]);
 	ws2812b_SendRGB(leds, NUM_LEDS);
 	Delay_ms(500);
+	init_spi();
+	init_nrf24l01();
+
+    #ifdef DEBUG_UART_ONLY
+
     UART_SendStr("WS2812B READY is OK.\r\n");
     #endif
 
@@ -265,12 +260,12 @@ int main() {
     			 ws2812b_SendRGB(leds, NUM_LEDS);
     			 Delay_ms(60);
     			 k = 0;
-    			 //RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
-    			 //SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
-    			 //PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
-    			 //PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
-    			 //PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
-    			 //__WFE();  //уснули
+    			 RCC->APB1ENR |= RCC_APB1ENR_PWREN;//вкл тактирование PWR
+    			 SCB->SCR |= SCB_SCR_SLEEPDEEP; //для M3 разрешаем sleepdeep
+    			 PWR->CR |= PWR_CR_PDDS;//выбираем режим Power Down Deepsleep
+    			 PWR->CR |= PWR_CR_CWUF ; //очищаем wakeup flag
+    			 PWR->CSR |= PWR_CSR_EWUP; //разрешаем вэйкап, то есть пробуждение по переднему фронту на А0
+    			 __WFE();  //уснули
     		  }//
 
 		}
