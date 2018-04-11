@@ -140,16 +140,16 @@ int main(void)
 	        SetSysClockTo72();
 	        Delay_Init();
    	        FLASH_Init();
-			init_spi();
 			ws2812b_Init();
-			init_nrf24l01();
 			while (!ws2812b_IsReady()); // wait
-			set_color(Black,RGB_PWM[127]);
+			set_color(Red,RGB_PWM[127]);
 			ws2812b_SendRGB(leds, NUM_LEDS);
-			Delay_ms(100);
+			Delay_ms(500);
 			UB_Led_Init();
 			UB_Button_Init();
 			init_adc();
+			init_spi();
+			init_nrf24l01();
 			UB_Led_On(LED_DEBUG);
 			UB_Led_On(LED_BO);
         	UB_Led_On(BUZZER);

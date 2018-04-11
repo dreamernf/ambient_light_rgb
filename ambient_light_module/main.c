@@ -102,31 +102,23 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 int main() {
 
     SetSysClockTo72();
-
     Delay_Init();
-
     UB_Led_Init();
-
     UB_DigIn_Init();  // Инициализация цифровых входов
-
     #ifdef DEBUG_UART_ONLY
     UART_Init(115200);
     #endif
-	init_spi();
-
 	ws2812b_Init();
-
-	init_nrf24l01();
-
-
     while (!ws2812b_IsReady()); // wait
-
-    #ifdef DEBUG_UART_ONLY
-    set_color(Red,RGB_PWM[0]);
+    set_color(Black,RGB_PWM[0]);
 	ws2812b_SendRGB(leds, NUM_LEDS);
 	Delay_ms(500);
+    #ifdef DEBUG_UART_ONLY
     UART_SendStr("WS2812B READY is OK.\r\n");
     #endif
+
+    init_spi();
+    init_nrf24l01();
 
     // The main loop
     while (1) {
