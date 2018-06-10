@@ -31,9 +31,9 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/main.c" title="main.c" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/main.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="F:/ambient_light_rgb/ambient_light_module/main.c" title="main.c" tooltip="F:/ambient_light_rgb/ambient_light_module/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3208" selectionTopPixel="1500"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="5567" selectionTopPixel="1588"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="misc.h" partName="misc.h" path="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/stm_lib/inc/misc.h" title="misc.h" tooltip="F:/облако/YandexDisk/Электроника/amb_rgb_light/ambient_light_rgb/ambient_light_module/stm_lib/inc/misc.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/ambient_light_module/stm_lib/inc/misc.h"/>
@@ -171,7 +171,7 @@
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 </folder>
 </info>
-<info folder="true" part="org.eclipse.ui.internal.ViewStack@15da68c" ratio="0.69977427" ratioLeft="620" ratioRight="266" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1da7d56">
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@15da68c" ratio="0.6028708" ratioLeft="378" ratioRight="249" relationship="4" relative="org.eclipse.ui.internal.ViewStack@1da7d56">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">

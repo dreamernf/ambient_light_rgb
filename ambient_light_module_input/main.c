@@ -37,7 +37,7 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define  NUM_LEDS   5
+#define  NUM_LEDS   3
 #define  PERIOD   256
 
 
@@ -84,20 +84,26 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 	leds[1].g=(color.G*brightness)/(PERIOD-1);
 	leds[1].b=(color.B*brightness)/(PERIOD-1);
 
+
+	/*
+
 	leds[2].r=(color.R*brightness)/(PERIOD-1);
 	leds[2].g=(color.G*brightness)/(PERIOD-1);
 	leds[2].b=(color.B*brightness)/(PERIOD-1);
 
+
 	leds[3].r=(color.R*brightness)/(PERIOD-1);
 	leds[3].g=(color.G*brightness)/(PERIOD-1);
 	leds[3].b=(color.B*brightness)/(PERIOD-1);
+
+
+
 
 	leds[4].r=(color.R*brightness)/(PERIOD-1);
 	leds[4].g=(color.G*brightness)/(PERIOD-1);
 	leds[4].b=(color.B*brightness)/(PERIOD-1);
 
 
-	/*
 	leds[5].r=(color.R*brightness)/(PERIOD-1);
 	leds[5].g=(color.G*brightness)/(PERIOD-1);
 	leds[5].b=(color.B*brightness)/(PERIOD-1);

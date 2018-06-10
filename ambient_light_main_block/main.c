@@ -40,7 +40,7 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define NUM_LEDS   1
+#define NUM_LEDS   3
 #define  PERIOD   256
 
 
@@ -70,6 +70,14 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 			leds[0].r=(color.R*brightness)/(PERIOD-1);
 			leds[0].g=(color.G*brightness)/(PERIOD-1);
 			leds[0].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[1].r=(color.R*brightness)/(PERIOD-1);
+			leds[1].g=(color.G*brightness)/(PERIOD-1);
+			leds[1].b=(color.B*brightness)/(PERIOD-1);
+
+			leds[2].r=(color.R*brightness)/(PERIOD-1);
+			leds[2].g=(color.G*brightness)/(PERIOD-1);
+			leds[2].b=(color.B*brightness)/(PERIOD-1);
 
 		}
 
@@ -142,7 +150,7 @@ int main(void)
    	        FLASH_Init();
 			ws2812b_Init();
 			while (!ws2812b_IsReady()); // wait
-			set_color(Red,RGB_PWM[127]);
+			set_color(Black,RGB_PWM[127]);
 			ws2812b_SendRGB(leds, NUM_LEDS);
 			Delay_ms(500);
 			UB_Led_Init();
