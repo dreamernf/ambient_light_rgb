@@ -1,41 +1,38 @@
-//------------------------------------------------------------------------------
-// This is Open source software. You can place this code on your site, but don't
-// forget a link to my YouTube-channel: https://www.youtube.com/channel/UChButpZaL5kUUl_zTyIDFkQ
-// Это программное обеспечение распространяется свободно. Вы можете размещать
-// его на вашем сайте, но не забудьте указать ссылку на мой YouTube-канал 
-// "Электроника в объектике" https://www.youtube.com/channel/UChButpZaL5kUUl_zTyIDFkQ
-// Автор: Надыршин Руслан / Nadyrshin Ruslan
-//------------------------------------------------------------------------------
+// Delay functions using SysTick timer
+// Minimal delay length is 1ms
+
+
 #include "delay.h"
 
 
-//==============================================================================
-// Процедура программной задержки ~1 мкс
-//==============================================================================
-void delay_us(unsigned int us)
-{
-  unsigned int tick = 0;
-  
-  while (us--)
-  {
-    while (tick < 6)
-    {
-      tick++;
+// Initialize delay (configure SysTick counter)
+// note: must be called each time when the system core clock has been changed
+void Delay_Init(void) {
+    // Set reload register to generate IRQ every millisecond
+    SysTick->LOAD = (uint32_t)((SystemCoreClock / 1000UL) - 1UL);
+
+    // Set priority for SysTick IRQ
+    NVIC_SetPriority(SysTick_IRQn,(1UL << __NVIC_PRIO_BITS) - 1UL);
+
+    // Set the SysTick counter value
+    SysTick->VAL = 0UL;
+
+    // Configure SysTick source and enable counter
+    SysTick->CTRL = (SysTick_CTRL_CLKSOURCE_Msk | SysTick_CTRL_ENABLE_Msk);
+
+}
+
+#if (!DELAY_INLINE)
+// Do a delay for a specified number of milliseconds
+// input:
+//   ms - number of milliseconds to wait
+void Delay_ms(uint32_t ms) {
+    __IO uint32_t delay_counter = ms;
+
+    while (delay_counter) {
+        if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) {
+            delay_counter--;
+        }
     }
-    tick = 0;
-  }
 }
-//==============================================================================
-
-
-//==============================================================================
-// Процедура программной задержки ~1 мс
-//==============================================================================
-void delay_ms(unsigned int ms)
-{
-  while (ms--)
-  {
-    delay_us(1000);
-  }
-}
-//==============================================================================
+#endif

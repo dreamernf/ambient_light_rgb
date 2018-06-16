@@ -6,6 +6,9 @@
 #include "stm32_ub_led.h"
 #include "stm32f10x_dma.h"
 #include <stdio.h>
+#include "stm32f10x_rcc.h"
+#include "stm32f10x_tim.h"
+#include "misc.h"
 
 
 
@@ -38,7 +41,7 @@ const int16_t RGB_PWM[count_pwm_steps] = {
 		};
 
 
-#define NUM_LEDS   3
+#define NUM_LEDS   1
 #define  PERIOD   256
 
 
@@ -54,12 +57,71 @@ RGB_t leds[NUM_LEDS];
 		// Buffer to store a payload of maximum width
 		uint8_t nRF24_payload[32];
 
+
 		// Pipe number
 		nRF24_RXResult pipe;
 
 		// Length of received payload
 		uint8_t payload_length = 5;
 
+
+		void SetSysClockToHSE(void)
+		{
+		    ErrorStatus HSEStartUpStatus;
+		    /* SYSCLK, HCLK, PCLK2 and PCLK1 configuration -----------------------------*/
+		    /* RCC system reset(for debug purpose) */
+		    RCC_DeInit();
+
+		    /* Enable HSE */
+		    RCC_HSEConfig( RCC_HSE_ON);
+
+		    /* Wait till HSE is ready */
+		    HSEStartUpStatus = RCC_WaitForHSEStartUp();
+
+		    if (HSEStartUpStatus == SUCCESS)
+		    {
+		        /* HCLK = SYSCLK */
+		        RCC_HCLKConfig( RCC_SYSCLK_Div1);
+
+		        /* PCLK2 = HCLK */
+		        RCC_PCLK2Config( RCC_HCLK_Div1);
+
+		        /* PCLK1 = HCLK */
+		        RCC_PCLK1Config(RCC_HCLK_Div1);
+
+		        /* Select HSE as system clock source */
+		        RCC_SYSCLKConfig( RCC_SYSCLKSource_HSE);
+
+		        /* Wait till PLL is used as system clock source */
+		        while (RCC_GetSYSCLKSource() != 0x04)
+		        {
+		        }
+		    }
+		    else
+		    { /* If HSE fails to start-up, the application will have wrong clock configuration.
+		     User can add here some code to deal with this error */
+
+		        /* Go to infinite loop */
+		        while (1)
+		        {
+		        }
+		    }
+		}
+
+
+void TIM4_IRQHandler(void)
+		{
+		        if (TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET)
+		        {
+		            // ќб€зательно сбрасываем флаг
+		            TIM_ClearITPendingBit(TIM4, TIM_IT_Update);
+		            number_color++;
+		            	        		if (number_color>=15)
+		            	        		  {
+		            	        			number_color=1;
+		            	        		  };
+		        }
+		}
 
 
 void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
@@ -69,13 +131,13 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 			leds[0].g=(color.G*brightness)/(PERIOD-1);
 			leds[0].b=(color.B*brightness)/(PERIOD-1);
 
-			leds[1].r=(color.R*brightness)/(PERIOD-1);
-			leds[1].g=(color.G*brightness)/(PERIOD-1);
-			leds[1].b=(color.B*brightness)/(PERIOD-1);
+			//leds[1].r=(color.R*brightness)/(PERIOD-1);
+			//leds[1].g=(color.G*brightness)/(PERIOD-1);
+			//leds[1].b=(color.B*brightness)/(PERIOD-1);
 
-			leds[2].r=(color.R*brightness)/(PERIOD-1);
-			leds[2].g=(color.G*brightness)/(PERIOD-1);
-			leds[2].b=(color.B*brightness)/(PERIOD-1);
+			//leds[2].r=(color.R*brightness)/(PERIOD-1);
+			//leds[2].g=(color.G*brightness)/(PERIOD-1);
+			//leds[2].b=(color.B*brightness)/(PERIOD-1);
 
 		}
 
@@ -84,6 +146,31 @@ int main(void)
 {
 
 	        SetSysClockTo72();
+	       // SetSysClockToHSE();
+
+	        // TIMER4
+	        TIM_TimeBaseInitTypeDef TIMER_InitStructure;
+	        NVIC_InitTypeDef NVIC_InitStructure;
+
+	            RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE);
+
+	            TIM_TimeBaseStructInit(&TIMER_InitStructure);
+	            TIMER_InitStructure.TIM_CounterMode = TIM_CounterMode_Up;
+	            TIMER_InitStructure.TIM_Prescaler = 64000;
+	            TIMER_InitStructure.TIM_Period = 4000;
+	            TIM_TimeBaseInit(TIM4, &TIMER_InitStructure);
+	            TIM_ITConfig(TIM4, TIM_IT_Update, ENABLE);
+	            TIM_Cmd(TIM4, ENABLE);
+
+	            /* NVIC Configuration */
+	               /* Enable the TIM4_IRQn Interrupt */
+	               NVIC_InitStructure.NVIC_IRQChannel = TIM4_IRQn;
+	               NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+	               NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+	               NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	               NVIC_Init(&NVIC_InitStructure);
+
+
 	        Delay_Init();
 	        UB_Led_Init();
    	        //FLASH_Init();
@@ -113,6 +200,24 @@ int main(void)
 
 	        	bright_rgb = 120;
 
+        		//номер цвета
+	        	nRF24_payload[0] = 	number_color;
+
+	        	//обща€ €ркость
+	        	nRF24_payload[1] =  bright_rgb;
+
+	        	//коэффициент €ркости передних фонариков
+	        	nRF24_payload[2] = 	9;
+
+	        	//коэффициент €ркости задних фонариков
+	        	nRF24_payload[3] = 	9;
+
+	        	//коэффициент €ркости подсветки ног
+	        	nRF24_payload[4] = 	6;
+
+	        	// Transmit a packet
+	        	tx_res = nRF24_TransmitPacket(nRF24_payload, payload_length);
+
         		switch (number_color) {
         		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
         		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
@@ -131,24 +236,11 @@ int main(void)
         		}
 
         		ws2812b_SendRGB(leds, NUM_LEDS);
-        		Delay_ms(100);
 
-        		nRF24_payload[0] = 	number_color;
-	        	nRF24_payload[1] =  120;
-	        	nRF24_payload[2] = 	0;
-	        	nRF24_payload[3] = 	0;
-	        	nRF24_payload[4] = 	0;
-	        	nRF24_payload[5] = 	0;
-
-	        	// Transmit a packet
-	        	tx_res = nRF24_TransmitPacket(nRF24_payload, payload_length);
+	        	Delay_ms(50);
 
 
-	        		number_color++;
-	        		if (number_color>=15)
-	        		  {
-	        			number_color=1;
-	        		  };
+
 
 	        }
 

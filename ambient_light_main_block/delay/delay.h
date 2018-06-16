@@ -1,18 +1,34 @@
-//------------------------------------------------------------------------------
-// This is Open source software. You can place this code on your site, but don't
-// forget a link to my YouTube-channel: https://www.youtube.com/channel/UChButpZaL5kUUl_zTyIDFkQ
-// Это программное обеспечение распространяется свободно. Вы можете размещать
-// его на вашем сайте, но не забудьте указать ссылку на мой YouTube-канал 
-// "Электроника в объектике" https://www.youtube.com/channel/UChButpZaL5kUUl_zTyIDFkQ
-// Автор: Надыршин Руслан / Nadyrshin Ruslan
-//------------------------------------------------------------------------------
-#ifndef _DELAY_H
-#define _DELAY_H
+#ifndef __DELAY_H
+#define __DELAY_H
 
 
-// Процедура программной задержки ~1 мкс
-void delay_us(unsigned int us);
-// Процедура программной задержки ~1 мс
-void delay_ms(unsigned int ms);
+#include "stm32f10x.h"
 
-#endif
+
+// Set to "1" to use the inlined Delay_ms() function
+#define DELAY_INLINE               1
+
+
+// Public functions and macros
+
+#if (DELAY_INLINE)
+// Do a delay for a specified number of milliseconds
+// input:
+//   delay_counter - number of milliseconds to wait
+__STATIC_INLINE void Delay_ms(__IO uint32_t delay_counter) {
+    while (delay_counter) {
+        if (SysTick->CTRL & SysTick_CTRL_COUNTFLAG_Msk) {
+            delay_counter--;
+        }
+    }
+}
+#endif // DELAY_INLINE
+
+
+// Function prototypes
+void Delay_Init(void);
+#if (!DELAY_INLINE)
+void Delay_ms(uint32_t ms);
+#endif // DELAY_INLINE
+
+#endif // __DELAY_H

@@ -62,13 +62,6 @@ RGB_t leds[NUM_LEDS];
 		// Length of received payload
 		uint8_t payload_length = 5;
 
-		uint8_t  count_adc =  40;
-
-		uint32_t  avg_adc = 0;
-
-		uint8_t   n_adc = 0;
-
-
 
 
 void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
@@ -85,9 +78,6 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 			leds[2].r=(color.R*brightness)/(PERIOD-1);
 			leds[2].g=(color.G*brightness)/(PERIOD-1);
 			leds[2].b=(color.B*brightness)/(PERIOD-1);
-
-
-
 
 		}
 
@@ -150,57 +140,35 @@ void set_color(struct RGB_COLOR_TYPE color, uint8_t brightness)
 
 	    FLASH_Lock();
 	}
-
 // ====================================================
-
 
 int main(void)
 {
-	    SetSysClockTo72();
-	    Delay_Init();
-        UB_Led_Init();
-        FLASH_Init();
 
-		ws2812b_Init();
-
-		while (!ws2812b_IsReady()); // wait
-
-		init_spi();
-        init_nrf24l01();
-
-        UB_Button_Init();
-	    init_adc();
-
-		UB_Led_On(LED_DEBUG);
-		UB_Led_On(LED_BO);
-
-        FLASH_ReadSettings();
-        number_color =	settings.NumberColorF;
-
-		set_color(Green,RGB_PWM[127]);
-		ws2812b_SendRGB(leds, NUM_LEDS);
-		Delay_ms(200);
-
-        UB_Led_On(BUZZER);
-        Delay_ms(100);
-        UB_Led_Off(BUZZER);
+	        SetSysClockTo72();
+	        Delay_Init();
+   	        FLASH_Init();
+			ws2812b_Init();
+			while (!ws2812b_IsReady()); // wait
+			set_color(Black,RGB_PWM[127]);
+			ws2812b_SendRGB(leds, NUM_LEDS);
+			Delay_ms(500);
+			UB_Led_Init();
+			UB_Button_Init();
+			init_adc();
+			init_spi();
+			init_nrf24l01();
+			UB_Led_On(LED_DEBUG);
+			UB_Led_On(LED_BO);
+        	UB_Led_On(BUZZER);
+        	Delay_ms(100);
+        	UB_Led_Off(BUZZER);
+        	FLASH_ReadSettings();
+        	number_color = settings.NumberColorF;
 
 	        while (1) {
 
-
-	        	UB_Led_On(LED_DEBUG);
-
-	        	for (n_adc = 1; n_adc<=count_adc; n_adc++)
-	        	{
-	        	  avg_adc = avg_adc + ADC_GetConversionValue(ADC1);
-	        	  Delay_ms(1);
-	        	}
-
-	        	avg_adc = avg_adc / count_adc;
-
-	        	bright_rgb = set_brightness(avg_adc);
-
-
+	        	bright_rgb = set_brightness(ADC_GetConversionValue(ADC1));
         		switch (number_color) {
         		case 1: set_color(Red,RGB_PWM[bright_rgb]);break;
         		case 2: set_color(Green,RGB_PWM[bright_rgb]); break;
@@ -240,33 +208,23 @@ int main(void)
 	        	// Transmit a packet
 	        	tx_res = nRF24_TransmitPacket(nRF24_payload, payload_length);
 
-
-	        	UB_Led_Off(LED_DEBUG);
-
 	        	if (UB_Button_OnClick(BTN_MODE_RGB))
 	        	{
 	        		UB_Led_On(LED_BO);
 	        		Delay_ms(50);
-
-	        		UB_Led_On(BUZZER);
-	        	    Delay_ms(70);
-	        	    UB_Led_Off(BUZZER);
-
-
 	        		number_color++;
 	        		if (number_color>=15)
 	        		  {
 	        			number_color=1;
 	        		  };
-	                  settings.NumberColorF=number_color;
-	                  settings.F1=0;
-	                  settings.F2=0;
-	                  settings.F3=0;
-	                  FLASH_WriteSettings();
+	                settings.NumberColorF=number_color;
+	                settings.F1=0;
+	                settings.F2=0;
+	                settings.F3=0;
+	                FLASH_WriteSettings();
 
 	        	}
 	        	UB_Led_Off(LED_BO);
-
 	        }
 
 }
